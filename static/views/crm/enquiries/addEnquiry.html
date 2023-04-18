@@ -1,0 +1,339 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Enquiries</h2>
+		<ol class="breadcrumb">
+			<li><a>CRM </a></li>
+			<li><a>Function Hall Enquiries</a></li>
+			<li class="active">Add Function Hall Enquiry</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="getCountries();getFunctionHallsList()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Function Hall Enquiry</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form name="myForm" class="form-horizontal">
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-2">
+										Full Name <span style="color: red"
+										ng-show="enquiry.customer.title==undefined ||enquiry.customer.title==''||enquiry.customer.fisrtName==undefined ||enquiry.customer.fisrtName==''||enquiry.customer.lastName==undefined ||enquiry.customer.lastName==''">*</span>
+									</label>
+
+
+									<div class="col-sm-2">
+										<select class="form-control" ng-model="enquiry.customer.title">
+											<option value="Mr">Mr</option>
+											<option value="Mrs">Mrs</option>
+											<option value="Ms">Ms</option>
+
+										</select>
+									</div>
+									<div class="col-sm-2">
+										<input type="text" class="form-control"
+											placeholder="FirstName" ng-model="enquiry.customer.fisrtName"
+											capitalize-first only-letters-input maxlength="30">
+									</div>
+
+									<div class="col-sm-2">
+										<input type="text" class="form-control"
+											placeholder="MiddleName"
+											ng-model="enquiry.customer.middleName" capitalize-first
+											only-letters-input maxlength="30">
+									</div>
+									<div class="col-sm-2">
+										<input type="text" class="form-control" placeholder="lastName"
+											ng-model="enquiry.customer.lastName" capitalize-first
+											only-letters-input maxlength="30">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="box-body">
+
+								<div class="form-group">
+
+									<label for="inputEmail" class="control-label col-sm-2">Customer
+										Address <span style="color: red"
+										ng-show="enquiry.customer.address.street1==undefined ||enquiry.customer.address.street1==''">*</span>
+									</label>
+
+
+									<div class="col-sm-8">
+										<input type="text" class="form-control"
+											ng-model="enquiry.customer.address.street1" capitalize-first>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-2">Country
+										<span style="color: red"
+										ng-show="enquiry.customer.address.country==undefined ||enquiry.customer.address.country==''">*</span>
+									</label>
+
+
+									<div class="col-sm-3">
+
+										<select class="form-control"
+											ng-model="enquiry.customer.address.country"
+											ng-options="country as country.name for country in countriesList track by country.id"
+											ng-change="getStates(enquiry.customer.address.country.id)">
+											<option value="">select</option>
+										</select>
+									</div>
+									<label for="inputEmail" class="control-label col-sm-2">State<span
+										style="color: red"
+										ng-show="enquiry.customer.address.state==undefined ||enquiry.customer.address.state==''">*</span>
+									</label>
+
+
+									<div class="col-sm-3">
+
+										<select class="form-control"
+											ng-model="enquiry.customer.address.state"
+											ng-options="state as state.name for state in statesList track by state.id"
+											ng-change="getDistricts(enquiry.customer.address.state.id)">
+											<option value="">select</option>
+										</select>
+
+									</div>
+
+								</div>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-2">District
+										<span style="color: red"
+										ng-show="enquiry.customer.address.district==undefined ||enquiry.customer.address.district==''">*</span>
+									</label>
+									<div class="col-sm-3">
+										<select class="form-control"
+											ng-model="enquiry.customer.address.district"
+											ng-options="district as district.name for district in districtList track by district.id">
+											<option value="">select</option>
+										</select>
+									</div>
+									<label for="inputEmail" class="control-label col-sm-2">City / Town
+										<span style="color: red"
+										ng-show="enquiry.customer.address.city==undefined ||enquiry.customer.address.city==''">*</span>
+									</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control"
+											ng-model="enquiry.customer.address.city" capitalize-first
+											only-alpha-numeric max-length=35>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-2">PIN
+										Code <!-- <span style="color: red"
+									ng-show="enquiry.customer.address.pinCode==undefined ||enquiry.customer.address.pinCode==''">*</span> -->
+									</label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control"
+											ng-model="enquiry.customer.address.pinCode"
+											allow-only-numbers maxlength="6"> <span
+											style="color: red"
+											ng-show="enquiry.customer.address.pinCode!='' && enquiry.customer.address.pinCode.length<6">Invalid
+											PIN Code</span>
+									</div>
+									<label for="inputEmail" class="control-label col-sm-2">PAN
+										Number </label>
+									<div class="col-sm-3">
+										<input type="text" class="form-control"
+											ng-model="enquiry.customer.panNumber" only-alpha-numeric
+											capitalize maxlength="10"><span style="color: red"
+											ng-show="enquiry.customer.panNumber!='' && enquiry.customer.panNumber.length<10">Invalid
+											PAN Number</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-2">Contact
+										Number<span style="color: red"
+										ng-show="enquiry.customer.mobile==undefined ||enquiry.customer.mobile==''||enquiry.customer.mobile.length <10">*</span>
+									</label>
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="enquiry.customer.mobile" allow-only-numbers
+											maxlength="10">
+									</div>
+									<label for="inputEmail" class="control-label col-sm-2">Email
+									</label>
+									<div class="col-sm-3">
+										<input type="email" class="form-control" name="email"
+											ng-model="enquiry.customer.email"
+											ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/ "> <span
+											ng-hide="myForm.email.$valid" style="color: red">
+											Please Enter a valid Email Address</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-2">Source
+										of Approach <span style="color: red"
+										ng-show="enquiry.source==undefined ||enquiry.source==''">*</span>
+									</label>
+									<div class="col-sm-3">
+										<select class="form-control" ng-model="enquiry.source">
+											<option value="">select</option>
+											<option value="Email">Email</option>
+											<option value="Phone">Phone</option>
+											<option value="Advertisements">Advertisements</option>
+											<option value="Reference">Reference</option>
+											<option value="Walk-in">Walk-in</option>
+											<option value="Campaign">Campaign</option>
+											<option value="Demo">Demo</option>
+										</select>
+									</div>
+									<label for="inputEmail" class="control-label col-sm-2">Customer
+										Interest <span style="color: red"
+										ng-show="enquiry.purpose==undefined ||enquiry.purpose==''">*</span>
+									</label>
+									<div class="col-sm-3">
+										<select class="form-control" ng-model="enquiry.purpose">
+											<option value="">select</option>
+											<option value="Marriage">Marriage</option>
+											<option value="Reception">Reception</option>
+											<option value="Voni">Voni</option>
+											<option value="Annaprasa">Annaprasa</option>
+											<option value="Event">Event</option>
+											<option value="Other">Other</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-2">Required
+										From Date <span style="color: red"
+										ng-show="enquiry.requiredFromDate==''">*</span>
+									</label>
+									<div class="col-sm-3">
+										<div class='input-group date' datetimepicker>
+											<input type='text' class="form-control"
+												ng-model="enquiry.requiredFromDate" ng-readonly="true" /> <span
+												class="input-group-addon"><span
+												class="glyphicon glyphicon-calendar"></span> </span>
+										</div>
+										<!-- timezone = "Asia/Kolkata"  -->
+									</div>
+
+									<label for="inputEmail" class="control-label col-sm-2">Required
+										To Date <span style="color: red"
+										ng-show="enquiry.requiredToDate==''">*</span>
+									</label>
+									<div class="col-sm-3">
+										<div class='input-group date' datetimepicker>
+											<input type='text' class="form-control"
+												ng-model="enquiry.requiredToDate" ng-readonly="true" /> <span
+												class="input-group-addon"><span
+												class="glyphicon glyphicon-calendar"></span> </span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+
+									<label for="inputEmail" class="control-label col-sm-2">Function
+										Hall <span style="color: red"
+										ng-show="enquiry.functionHall==undefined ||enquiry.functionHall==''">*</span>
+									</label>
+
+									<div class="col-sm-3">
+										<select class="form-control" ng-model="enquiry.functionHall"
+											ng-options="functionHall as functionHall.name for functionHall in functionHallsList track by functionHall.id">
+											<option value="">select</option>
+										</select>
+									</div>
+									<div ng-show="enquiry.purpose=='Other'">
+										<label for="inputEmail" class="control-label col-sm-2">Function
+											Name </label>
+
+										<div class="col-sm-3">
+											<input type="text" class="form-control"
+												ng-model="functionName" only-alpha-numeric capitalize-first>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="box-body">
+								<div class="box-footer">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button class="btn btn-primary"
+											ng-disabled="(!enquiry.functionHall||!enquiry.purpose
+							||!enquiry.requiredToDate||!enquiry.source
+							||!enquiry.customer.address.city
+							||!enquiry.customer.address.district
+							||!enquiry.customer.address.state
+							||!enquiry.customer.address.country
+							||!enquiry.customer.address.street1
+							||!enquiry.customer.fisrtName
+							||!enquiry.customer.lastName
+							||enquiry.customer.mobile.length<10
+							||!myForm.email.$valid)|| (enquiry.customer.panNumber.length>0 && enquiry.customer.panNumber.length<10)|| (enquiry.customer.address.pinCode.length>0 && enquiry.customer.address.pinCode.length<6)"
+											ng-click="addFunctionHallEnquiry(enquiry)" my-click-once>Save</button>
+										<button class="btn btn-danger" ng-click="gotoEnquiryList()">Cancel</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var d = new Date();
+	$('.date').datetimepicker({
+		//language:  'fr',
+		showMeridian : 0,
+		format : "dd-mm-yyyy HH:ii:ss",
+		todayBtn : 1,
+		autoclose : 1,
+		todayHighlight : 1,
+		startView : 2,
+		forceParse : 0,
+		startDate : new Date(d.getFullYear(),d.getMonth(),d.getDate()),
+		minuteStep : 1,
+		pickerPosition : "top-left"
+	});
+</script>

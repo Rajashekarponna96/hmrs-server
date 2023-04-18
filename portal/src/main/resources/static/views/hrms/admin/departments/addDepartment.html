@@ -1,0 +1,74 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Departments</h2>
+		<ol class="breadcrumb">
+			
+			<li><a >Admin</a></li>
+			<li><a >Departments</a></li>
+			<li class="active"><strong>Add Department</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="getAlltLocations()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Department</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Location <span
+								style="color: red" ng-show="location==undefined ||location==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<select class="form-control" ng-model="location"
+									ng-options="location as location.city for location in locationList">
+									<option value="">select</option>
+								</select>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Code <span
+								style="color: red"
+								ng-show="locationDepartment.code==undefined || locationDepartment.code==''">*</span></label>
+
+							<div class="col-sm-10">
+								<input type="text" class="form-control"
+									ng-model="locationDepartment.code" capitalize
+									only-alpha-numeric maxlength="4">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Name <span
+								style="color: red"
+								ng-show="locationDepartment.name==undefined || locationDepartment.name==''">*</span></label>
+
+							<div class="col-sm-10">
+								<input type="text" class="form-control"
+									ng-model="locationDepartment.name" capitalize-first
+									maxlength="35">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-disabled="!locationDepartment.code || !locationDepartment.name"
+									ng-click="addLocationDepartment(locationDepartment)">Save</button>
+								<button class="btn btn-danger"
+									ng-click="gotoLocationDepartment()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

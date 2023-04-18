@@ -1,0 +1,353 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+
+	<div class="sidebar-collapse">
+		<ul side-navigation class="nav metismenu" id="side-menu">
+			<li class="nav-header">
+
+				<div class="profile-element" uib-dropdown>
+					<br />
+					<p ng-if="person==null || person.photoPath==undefined">
+						<i class="fa fa-user fa-3x" style="color: white"></i>
+					</p>
+					<p ng-if="person.photoPath!=undefined">
+						<img alt="image" class="img-circle" ng-src="{{imagePath()}}"
+							width="50px" height="50px" />
+					</p>
+					<a uib-dropdown-toggle href> <span class="clear"> <span
+							class="block m-t-xs"> <strong class="font-bold">{{employeeName}}</strong>
+						</span> <span ng-if="designation!=null && designation!=undefined"
+							class="text-muted text-xs block">{{designation}} </span>
+					</span>
+					</a>
+					<!-- <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
+						<li><a ui-sref="app.profile">Profile</a></li>
+						<li><a ui-sref="app.contacts">Contacts</a></li>
+						<li><a ui-sref="mailbox.inbox">Mailbox</a></li>
+						<li class="divider"></li>
+						<li><a ui-sref="login">Logout</a></li>
+					</ul> -->
+				</div>
+				<div class="logo-element">SRMT</div>
+			</li>
+
+			<li ui-sref-active="active"><a ui-sref="home.dashboard"><i
+					class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span>
+			</a></li>
+
+			<li ng-if="hasFeatureWithAction('Admin').viewAction"
+				ng-class="{active: $state.includes('Admin')}"><a
+				href="index.html"><i class="fa fa-th-large"></i> <span
+					class="nav-label"> Admin</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse"
+					ng-class="{in: $state.includes('Admin')}">
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Company Information').viewAction"><a
+						ui-sref="home.organisation" href="#"><i class="fa fa-circle-o"></i>Company
+							Information</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Countries').viewAction"><a
+						ui-sref="home.countryList" href="#"><i class="fa fa-circle-o"></i>Countries</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('States').viewAction"><a
+						ui-sref="home.state.stateList" href="#"><i
+							class="fa fa-circle-o"></i>States</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Districts').viewAction"><a
+						ui-sref="home.districtList" href="#"><i class="fa fa-circle-o"></i>Districts</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Locations').viewAction"><a
+						ui-sref="home.locationDetails" href="#"><i
+							class="fa fa-circle-o"></i>Locations</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Departments').viewAction"><a
+						ui-sref="home.departmentList" href="#"><i
+							class="fa fa-circle-o"></i>Departments</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Designations').viewAction"><a
+						ui-sref="home.designationList" href="#"><i
+							class="fa fa-circle-o"></i>Designations</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Education Levels').viewAction"><a
+						ui-sref="home.educationLevelList" href="#"><i
+							class="fa fa-circle-o"></i>Education Levels</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Employment Types').viewAction"><a
+						ui-sref="home.employmentTypeList" href="#"><i
+							class="fa fa-circle-o"></i>Employment Types</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Work Shifts').viewAction"><a
+						ui-sref="home.worKShiftDetails" href="#"><i
+							class="fa fa-circle-o"></i>Work Shifts</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Document Categories').viewAction"><a
+						ui-sref="home.documentCategoryList" href="#"><i
+							class="fa fa-circle-o"></i>Document Categories</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Calendar Year').viewAction"><a
+						ui-sref="home.leavePeriodList" href="#"><i
+							class="fa fa-circle-o"></i>Calendar Year</a></li>
+					<li ui-sref-active="active"
+						ng-if="hasFeatureWithAction('Leave Types').viewAction"><a
+						ui-sref="home.leaveTypeList" href="#"><i
+							class="fa fa-circle-o"></i>Leave Types</a></li>
+					<li ng-if="hasFeatureWithAction('Holidays').viewAction"><a
+						ui-sref="home.holidaysList" href="#"><i class="fa fa-circle-o"></i>Holidays</a></li>
+					<li
+						ng-if="hasFeatureWithAction('Broadcasting Messages').viewAction"><a
+						ui-sref="home.broadcastingMessagesList" href="#"><i
+							class="fa fa-circle-o"></i>Broadcasting Messages</a></li>
+					<li ng-if="hasFeatureWithAction('Languages').viewAction"><a
+						ui-sref="home.languageDetailsList" href="#"><i
+							class="fa fa-circle-o"></i>Languages</a></li>
+					<li ng-if="hasFeatureWithAction('Discipline Rules').viewAction"><a
+						ui-sref="home.disciplineRuleList" href="#"><i
+							class="fa fa-circle-o"></i>Discipline Rules</a></li>
+					<li ng-if="hasFeatureWithAction('Acts').viewAction"><a
+						ui-sref="home.actDetail" href="#"><i class="fa fa-circle-o"></i>Acts</a></li>
+					<li ng-if="hasFeatureWithAction('Act Shedules').viewAction"><a
+						ui-sref="home.actSheduledetail" href="#"><i
+							class="fa fa-circle-o"></i>Act Shedules</a></li>
+					<li ng-if="hasFeatureWithAction('Location wise Acts').viewAction"><a
+						ui-sref="home.locationwiseActList" href="#"><i
+							class="fa fa-circle-o"></i>Location wise Acts</a></li>
+
+				</ul></li>
+
+			<li ng-if="hasFeatureWithAction('On-Boarding').viewAction"
+				ng-class="{active: $state.includes('home.employeeList')}"
+				ui-sref-active="active"><a ui-sref="home.employeeList"><i
+					class="fa fa-users"></i> <span class="nav-label">On-Boarding</span></a></li>
+
+			<li ng-if="hasFeatureWithAction('User Management').viewAction"
+				ng-class="{active: $state.includes('usermgmt')}"><a
+				href="index.html"><i class="fa fa-user"></i> <span
+					class="nav-label">User Management</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse"
+					ng-class="{in: $state.includes('usermgmt')}">
+					<li ng-if="hasFeatureWithAction('Roles').viewAction"><a
+						ui-sref="home.usermgmt.rolesList" href="#"><i
+							class="fa fa-circle-o"></i>Roles</a></li>
+					<li ng-if="hasFeatureWithAction('Features').viewAction"><a
+						ui-sref="home.usermgmt.featureCategoryList" href="#"><i
+							class="fa fa-circle-o"></i>Features</a></li>
+					<li ng-if="hasFeatureWithAction('Users').viewAction"><a
+						ui-sref="home.usermgmt.userList" href="#"><i
+							class="fa fa-circle-o"></i>Users</a></li>
+				</ul></li>
+			<li ng-class="{active: $state.includes('documentation')}"
+				ui-sref-active="active"
+				ng-if="hasFeatureWithAction('Documentation').viewAction"><a
+				ui-sref="home.documentation.documentationList"><i
+					class="fa fa-file-text"></i><span class="nav-label">Documentation</span>
+			</a></li>
+
+
+			<li ng-if="hasFeatureWithAction('Leave Management').viewAction"
+				ng-class="{active: $state.includes('leavemgmt')}"><a
+				href="index.html"><i class="fa fa-edit"></i> <span
+					class="nav-label"> Leave Management</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse"
+					ng-class="{in: $state.includes('leavemgmt')}">
+					<li ng-if="hasFeatureWithAction('Leave Entitlement').viewAction"><a
+						ui-sref="home.leavemgmt.leaveEntitlementList" href="#"><i
+							class="fa fa-circle-o"></i> Leave Entitlement </a></li>
+					<!-- <li><a href="#" ui-sref="home.empLeaveEntitlementList"><i
+								class="fa fa-circle-o"></i> Reportee Entitlement </a></li> -->
+					<li
+						ng-if="hasFeatureWithAction('Employee Leave Request').viewAction"><a
+						href="#" ui-sref="home.leavemgmt.employeeLeaveRequestList"><i
+							class="fa fa-circle-o"></i> Employee Leave Request</a></li>
+					<li
+						ng-if="hasFeatureWithAction('Reportee Leave Request').viewAction"><a
+						href="#" ui-sref="home.leavemgmt.reporteeLeaveRequest"><i
+							class="fa fa-circle-o"></i> Reportee Leave Request</a></li>
+				</ul></li>
+
+			<li ng-if="hasFeatureWithAction('Attendance').viewAction"
+				ng-class="{active: $state.includes('attendance')}"><a
+				href="index.html"><i class="fa fa-calendar"></i> <span
+					class="nav-label"> Attendance</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse"
+					ng-class="{in: $state.includes('attendance')}">
+					<li
+						ng-if="hasFeatureWithAction('All Employees Attendance').viewAction"><a
+						href="#" ui-sref="home.attendance.attendanceList"><i
+							class="fa fa-circle-o"></i>All Employees Attendance </a></li>
+					<li ng-if="hasFeatureWithAction('Reporties Attendance').viewAction"><a
+						href="#" ui-sref="home.attendance.reporteeAttendance"><i
+							class="fa fa-circle-o"></i> Reporties Attendance </a></li>
+				</ul></li>
+
+			<li ng-if="hasFeatureWithAction('Employee Self Service').viewAction"
+				ng-class="{active: $state.includes('employeeSelfService')}"><a
+				href="index.html"><i class="fa fa-user"></i> <span
+					class="nav-label"> Employee Self Service</span> <span
+					class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse"
+					ng-class="{in: $state.includes('employeeSelfService')}">
+					<li><a ui-sref="home.selfService.myinfo.updatePersonalDetail"><i
+							class="fa fa-circle-o"></i>My Info</a></li>
+					<!--<li><a ui-sref="home.selfService.updatePersonalDetail"
+						href="#"><i class="fa fa-circle-o"></i>Personal Details</a></li>
+					<li><a ui-sref="home.selfService.contactDetails" href="#"><i
+							class="fa fa-circle-o"></i>Contact Details</a></li>
+					<li><a ui-sref="home.selfService.dependentDetails" href="#"><i
+							class="fa fa-circle-o"></i>Dependents</a></li>
+					<li><a ui-sref="home.selfService.jobDetails" href="#"><i
+							class="fa fa-circle-o"></i>Job Details</a></li>
+					<li><a ui-sref="home.selfService.languageDetails" href="#"><i
+							class="fa fa-circle-o"></i>Language Details</a></li>
+					<li><a ui-sref="home.selfService.qualificationDetails"
+						href="#"><i class="fa fa-circle-o"></i>Qualification Details</a></li>
+					<li><a ui-sref="home.selfService.experienceDetails" href="#"><i
+							class="fa fa-circle-o"></i>Experience Details</a></li> -->
+					<li><a ui-sref="home.selfService.attendanceList" href="#"><i
+							class="fa fa-circle-o"></i>My Attendance</a></li>
+					<li><a ui-sref="home.selfService.leaveDetails" href="#"><i
+							class="fa fa-circle-o"></i>Leave Requests</a></li>
+					<li><a ui-sref="home.selfService.myLeaveDetails" href="#"><i
+							class="fa fa-circle-o"></i>My Leaves</a></li>
+				</ul></li>
+			<li ng-if="hasFeatureWithAction('CRM').viewAction"
+				ng-class="{active: $state.includes('crm')}"><a
+				href="index.html"><i class="fa fa-th-list"></i> <span
+					class="nav-label"> CRM</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse"
+					ng-class="{in: $state.includes('crm')}">
+					<li
+						ng-if="hasFeatureWithAction('FunctionHall Dashboard').viewAction"><a
+						ui-sref="home.crm.dashboard_functionHall" href="#"><i
+							class="fa fa-circle-o"></i>Dashboard</a></li>
+					<li ng-if="hasFeatureWithAction('Function Halls').viewAction"><a
+						ui-sref="home.crm.functionHallList" href="#"><i
+							class="fa fa-circle-o"></i>Function Halls</a></li>
+					<li ng-if="hasFeatureWithAction('Hall Rooms').viewAction"><a
+						ui-sref="home.crm.hallRoomsList" href="#"><i
+							class="fa fa-circle-o"></i>Hall Rooms</a></li>
+					<li ng-if="hasFeatureWithAction('Rate Card').viewAction"><a
+						ui-sref="home.crm.rentalChargeList" href="#"><i
+							class="fa fa-circle-o"></i>Rate Card</a></li>
+					<li ng-if="hasFeatureWithAction('Enquiries').viewAction"><a
+						ui-sref="home.crm.enquiryList" href="#"><i
+							class="fa fa-circle-o"></i>Enquiries</a></li>
+					<li ng-if="hasFeatureWithAction('Booking Info').viewAction"><a
+						ui-sref="home.crm.bookingInfo" href="#"><i
+							class="fa fa-circle-o"></i>Booking Info</a></li>
+					<li ng-if="hasFeatureWithAction('Payments').viewAction"><a
+						ui-sref="home.crm.paymentList" href="#"><i
+							class="fa fa-circle-o"></i>Payments</a></li>
+					<li ng-if="hasFeatureWithAction('Bill').viewAction"><a
+						ui-sref="home.crm.invoicelist" href="#"><i
+							class="fa fa-circle-o"></i>Bill</a></li>
+					<li ng-if="hasFeatureWithAction('Marriage Certificate').viewAction"><a
+						ui-sref="home.crm.marriageCertificate" href="#"><i
+							class="fa fa-circle-o"></i>Marriage Certificate</a></li>
+					<li ng-if="hasFeatureWithAction('Booking Summary').viewAction"><a
+						ui-sref="home.crm.bookingSummaryList" href="#"><i
+							class="fa fa-circle-o"></i>Booking Summary</a></li>
+				</ul></li>
+			<li ng-if="hasFeatureWithAction('Sales').viewAction"
+				ng-class="{active: $state.includes('showrooms')}"><a
+				href="index.html"><i class="fa fa-money"></i> <span
+					class="nav-label"> Sales</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse"
+					ng-class="{in: $state.includes('showrooms')}">
+					<li ng-if="hasFeatureWithAction('Showrooms').viewAction"><a
+						ui-sref="home.showroom.showroomlist" href="#"><i
+							class="fa fa-circle-o"></i>Showrooms</a></li>
+					<li ng-if="hasFeatureWithAction('Workshop').viewAction"><a
+						ui-sref="home.workshop.workshoplist" href="#"><i
+							class="fa fa-circle-o"></i>Workshop</a></li>
+					<!-- <li ng-if="hasFeatureWithAction('Vehicle Model').viewAction"><a
+						ui-sref="home.tdv.vehiclelist" href="#"><i
+							class="fa fa-circle-o"></i>Vehicle Model</a></li> -->
+					<li
+						ng-if="hasFeatureWithAction('Sales Representatives').viewAction"><a
+						ui-sref="home.salerepresentative.salerepresentativeslist" href="#"><i
+							class="fa fa-circle-o"></i>Sales Representatives</a></li>
+					<li><a
+						ng-if="hasFeatureWithAction('Sales Rep Assigned Vehicle').viewAction"
+						ui-sref="home.tdv.SalesRepAssignedVehicleList" href="#"><i
+							class="fa fa-circle-o"></i>Sales Rep Assigned Vehicle</a></li>
+					<li ng-if="hasFeatureWithAction('Vehicle Model').viewAction"><a
+						ui-sref="home.tdv.productLineList" href="#"><i
+							class="fa fa-circle-o"></i>Product Line</a></li>
+					<li ng-if="hasFeatureWithAction('Workshop').viewAction"><a
+						ui-sref="home.tdv.customerList" href="#"><i
+							class="fa fa-circle-o"></i>Customers</a></li>
+							
+				</ul></li>
+							<li ng-if="hasFeatureWithAction('User Management').viewAction"
+				ng-class="{active: $state.includes('usermgmt')}"><a
+				href="index.html"><i class="fa fa-user"></i> <span
+					class="nav-label">Upload Files</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse"
+					ng-class="{in: $state.includes('usermgmt')}">
+					<li ng-if="hasFeatureWithAction('Roles').viewAction"><a
+						ui-sref="home.tdv.uploadInvoiceDump" href="#"><i
+							class="fa fa-circle-o"></i>Invoice Dump</a></li>
+					<li ng-if="hasFeatureWithAction('Features').viewAction"><a
+						ui-sref="home.tdv.uploadStockDump" href="#"><i
+							class="fa fa-circle-o"></i>Stock Dump</a></li>
+					<li ng-if="hasFeatureWithAction('Users').viewAction"><a
+						ui-sref="home.usermgmt.userList" href="#"><i
+							class="fa fa-circle-o"></i>Order Dump</a></li>
+				</ul></li>
+				<li ng-if="hasFeatureWithAction('Transport').viewAction"
+				ng-class="{active: $state.includes('transport')}"><a
+				href="index.html"><i class="fa fa-truck"></i> <span
+					class="nav-label"> Transport</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse"
+					ng-class="{in: $state.includes('transport')}">
+					<li
+						ng-if="hasFeatureWithAction('Transport Dashboard').viewAction"><a
+						ui-sref="home.transport.dashboard" href="#"><i
+							class="fa fa-circle-o"></i>Dashboard</a></li>
+							
+					<li ng-if="hasFeatureWithAction('Controls').viewAction"><a
+						ui-sref="home.transport.controlList" href="#"><i
+							class="fa fa-circle-o"></i>Controls</a></li>
+							
+					<li ng-if="hasFeatureWithAction('Stations').viewAction"><a
+						ui-sref="home.station.stationList" href="#"><i
+							class="fa fa-circle-o"></i>Stations</a></li>
+							
+							<li ng-if="hasFeatureWithAction('Agents').viewAction"><a
+						ui-sref="home.agent.agentList" href="#"><i
+							class="fa fa-circle-o"></i>Agents</a></li>
+							
+							<li ng-if="hasFeatureWithAction('Godowns').viewAction"><a
+						ui-sref="home.godown.godownsList" href="#"><i
+							class="fa fa-circle-o"></i>Godowns</a></li>
+				</ul></li>
+				
+				
+				
+				
+				<li ng-if="hasFeatureWithAction('Hardware Inventory').viewAction"
+				ng-class="{active: $state.includes('hardware')}"><a
+				href="index.html"><i class="fa fa-desktop"></i> <span
+					class="nav-label"> Hardware Inventory</span> <span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level collapse"
+					ng-class="{in: $state.includes('hardware')}">
+					<li
+						ng-if="hasFeatureWithAction('Hardware Dashboard').viewAction"><a
+						ui-sref="home.hardware.dashboard" href="#"><i
+							class="fa fa-circle-o"></i>Dashboard</a></li>
+							
+					<li ng-if="hasFeatureWithAction('Inventory').viewAction"><a
+						ui-sref="home.inward.inwardList" href="#"><i
+							class="fa fa-circle-o"></i>Inventory</a></li>
+										
+					<!-- <li ng-if="hasFeatureWithAction('Laptops').viewAction"><a
+						ui-sref="home.hardware.controlList" href="#"><i
+							class="fa fa-circle-o"></i>Controls</a></li>
+							 -->
+					
+				</ul></li>
+				
+
+		</ul>
+
+	</div>
+</nav>

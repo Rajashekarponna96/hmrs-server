@@ -1,0 +1,76 @@
+
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Enquiries </h2>
+		<ol class="breadcrumb">
+			<li><a >CRM</a></li>
+			<li><a >Enquiries</a></li>
+			<li class="active">View Enquiry</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>View Enquiry</h5>
+					<div class="ibox-tools" uib-dropdown>
+						<a href="" ui-sref="home.crm.enquiryList" class="btn btn-success ">Back</a>
+						
+					</div>
+
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-lg-6">
+							<dl class="dl-horizontal">
+
+								<dt>Customer Address:</dt>
+								<dd>{{enquiryDetail.functionHall.name}}</dd>
+								<dt>Customer:</dt>
+								<dd>{{enquiryDetail.customer.fullName}}</dd>
+								<dt>Enquired On:</dt>
+								<dd>{{enquiryDetail.enquiredOn}}</dd>
+								<dt>Required Date:</dt>
+								<dd>{{enquiryDetail.requiredToDate}}</dd>
+								<dt>Source:</dt>
+								<dd>{{enquiryDetail.source}}</dd>
+								<dt>Purpose:</dt>
+								<dd>{{enquiryDetail.purpose}}</dd>
+								<dt>City:</dt>
+								<dd>{{enquiryDetail.customer.address.city}}</dd>
+								<dt>Booking Status:</dt>
+								<dd>{{enquiryDetail.bookingStatus}}</dd>
+								<dt>Contact Number:</dt>
+								<dd>{{enquiryDetail.customer.mobile}}</dd>
+			
+							</dl>
+						</div>
+						<div class="col-lg-6">
+							<dl class="dl-horizontal">
+
+								<dt>Customer Address:</dt>
+								<dd>{{enquiryDetail.customer.address.street1}}</dd>
+								<dd>{{enquiryDetail.customer.address.city}}</dd>
+								<dd>{{enquiryDetail.customer.address.district.name}}</dd>
+								<dd>{{enquiryDetail.customer.address.state.name}}</dd>
+								<dd>{{enquiryDetail.customer.address.country.name}}</dd>
+								<dd></dd>
+								<dd>{{enquiryDetail.customer.address.pinCode}}</dd>
+								 
+			
+							</dl>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

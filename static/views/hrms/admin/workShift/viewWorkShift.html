@@ -1,0 +1,61 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Work Shifts</h2>
+		<ol class="breadcrumb">
+			<li><a > Admin</a></li>
+
+			<li class="active"><strong>View Work Shift</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>View Work Shift</h5>
+					<div class="ibox-tools" uib-dropdown>
+						<a href="" ui-sref="home.worKShiftDetails"
+							class="btn btn-success ">Back</a>
+					</div>
+
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-lg-12">
+							<dl class="dl-horizontal">
+								<dt>Work Shift Name:</dt>
+								<dd>{{workShiftDetails.name}}</dd>
+								<dt>From Time:</dt>
+								<dd>{{workShiftDetails.fromTime}}</dd>
+								<dt>To Time:</dt>
+								<dd>{{workShiftDetails.toTime}}</dd>
+								<dt>No.of Hours:</dt>
+								<dd>{{workShiftDetails.shiftTiming.durationinHours}}</dd>
+								<dt>Description:</dt>
+								<dd>{{workShiftDetails.description}}</dd>
+								<dt style="color:red">Breaks In Detail</dt>
+								<dd></dd>
+								
+								
+								<dl ng-repeat="break in workShiftDetails.workShiftBreaks">
+								<dt>Break Name:</dt>
+								<dd>{{break.name}}</dd>
+								<dt>From Time:</dt>
+								<dd>{{break.fromTime}}</dd>
+								<dt>To Time:</dt>
+								<dd>{{break.toTime}}</dd>
+								<dt>Description:</dt>
+								<dd>{{break.description}}</dd>
+								</dl>
+							</dl>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

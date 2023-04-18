@@ -1,0 +1,153 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Holidays</h2>
+		<ol class="breadcrumb">
+			<li><a >Admin</a></li>
+			<li><a >Holidays</a></li>
+			<li class="active"><strong>Add Holidays</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="getAlltLocations();getAllLeavePeriods()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Holidays</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Location <span
+								style="color: red" ng-show="location==undefined ||location==''">*</span>
+							</label>
+
+							<div class="col-sm-4">
+								<select class="form-control" ng-model="location"
+									ng-options="location as location.city for location in locationList">
+								</select>
+							</div>
+							<label class="col-sm-2 control-label">Calendar Year <span
+								style="color: red"
+								ng-show="leavePeriod==undefined ||leavePeriod==''">*</span>
+							</label>
+
+							<div class="col-sm-4">
+								<select class="form-control" ng-model="leavePeriod"
+									ng-options="leavePeriod as leavePeriod.startDate+' to '+leavePeriod.endDate for leavePeriod in leavePeriodList">
+									<option value="">select</option>
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="ibox-title">
+					<h5>Holiday Details</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Holiday Name <span
+								style="color: red"
+								ng-show="holiday.holidayName==undefined ||holiday.holidayName==''">*</span>
+							</label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control" placeholder=""
+									ng-model="holiday.holidayName" capitalize-first
+									only-letters-input maxlength="35">
+							</div>
+							<label class="col-sm-2 control-label">Date <span
+								style="color: red"
+								ng-show="holiday.holidayDate==undefined ||holiday.holidayDate==''">*</span>
+							</label>
+
+							<div class="col-sm-4">
+								<div class="input-group date trigger1">
+									<div class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+									</div>
+									<input id="datepicker" ng-model="holiday.holidayDate"
+										class="form-control pull-right" type="text" ng-readonly="true">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label"> Description </label>
+
+							<div class="col-sm-10">
+								<textarea class="form-control" placeholder=""
+									ng-model="holiday.comments" capitalize-first></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-success"
+									ng-disabled="!leavePeriod|| !holiday.holidayName ||!holiday.holidayDate"
+									ng-click="addHolidayDetail()">Add</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="ibox-content">
+					<div class="table-responsive">
+						<table datatable="ng" dt-options="dtOptions"
+							class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>S.No</th>
+									<th>Holiday Name</th>
+									<th>Date</th>
+									<th>Comments</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="holidy in ListOfHolidays">
+									<td>{{$index+1}}</td>
+									<td>{{holidy.holidayName}}</td>
+									<td>{{holidy.holidayDate}}</td>
+									<td>{{holidy.comments}}</td>
+									<td>
+										<button class="btn btn-danger"
+											ng-click="deleteHolidayOpen($index)" data-toggle="tooltip"
+											tooltip-placement="bottom" tooltip="Delete" title="Delete">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>&nbsp;
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-4 col-sm-offset-2">
+							<button class="btn btn-primary"
+								ng-disabled="!location||!leavePeriod||ListOfHolidays.length<=0"
+								ng-click="addHoliday()">Save</button>
+							<button class="btn btn-danger" ng-click="gotoHolidaysList()">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+		format : "dd-mm-yyyy",
+		daysOfWeekDisabled : [ 0 ],
+		todayBtn : "linked",
+		autoclose : true,
+		todayHighlight : true,
+	});
+	$(".trigger1").click(function() {
+		$("#datepicker").datepicker("show");
+	});
+	$(".trigger2").click(function() {
+		$("#datepicker1").datepicker("show");
+	});
+</script>

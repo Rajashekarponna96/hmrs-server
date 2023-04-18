@@ -1,0 +1,52 @@
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Broadcasting Messages</h2>
+		<ol class="breadcrumb">
+			<li><a >Admin</a></li>
+			<li><a >Broadcasting Messages</a></li>
+			<li class="active">View Broadcasting Message</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>View Broadcasting Message</h5>
+					<div class="ibox-tools" uib-dropdown>
+						<a href="" ui-sref="home.broadcastingMessagesList" class="btn btn-success ">Back</a>
+					</div>
+
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-lg-12">
+							<dl class="dl-horizontal">
+
+								<dt>MessageType:</dt>
+								<dd>{{broadCasteMessageDetail.messageType}}</dd>
+								<dt>Message Name:</dt>
+								<dd>{{broadCasteMessageDetail.name}}</dd>
+								<dt>Visiable From:</dt>
+								<dd>{{broadCasteMessageDetail.validFrom}}</dd>
+								<dt>Visible To:</dt>
+								<dd>{{broadCasteMessageDetail.toValid}}</dd>
+								<dt>Message Name:</dt>
+								<dd>{{broadCasteMessageDetail.message}}</dd>
+
+							</dl>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

@@ -1,0 +1,115 @@
+<section class="content-header">
+	<h1>Attendance</h1>
+	<ol class="breadcrumb">
+		<li><a >Attendance</a></li>
+		<li><a >view Reportee Attendance</a></li>
+	</ol>
+</section>
+<section class="content">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">Reportee Attendance Details</h3>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+				<div class="row">
+						<div class="box-body">
+
+							<div class="col col-md-4"><b>Date</b> </div><div class="col col-md-4">{{attendanceData.date}}</div>
+
+
+					</div>
+				   </div>
+					
+					<div class="row">
+						<div class="box-body">
+
+							<div class="col col-md-4"><b>Employee</b> </div><div class="col col-md-4">{{attendanceData.employee.fullName}}</div>
+
+
+					</div>
+				   </div>
+					
+					
+					
+					<div class="row">
+						<div class="box-body">
+							
+							
+								<div class="col col-md-4"><b>Employee ID</b> </div><div class="col col-md-4">{{attendanceData.employee.employeeId}}</div>
+
+
+
+					</div>
+				   </div>
+				   
+				   
+				   
+				   <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Time-in</b></div><div class="col col-md-4"> {{attendanceData.timeIn}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b> Time-out</b></div><div class="col col-md-4"> {{attendanceData.timeout}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Duration</b></div><div class="col col-md-4"> {{attendanceData.shiftTiming.durationinHours}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Comments</b></div><div class="col col-md-4"> {{attendanceData.commnets}}</div>
+
+
+
+					</div>
+				   </div>
+				    
+					<div class="box-footer">
+						<div class="col-xs-offset-2 col-xs-10">
+						
+							<button class="btn btn-success" ng-click="gotoReporteeAttendanceList()">Back</button>
+						
+					</div>
+					</div>
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+

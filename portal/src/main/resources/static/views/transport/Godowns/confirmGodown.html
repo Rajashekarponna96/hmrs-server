@@ -1,0 +1,50 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-xs-12">
+							<dl class="dl-horizontal">
+								<dt>Control :</dt>
+								<dd>{{godown.control.name}}</dd>
+								<dt>Station:</dt>
+								<dd>{{godown.station.name}}</dd>
+								<dt>Godown Code:</dt>
+								<dd>{{godown.code}}</dd>
+								<dt>Godown Address  :</dt>
+								<dd>{{godown.address.street1}}</dd>
+								<dt>Owner Code :</dt>
+								<dd>{{godown.owner.code}}</dd>
+								<dt>Owner Name :</dt>
+								<dd>{{godown.contactPerson.title}} {{godown.contactPerson.fisrtName}}{{godown.contactPerson.middleName}}{{godown.contactPerson.lastName}}</dd>
+								<dt>Owner Address:</dt>
+								<dd>{{godown.owner.address.street1}}</dd>
+								<dt>Mobile :</dt>
+								<dd>{{godown.contactPerson.mobile}}</dd>
+								<dt>PAN Number :</dt>
+								<dd>{{godown.panNumber}}</dd>
+								<dt>Agreement Date :</dt>
+								<dd>{{godown.agreementDate}}</dd>
+								<dt>Payment Details:</dt>
+								<dd>{{godown.paymentDetails}}</dd>
+								<dt>Description :</dt>
+								<dd>{{godown.description}}</dd>
+								<br />
+							</dl>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-md-offset-3 col-md-3">
+		<button class="btn btn-primary"
+			ui-sref="home.godown.addgodown">Previous</button>
+		<button class="btn btn-primary"
+			ng-click="addgodown(godown)">Confirm</button>
+	</div>
+
+</div>

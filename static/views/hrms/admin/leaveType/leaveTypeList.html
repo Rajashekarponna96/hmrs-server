@@ -1,0 +1,101 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Admin</h2>
+		<ol class="breadcrumb">
+			<li><a>Admin</a></li>
+			<li class="active"><strong>Leave Types</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+
+<div class="row wrapper wrapper-content">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>Leave Types</h5>
+				<div class="ibox-tools" uib-dropdown>
+					<button ng-if="hasFeatureWithAction('Leave Types').createAction"
+						class="btn btn-success" ng-click="gotoAddLeaveType()">Add
+						Leave Type</button>
+				</div>
+			</div>
+
+			<div class="ibox-content">
+				<div class="table-responsive">
+					<table class="table  table-hover table-striped">
+						<thead>
+							<tr>
+								<th>S.No</th>
+								<th>Code</th>
+								<th>Name</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="leaveType in leaveTypeList">
+									<td>{{(page*size)+($index+1)}}</td>
+									<td>{{leaveType.code}}</td>
+									<td>{{leaveType.name}}</td>
+
+
+									<td><button
+											ng-if="hasFeatureWithAction('Leave Types').viewAction"
+											class="btn btn-success"
+											ng-click="gotoViewLeaveType(leaveType)" data-toggle="tooltip"
+											tooltip-placement="top" tooltip="View" title="View">
+											<span title="view" class="glyphicon glyphicon-eye-open"></span>
+										</button>&nbsp;
+										<button
+											ng-if="hasFeatureWithAction('Leave Types').updateAction"
+											class="btn btn-primary"
+											ng-click="gotoUpdateLeaveType(leaveType)"
+											data-toggle="tooltip" tooltip-placement="bottom"
+											tooltip="Update" title="Update">
+											<span class="glyphicon glyphicon-edit"></span>
+										</button>&nbsp; <!-- <button class="btn btn-danger"
+											ng-click="deleteOpen(leaveType.id)"
+											data-toggle="tooltip" tooltip-placement="bottom"
+											tooltip="Delete" title="Delete">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button> --></td>
+								</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+				<div class="row" ng-show="count==0">
+				<h3 class="active">No Records Found</h3>
+				</div>
+				<div class="row" ng-show="count!=0">
+					<div class="col-sm-4 m-b-xs">
+						<p>Number of Records:{{count}}</p>
+					</div>
+					<div class="col-sm-4 m-b-xs">
+						Records per Page <select ng-model="PerPage"
+							ng-change="recordsPerPage()">
+							<option ng-selected="true">10</option>
+							<option>25</option>
+							<option>50</option>
+						</select>
+					</div>
+
+					<div class="col-sm-4">
+						<ul class="pagination">
+							<li><a ng-click="firstPage()">First</a></li>
+							<li><a ng-click="prevPage()">Previous</a></li>
+							<li><a ng-click="nextPage()">Next</a></li>
+							<li><a ng-click="lastPage()">Last</a></li>
+
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+

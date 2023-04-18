@@ -1,0 +1,87 @@
+<ion-view view-title="profile" ng-init="init()"> <ion-nav-bar class="bar-positive"> <ion-nav-buttons
+	side="left"> 
+<button class="button button-icon button-clear ion-navicon"
+	menu-toggle="left"></button>
+</ion-nav-buttons> </ion-nav-bar> <ion-content
+	class="primary-background primary-text-color">
+<div>
+	<div class="row nopadding">
+		<div class="col nopadding" align="center">
+			<h4 class="nopadding"
+				style="text-decoration: underline; margin-bottom: 0px;">{{salesRepresentative.fullName}}</h4>
+		</div>
+	</div>
+
+	<div class="row nopadding">
+		<div class="col col-33 nopadding" style="text-align: center;"
+			align="center">
+			<span style="position: relative; top: 25%; font-size: 1.5em;">50<br>Quotes
+			</span>
+		</div>
+		<div class="col nopadding" align="center">
+			<img class="profile-pic" ng-src="{{imagePath()}}">
+		</div>
+		<div class="col col-33 nopadding" style="text-align: center;">
+			<span style="position: relative; top: 25%; font-size: 1.5em;">
+				6,000<br>Sales
+			</span>
+		</div>
+	</div>
+	<div class="row nopadding">
+		<div class="col nopadding" align="center">
+			<h5>{{salesRepresentative.designatin.name}}</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-50" align="center">
+			<h5>Street</h5>
+		</div>
+		<div class="col col-50" align="center">
+			<h5>{{salesRepresentative.address.street1}}</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-50" align="center">
+			<h5>City</h5>
+		</div>
+		<div class="col col-50" align="center">
+			<h5>{{salesRepresentative.address.city}}</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-50" align="center">
+			<h5>District</h5>
+		</div>
+		<div class="col col-50" align="center">
+			<h5>{{salesRepresentative.address.district.name}}</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-50" align="center">
+			<h5>State</h5>
+		</div>
+		<div class="col col-50" align="center">
+			<h5>{{salesRepresentative.address.state.name}}</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-50" align="center">
+			<h5>Country</h5>
+		</div>
+		<div class="col col-50" align="center">
+			<h5>{{salesRepresentative.address.country.name}}</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col-50" align="center">
+			<h5>PIN Code</h5>
+		</div>
+		<div class="col col-50" align="center">
+			<h5>{{salesRepresentative.address.pinCode}}</h5>
+		</div>
+	</div>
+	
+
+</div>
+</ion-content>
+</ion-view>

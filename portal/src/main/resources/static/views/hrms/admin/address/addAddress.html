@@ -1,0 +1,136 @@
+
+<h4>Add Address</h4>
+
+<form class="form-horizontal">
+<div class="row">
+	<div class="form-group">
+<div class="col-md-6">
+		<label for="inputEmail" class="control-label col-xs-2">Name</label>
+
+
+		<div class="col-xs-6">
+
+			<input type="text" class="form-control" placeholder="Location Name" ng-model="updateCategory.code">
+
+		</div>
+		</div>
+		<div class="col-md-6">
+		<label for="inputEmail" class="control-label col-xs-2">City:</label>
+
+
+		<div class="col-xs-6">
+
+			<input type="text" class="form-control" placeholder="City" ng-model="updateCategory.code">
+
+		</div>
+		</div>
+
+	</div>
+</div>
+	<div class="row">
+	<div class="form-group">
+<div class="col-md-6">
+		<label for="inputEmail" class="control-label col-xs-2">State:</label>
+
+
+		<div class="col-xs-6">
+
+			<input type="text" class="form-control" placeholder="select state" ng-model="updateCategory.code">
+
+		</div>
+		</div>
+		<div class="col-md-6">
+		<label for="inputEmail" class="control-label col-xs-2">Country:</label>
+
+
+		<div class="col-xs-6">
+
+			<input type="text" class="form-control" placeholder="India" ng-model="updateCategory.code">
+
+		</div>
+		</div>
+
+	</div>
+</div>
+<div class="row">
+	<div class="form-group">
+<div class="col-md-2">
+		<label for="inputEmail" class="control-label col-xs-2"
+			placeholder="Address"> Address:</label>
+			</div>
+
+		<div class="col-xs-10">
+
+			<textarea ng-model="updateCategory.description" cols="120" rows=3></textarea>
+
+		</div>
+</div>
+	</div>
+	
+	<div class="row">
+	<div class="form-group">
+<div class="col-md-6">
+		<label for="inputEmail" class="control-label col-xs-2">PIN Code:</label>
+
+
+		<div class="col-xs-6">
+
+			<input type="text" class="form-control" placeholder="PIN Code" ng-model="updateCategory.code">
+
+		</div>
+		</div>
+		<div class="col-md-6">
+		<label for="inputEmail" class="control-label col-xs-2">Phone:</label>
+
+
+		<div class="col-xs-6">
+
+			<input type="text" class="form-control" placeholder="999999999999" ng-model="updateCategory.code">
+
+		</div>
+		</div>
+
+	</div>
+</div>
+	
+	<div class="row">
+	<div class="form-group">
+<div class="col-md-6">
+		<label for="inputEmail" class="control-label col-xs-2">Fax:</label>
+
+
+		<div class="col-xs-6">
+
+			<input type="text" class="form-control" placeholder="Fax Code" ng-model="updateCategory.code">
+
+		</div>
+		</div>
+		<div class="col-md-6">
+		<label for="inputEmail" class="control-label col-xs-2">Notes:</label>
+
+
+		<div class="col-xs-6">
+
+			<input type="text" class="form-control" placeholder="Notes about Location" ng-model="updateCategory.code">
+
+		</div>
+		</div>
+
+	</div>
+</div>
+
+
+	<div class="form-group">
+
+		<div class="col-xs-offset-2 col-xs-10">
+
+			<button class="btn btn-primary" ng-click="editCategory(updateCategory)">Save</button>
+			<button class="btn btn-danger" ng-click="goToLocationList()">Cancel</button>
+
+		</div>
+
+	</div>
+
+</form>
+
+

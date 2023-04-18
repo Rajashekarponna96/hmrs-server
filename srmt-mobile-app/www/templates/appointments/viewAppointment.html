@@ -1,0 +1,26 @@
+<ion-view view-title="View Appointment"
+	ng-init="getLocationsAndVehicleModelsByEmployeeId()"> <ion-nav-bar
+	class="bar-positive"> <ion-nav-back-button
+	class="button-clear" ng-click="gotoAppointmentList()"> <i
+	class="icon ion-chevron-left"></i>Back</ion-nav-back-button> </ion-nav-bar> <ion-content class="">
+<ion-list>
+<div class="card">
+   <div class="item item-avatar">
+      <h2><strong>{{ appointmentDetails.fisrtName }}</strong></h2>
+   </div>
+   <div class="item item-body">
+    <p><strong>Address </strong>: {{ appointmentDetails.address.street1 }}</p> 
+    <p>{{ appointmentDetails.address.city }}</p>
+	<p>{{ appointmentDetails.address.state.name }}</p>
+	<p>{{ appointmentDetails.address.district.name }}</p>
+	<p><strong>Mobile </strong>: {{ appointmentDetails.mobile }}</p>
+	<p><strong>Land Line </strong>: {{ appointmentDetails.homePhone }}</p>
+	<p><strong>Vehicle Model</strong>: {{appointmentDetails.vehicleModel.vehicleCategory.code}}
+   </div>
+</div>
+	<ion-item>
+	<p></p>
+	
+	</ion-item>
+
+</ion-list> </ion-content> </ion-view>

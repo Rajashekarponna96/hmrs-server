@@ -1,0 +1,50 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Workshop</h2>
+		<ol class="breadcrumb">
+			<li><a >Sales</a></li>
+			<li><a >Workshop</a></li>
+			<li class="active"><strong>View Workshop</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>View Workshop</h5>
+					<div class="ibox-tools" uib-dropdown>
+						<a href="" ui-sref="home.workshop.workshoplist" class="btn btn-success ">Back</a>
+					</div>
+
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-lg-12">
+							<dl class="dl-horizontal">
+								<dt>Address:</dt>
+								<dd>{{workshopDetails.code}}</dd>
+								<dt>Location:</dt>
+								<dd>{{workshopDetails.location.city}}</dd>
+								<dt>In-charge Name:</dt>
+								<dd>{{workshopDetails.inCharge.fullName}}</dd>
+								<dt>Mobile No.:</dt>
+								<dd>{{workshopDetails.mobile}}</dd>
+								<dt>Landline No.:</dt>
+								<dd>{{workshopDetails.landLine}}</dd>
+								<dt>FAX No.:</dt>
+								<dd>{{workshopDetails.fax}}</dd>
+								<dt>Email:</dt>
+								<dd>{{workshopDetails.email}}</dd>
+							</dl>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

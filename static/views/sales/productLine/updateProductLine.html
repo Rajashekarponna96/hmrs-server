@@ -1,0 +1,104 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Product Line</h2>
+		<ol class="breadcrumb">
+			<li><a>sales</a></li>
+			<li><a>Product Line</a></li>
+			<li class="active">Update Product Line</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row"
+		ng-init="getAllSegments();getVehicleColors();getAllParentProductLinesBySegmentId(productLineDetail.model.parentProductLine.segment.id);getModelsByParentProductLineId(productLineDetail.parentProductLine.id);copyAllSpecCategories(productLine.categories);">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Product Line</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Segment</label>
+							<div class="col-sm-3">
+								<select class="form-control"
+									ng-model="productLineDetail.model.parentProductLine.segment"
+									ng-options="segment as segment.name for segment in segmentsList track by segment.id"
+									ng-change="getAllParentProductLinesBySegmentId(productLineDetail.model.parentProductLine.segment.id)">
+									<option value="">select</option>
+								</select>
+							</div>
+
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Parent Product Line</label>
+							<div class="col-sm-3">
+								<select class="form-control"
+									ng-model="productLineDetail.model.parentProductLine"
+									ng-options="parentProductLine as parentProductLine.name for parentProductLine in parentProductLines track by parentProductLine.id"
+									ng-change="getModelsByParentProductLineId(productLineDetail.model.parentProductLine.id)"">
+									<option value="">select</option>
+								</select>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Model</label>
+							<div class="col-sm-3">
+								<select class="form-control"
+									ng-model="productLineDetail.model"
+									ng-options="model as model.name for model in Models track by model.id">
+									<option value="">select</option>
+								</select>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Model Number</label>
+							<div class="col-sm-3">
+								<input class="form-control" type="text" ng-model="productLineDetail.number">
+							</div>
+						</div>
+												
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Color <span
+								style="color: red"
+								ng-show="productLineDetail.colors==undefined || productLineDetail.colors==''">
+									*</span></label>
+							<div class="col-sm-3">
+								<select multiple class="form-control"
+									ng-model="productLineDetail.colors"
+									ng-options="color.name as color.name for color in colorList">
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Description </label>
+							<div class="col-sm-4">
+								<textarea class="form-control"
+									placeholder="productLineDetail Description"
+									ng-model="productLineDetail.description" capitalize-first
+									maxlength="1000"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-3">
+								<button class="btn btn-primary"
+									class="fa-hand-o-right" ui-sref="home.tdv.updateProductLine.updateProductLineSpecifications">
+									<i class=""></i>Next
+								</button>
+								<button class="btn btn-danger"
+									class="fa-hand-o-right" ui-sref="home.tdv.productLineList">
+									<i class=""></i>Cancel
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

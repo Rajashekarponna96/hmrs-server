@@ -1,0 +1,133 @@
+<div class="mail-box-header">
+	<div class="col-lg-10">
+		<h2>Language Details</h2>
+		<ol class="breadcrumb">
+			<li><a >OnBoarding</a></li>
+			<li class="active">Language Details</li>
+			<li class="active">Update Language Detail</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="mail-box" ng-init="getLanguages()">
+<div class="wrapper wrapper-content animated fadeInRight" >
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Language</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+
+								<div class="control-label col-sm-3">
+									<label for="inputEmail">Language <span
+										style="color: red"
+										ng-show="languageProficiencyDetail.language==undefined ||languageProficiencyDetail.language==''">*</span></label>
+								</div>
+
+								<div class="col-sm-9">
+
+									<select class="form-control"
+										ng-model="languageProficiencyDetail.language"
+										ng-options="language as language.name for language in languageList track by language.id">
+										<option value="">select</option>
+									</select>
+
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+
+
+								<div class="control-label col-sm-offset-2 col-sm-1">
+									<label for="inputEmail">Read </label>
+
+								</div>
+								<div class="col-sm-1">
+
+									<input type="checkbox" class="" placeholder=""
+										ng-model="languageProficiencyDetail.canRead" letters-only>
+
+								</div>
+								<div class="control-label col-sm-1">
+									<label for="inputEmail">Write </label>
+
+								</div>
+								<div class="col-sm-1">
+
+									<input type="checkbox" placeholder=""
+										ng-model="languageProficiencyDetail.canWrite">
+
+								</div>
+								<div class="control-label col-sm-1">
+									<label for="inputEmail">Speak </label>
+
+								</div>
+								<div class="col-sm-1">
+
+									<input type="checkbox" class="" placeholder=""
+										ng-model="languageProficiencyDetail.canSpeak" letters-only>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+							<div class="form-group">
+
+
+
+
+								<div class="control-label col-sm-3">
+
+									<label for="inputEmail">Is His/Her Mother Tongue?</label>
+								</div>
+
+								<div class="col-sm-1">
+									<input type="checkbox"
+										ng-model="languageProficiencyDetail.canMotherTounge">
+								</div>
+
+
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="form-group">
+
+							<div class="col-sm-offset-5 col-sm-7">
+							<button class="btn btn-primary"
+									ng-click="updateLanguageProficiency(languageProficiencyDetail)">Update</button>
+								<button class="btn btn-danger" ng-click="gotoLanguageDetail()">Cancel</button>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+
+

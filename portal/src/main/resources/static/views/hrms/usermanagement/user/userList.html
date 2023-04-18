@@ -1,0 +1,101 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Users</h2>
+		<ol class="breadcrumb">
+			<li><a >User
+					Management</a></li>
+			<li><a>Users</a></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="row wrapper wrapper-content" ng-init="init()">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>Users</h5>
+				<div class="ibox-tools" uib-dropdown>
+					<button ng-if="hasFeatureWithAction('Users').createAction"
+						class="btn btn-success" ng-click="gotoAddUser()">Add User</button>
+				</div>
+			</div>
+
+			<div class="ibox-content">
+ 				<div class="table-responsive">
+					<table class="table  table-hover table-striped">
+						<thead>
+							<tr>
+								<th>S.No</th>
+								<th>User Name</th>
+								<th>Employee ID</th>
+								<th>Role</th>
+								<th>Employee Name</th>
+								<th>Department</th>
+								<th>Active</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="user in userList">
+
+								<td>{{$index+1}}</td>
+								<td>{{user.userName}}</td>
+								<td>{{user.employee.employeeId}}</td>
+								<td>{{user.role.name}}</td>
+								<td>{{user.employee.fullName}}</td>
+								<td>{{user.employee.department.name}}</td>
+								<td ng-show="user.isActive==false">No</td>
+								<td ng-show="user.isActive==true">Yes</td>
+								<td><button
+										ng-if="hasFeatureWithAction('Users').viewAction"
+										class="btn btn-success" ng-click="gotoViewUser(user)"
+										data-toggle="tooltip" tooltip-placement="top" tooltip="View"
+										title="View">
+										<span title="view" class="glyphicon glyphicon-eye-open"></span>
+									</button>&nbsp;
+									<button ng-if="hasFeatureWithAction('Users').updateAction"
+										class="btn btn-primary" ng-click="gotoUpdateUser(user)"
+										data-toggle="tooltip" tooltip-placement="bottom"
+										tooltip="Update" title="Update">
+										<span class="glyphicon glyphicon-edit"></span>
+									</button>&nbsp;
+							</tr>
+
+
+
+						</tbody>
+					</table>
+				</div>
+
+				<div class="row" ng-show="count==0">
+				<h3 class="active">No Records Found</h3>
+				</div>
+				<div class="row" ng-show="count!=0">
+					<div class="col-sm-4 m-b-sm">
+						<p>Number of Records:{{count}}</p>
+					</div>
+					<div class="col-sm-4 m-b-sm">
+						Records per Page <select ng-model="PerPage"
+							ng-change="recordsPerPage()">
+							<option ng-selected="true">10</option>
+							<option>25</option>
+							<option>50</option>
+						</select>
+					</div>
+
+					<div class="col-sm-4">
+						<ul class="pagination">
+							<li><a ng-click="firstPage()">First</a></li>
+							<li><a ng-click="prevPage()">Previous</a></li>
+							<li><a ng-click="nextPage()">Next</a></li>
+							<li><a ng-click="lastPage()">Last</a></li>
+
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

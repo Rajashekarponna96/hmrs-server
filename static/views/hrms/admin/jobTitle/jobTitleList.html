@@ -1,0 +1,121 @@
+<section class="content-header" ng-init="getJobTitilesList()">
+	<h1>Job Titles</h1>
+	<ol class="breadcrumb">
+		<li><a ><i class="fa fa-dashboard"></i> Admin</a></li>
+		<li><a >Job Titles</a></li>
+		<li class="active">Job Title List</li>
+	</ol>
+</section>
+
+
+
+<section class="content">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+				  <div class="row">
+				    <div class="col col-md-6">
+					<h3 class="box-title">Job Title List</h3>
+					</div>
+					
+					<div class="col col-md-6" align="right">
+					<h4>
+			<button class="btn btn-primary" ng-click="goTOAddjobTitle()">Add
+				Job Title</button>
+		</h4></div>
+				  </div>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+						
+						<div class="box-body" ng-show="count > 0">
+
+							<table class="table table-hover table-striped">
+								<thead>
+									<tr>
+										<th>S.No</th>
+										<th>Job Code</th>
+										<th>Job Title</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="jobTitle in jobTitleList">
+										<td>{{(page*size)+($index+1)}}</td>
+										<td>{{jobTitle.code}}</td>
+										<td>{{jobTitle.title}}</td>
+										
+									<td><button class="btn btn-primary"
+												ng-click="viewJobTitle(jobTitle)" data-toggle="tooltip" tooltip-placement="top" tooltip="View" title="View"><span title="view" class="glyphicon glyphicon-eye-open"></span></button>&nbsp;
+											<button class="btn btn-primary"
+												ng-click="gotoUpdateJobTitle(jobTitle)" data-toggle="tooltip" tooltip-placement="bottom" tooltip="Update" title="Update"><span class="glyphicon glyphicon-edit"></span></button>&nbsp;
+											<button class="btn btn-danger"
+												ng-click="deleteJobTitle(jobTitle.id)" data-toggle="tooltip" tooltip-placement="bottom" tooltip="Delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+									</tr>
+									
+									
+									
+									
+									
+
+								</tbody>
+							</table> 
+							<div ng-hide="count > 0"><center><h3>No Records Found!</h3></center></div>
+							
+							<div class="row" ng-show="count > 0">
+								
+
+								<div class="col-xs-3 col-xs-offset-1">
+									<p>Number of Records:{{count}}</p>
+								</div>
+
+
+								<div class="col-xs-3">
+									Records per Page <select ng-model="PerPage"
+										ng-change="recordsPerPage()">
+										<option ng-selected="true">10</option>
+										<option>25</option>
+										<option>50</option>
+									</select>
+								</div>
+								<div class="col-xs-3">
+									<ul class="pagination">
+										<li><a  ng-click="firstPage()">First</a></li>
+										<li><a  ng-click="prevPage()">Previous</a></li>
+										<li><a  ng-click="nextPage()">Next</a></li>
+										<li><a  ng-click="lastPage()">Last</a></li>
+
+									</ul>
+								</div>
+
+
+
+							</div>
+							
+							
+						</div>
+					</div>
+
+
+
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+
+

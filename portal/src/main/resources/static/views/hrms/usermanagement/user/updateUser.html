@@ -1,0 +1,125 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Users</h2>
+		<ol class="breadcrumb">
+			<li><a >User
+					Management</a></li>
+			<li><a >Users</a></li>
+			<li class="active"><strong>Update User</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="init()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Department</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" name="myForm" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Employee <span
+								style="color: red"
+								ng-show="userDetail.employee.id==undefined ||userDetail.employee==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<input type="text" ng-model="userDetail.employee"
+									uib-typeahead="employee as employee.fullName for employee in employeeList| filter:$viewValue "
+									class="form-control" capitalize-first><span style="color: red"
+									ng-show="userDetail.employee.id==undefined && userDetail.employee!=undefined && userDetail.employee.length>=3">select
+									employee from suggestions shown in above field</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label"> Role <span
+								style="color: red"
+								ng-show="userDetail.role==undefined ||userDetail.role==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<select class="form-control" ng-model="userDetail.role"
+									ng-options="role as role.name for role in roleList track by role.id">
+
+									<option value="">select</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">User Name <span
+								style="color: red"
+								ng-show="userDetail.userName==undefined || userDetail.userName==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<input type="text" class="form-control"
+									ng-model="userDetail.userName" maxlength="35">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Old Password <span
+								style="color: red"
+								ng-show="userDetail.confirmPassword==undefined || userDetail.confirmPassword==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<input type="password" class="form-control"
+									ng-model="userDetail.confirmPassword" maxlength="35">
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">New Password <span
+								style="color: red"
+								ng-show="newPassword==undefined || newPassword==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<input type="password" class="form-control"
+									ng-model="newPassword" ng-disabled="oldPassword!=pwd"
+									name="password">
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Confirm Password <span
+								style="color: red" ng-show="myForm.password_c.$error.required">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<input type="password" class="form-control"
+									ng-model="confirmPassword" name="password_c" valid-password-c
+									required> <span style="color: red"
+									ng-show="!myForm.password_c.$error.required && myForm.password_c.$error.noMatch && myForm.password.$dirty">Passwords
+									do not match.</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2 col-md-offset-2">Active
+								<input type="radio" name="radio" ng-value="true"
+								ng-model="userDetail.isActive" />
+								<div class="col-sm-2"></div>
+							</label> <label class="control-label col-sm-2">Inactive <input
+								type="radio" name="radio" ng-value="false"
+								ng-model="userDetail.isActive">
+
+							</label>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary" ng-click="updateUser(userDetail)"
+									ng-disabled="!newPassword||!myForm.password_c.$dirty||!userDetail.role||!userDetail.userName||!userDetail.confirmPassword||!myForm.password_c.$error.required && myForm.password_c.$error.noMatch && myForm.password.$dirty">Update</button>
+								<button class="btn btn-danger" ng-click="gotoUserList()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,75 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Act</h2>
+		<ol class="breadcrumb">
+			<li><a >Home</a></li>
+			<li><a>Admin</a></li>
+			<li class="active"><strong>Acts</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="row wrapper wrapper-content" ng-init="getActs()">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>Acts</h5>
+				<div class="ibox-tools" uib-dropdown>
+					<button ng-if="hasFeatureWithAction('Acts').createAction" class="btn btn-success" ng-click="goToAddActDetail()">Add
+									Act</button>
+				</div>
+			</div>
+
+			<div class="ibox-content">
+				<div class="table-responsive">
+					<table class="table  table-striped">
+						<thead>
+							<tr>
+								<th>S.No</th>
+								<th>Code</th>
+								<th>Name</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="act in actsList">
+
+										<td>{{$index+1}}</td>
+										<td>{{act.code}}</td>
+										<td>{{act.name}}</td>
+										<td><button ng-if="hasFeatureWithAction('Acts').viewAction" class="btn btn-success"
+												ng-click="goToViewActDetail(act)" data-toggle="tooltip"
+												tooltip-placement="top" tooltip="View" title="View">
+												<span title="view" class="glyphicon glyphicon-eye-open"></span>
+											</button>&nbsp;<button ng-if="hasFeatureWithAction('Acts').updateAction" class="btn btn-primary"
+												ng-click="goToEditActDetail(act)" data-toggle="tooltip"tooltip-placement="bottom" tooltip="Update" title="Update">
+												<span class="glyphicon glyphicon-edit"></span>
+												
+											</button>&nbsp;
+											
+											<!-- <button class="btn btn-danger"
+												ng-click="deleteOpen(act.id)" data-toggle="tooltip"
+												tooltip-placement="bottom" tooltip="Delete" title="Delete">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button> -->
+									</tr>
+
+
+						</tbody>
+					</table>
+				</div>
+
+				 <div ng-show="actsList.length ==0">
+								<h3>No Records Found!</h3>
+
+				</div>
+				
+				
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+

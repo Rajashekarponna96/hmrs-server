@@ -1,0 +1,51 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Leave Entitlement</h2>
+		<ol class="breadcrumb">
+			<li><a >Leave Management</a></li>
+			<li><a >Leave Entitlements</a></li>
+			<li class="active"><strong>View Leave Entitlement</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>View Leave Entitlement</h5>
+					<div class="ibox-tools" uib-dropdown>
+						<a href="" ui-sref="home.leavemgmt.leaveEntitlementList" class="btn btn-success ">Back</a>
+					</div>
+
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-lg-12">
+							<dl class="dl-horizontal">
+								<dt>Leave Period:</dt>
+								<dd>{{leaveEntitlementDetails.leavePeriod.startDate}} to {{leaveEntitlementDetails.leavePeriod.endDate}}</dd>
+								<dt>Employee :</dt>
+								<dd>{{leaveEntitlementDetails.employeeFullName}}</dd>
+								<dt>Carry Forward:</dt>
+								<dd>{{leaveEntitlementDetails.allowCarryForward? 'Yes':'No'}}
+								<dt>Carry Forwarded to :</dt>
+								<dd>{{leaveEntitlementDetails.allowCarryForward? leaveEntitlementDetails.carryForwardDays : '--'}}</dd>
+								<dt>Leave Type:</dt>
+								<dd>{{leaveEntitlementDetails.leaveType.name}}</dd>
+								<dt>Entitlement:</dt>
+								<dd>{{leaveEntitlementDetails.days}}</dd>
+								<dt>Comments:</dt>
+								<dd>{{leaveEntitlementDetails.comments}}</dd>
+
+							</dl>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

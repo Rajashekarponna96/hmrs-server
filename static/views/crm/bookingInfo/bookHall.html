@@ -1,0 +1,519 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Booking Info</h2>
+		<ol class="breadcrumb">
+			<li><a>CRM</a></li>
+			<li><a>Booking Info</a></li>
+			<li class="active">Add Booking Info</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Booking Info</h5>
+				</div>
+				<div class="ibox-content">
+					<form role="form">
+
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-3">
+										Full Name </label>
+
+
+									<div class="col-sm-1">
+										<input type="text" class="form-control"
+											ng-model="enquiryDetail.customer.title" capitalize-first
+											only-letters-input disabled>
+									</div>
+									<div class="col-sm-3">
+										<input type="text" class="form-control"
+											ng-model="enquiryDetail.customer.fisrtName" capitalize-first
+											only-letters-input disabled>
+									</div>
+
+									<div class="col-sm-2">
+										<input type="text" class="form-control"
+											ng-model="enquiryDetail.customer.middleName" capitalize-first
+											only-letters-input disabled>
+									</div>
+									<div class="col-sm-3">
+										<input type="text" class="form-control"
+											ng-model="enquiryDetail.customer.lastName" capitalize-first
+											only-letters-input disabled>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="box-body">
+
+								<div class="form-group">
+
+									<label for="inputEmail" class="control-label col-sm-3">Customer
+										Address </label>
+
+
+									<div class="col-sm-9">
+										<textarea type="text" class="form-control"
+											ng-model="enquiryDetail.customer.address.street1" disabled></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-3">Country
+
+									</label>
+
+
+									<div class="col-sm-3">
+
+										<input class="form-control"
+											ng-model="enquiryDetail.customer.address.country.name"
+											disabled>
+
+									</div>
+									<label for="inputEmail" class="control-label col-sm-3">State
+									</label>
+
+
+									<div class="col-sm-3">
+										<input class="form-control"
+											ng-model="enquiryDetail.customer.address.state.name" disabled>
+										<!-- <select class="form-control"
+										ng-model="enquiryDetail.customer.address.state"
+										ng-options="state as state.name for state in statesList track by state.id"
+										ng-change="getDistricts(enquiryDetail.customer.address.state.id)">
+										<option value="">select</option>
+									</select> -->
+
+									</div>
+
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-3">District
+
+									</label>
+
+
+									<div class="col-sm-3">
+										<input class="form-control"
+											ng-model="enquiryDetail.customer.address.district.name"
+											disabled>
+
+										<!-- <select class="form-control"
+										ng-model="enquiryDetail.customer.address.district"
+										ng-options="district as district.name for district in districtList track by district.id">
+										<option value="">select</option>
+									</select> -->
+									</div>
+
+									<label for="inputEmail" class="control-label col-sm-3">City
+
+									</label>
+
+
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="enquiryDetail.customer.address.city" capitalize
+											only-alpha-numeric ng-disabled>
+
+									</div>
+
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-3">PAN
+										Number </label>
+
+
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="enquiryDetail.customer.panNumber" capitalize
+											only-alpha-numeric maxlength=10>
+
+									</div>
+									<label for="inputEmail" class="control-label col-sm-3">Contact
+										Number <span style="color: red"
+										ng-show="enquiryDetail.customer.mobile==undefined ||enquiryDetail.customer.mobile==''||enquiryDetail.customer.mobile.length<10">*</span>
+									</label>
+
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="enquiryDetail.customer.mobile" allow-only-numbers
+											maxlength="10">
+
+									</div>
+
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-3">Booking
+										Purpose </label>
+
+
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="enquiryDetail.purpose" disabled>
+									</div>
+									<label for="inputEmail" class="control-label col-sm-3">Function
+										Hall </label>
+
+
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="enquiryDetail.functionHall.name" disabled>
+
+									</div>
+
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+
+						<div class="row" ng-show="enquiryDetail.purpose=='Marriage'">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-3">Groom
+										Name <span style="color: red"
+										ng-show="booking.groomName==undefined ||booking.groomName==''">*</span>
+									</label>
+
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="booking.groomName" only-letters-input
+											capitalize-first>
+									</div>
+									<label for="inputEmail" class="control-label col-sm-3">Groom
+										Father Name <span style="color: red"
+										ng-show="booking.groomFatherName==undefined ||booking.groomFatherName==''">*</span>
+									</label>
+
+
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="booking.groomFatherName" only-letters-input
+											capitalize-first>
+
+									</div>
+
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<div class="row" ng-show="enquiryDetail.purpose=='Marriage'">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-3">Bride
+										Name <span style="color: red"
+										ng-show="booking.brideName==undefined ||booking.brideName==''">*</span>
+									</label>
+
+
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="booking.brideName" only-letters-input
+											capitalize-first>
+									</div>
+									<label for="inputEmail" class="control-label col-sm-3">Bride
+										Father Name <span style="color: red"
+										ng-show="booking.brideFatherName==undefined ||booking.brideFatherName==''">*</span>
+									</label>
+
+
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="booking.brideFatherName" only-letters-input
+											capitalize-first>
+
+									</div>
+
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<div class="row" ng-show="enquiryDetail.purpose=='Marriage'">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-3">Marriage
+										Date <span style="color: red"
+										ng-show="booking.marriageDate==undefined ||booking.marriageDate==''">*</span>
+									</label>
+
+
+									<div class="col-sm-3">
+										<!-- <div class="datePicker">
+										<p class="input-group">
+											<input type="text" class="form-control"
+												uib-datepicker-popup="dd-MM-yyyy" min-date="mindate"
+												datepicker-options="{startingDay:1}"
+												ng-model="booking.marriageDate" is-open="popup1.opened"
+												close-text="Close" /> <span class="input-group-btn">
+												<button type="button" class="btn btn-default"
+													ng-click="popup1.opened='true'">
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+										</p>
+									</div> -->
+										<div class='input-group date' datetimepicker>
+											<input type='text' class="form-control"
+												ng-model="booking.marriageDate" ng-readonly="true" /> <span
+												class="input-group-addon"><span
+												class="glyphicon glyphicon-calendar"></span> </span>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<div class="row" ng-show="enquiryDetail.purpose=='Marriage'">
+							<div class="box-body">
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-3">
+										Wedding Card </label>
+
+
+									<div class="col-sm-3">
+
+										<input type="file" name="file"
+											onchange="angular.element(this).scope().documnetUploads(this.files)" />
+									</div>
+
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<br />
+						<div class="row" ng-show="enquiryDetail.purpose!='Marriage'">
+							<div class="box-body">
+								<div class="form-group">
+									<label ng-if="enquiryDetail.purpose=='Annaprasa'"
+										for="inputEmail" class="control-label col-sm-3">Name
+										Of The Child <span style="color: red"
+										ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+									</label> <label ng-if="enquiryDetail.purpose=='Other'" for="inputEmail"
+										class="control-label col-sm-3">Name Of The Celebrity <span
+										style="color: red"
+										ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+									</label> <label ng-if="enquiryDetail.purpose=='Voni'" for="inputEmail"
+										class="control-label col-sm-3">Name Of The Celebrity <span
+										style="color: red"
+										ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+									</label> <label ng-if="enquiryDetail.purpose=='Event'" for="inputEmail"
+										class="control-label col-sm-3">Name Of The Event <span
+										style="color: red"
+										ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+									</label> <label ng-if="enquiryDetail.purpose=='Reception'"
+										for="inputEmail" class="control-label col-sm-3">Name
+										Of The Celebrities <span style="color: red"
+										ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+									</label> <label
+										ng-if="enquiryDetail.purpose!='Reception'&& enquiryDetail.purpose!='Marriage' &&
+									enquiryDetail.purpose!='Annaprasa' && enquiryDetail.purpose!='Voni' &&  enquiryDetail.purpose!='Event'"
+										for="inputEmail" class="control-label col-sm-3">Name
+										Of The Celebrity <span style="color: red"
+										ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+									</label>
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="booking.celebrityName" capitalize-first>
+									</div>
+								</div>
+
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<div class="row">
+							<div class="box-body">
+
+								<div class="form-group">
+									<label for="inputEmail" class="control-label col-sm-3">Function
+										Date From <span style="color: red"
+										ng-show="enquiryDetail.requiredFromDate==undefined ||enquiryDetail.requiredFromDate==''">*</span>
+									</label>
+
+
+									<div class="col-sm-3">
+
+										<!--<div class="datePicker">
+										<p class="input-group">
+											<input type="text" class="form-control" datetime-picker="dd-MM-yyyy HH:mm" min-date="mindate"
+												ng-model="booking.fromDateTime" is-open="open.date1" /> <span
+												class="input-group-btn">
+												<button type="button" class="btn btn-default"
+													ng-click="openCalendar($event, 'date1')">
+													<i class="fa fa-calendar"></i>
+												</button>
+											</span>
+										</p>
+									</div>-->
+
+										<!--  <div class="input-group date">
+										<input type="text"  id="datetimepicker1" class="form-control" ng-model="enquiryDetail.requiredFromDate"/> <span
+											class="input-group-addon"><span
+											class="glyphicon-calendar glyphicon"></span></span>
+									</div>  -->
+										<div class='input-group date' datetimepicker>
+											<input type='text' class="form-control"
+												ng-model="enquiryDetail.requiredFromDate" ng-readonly="true" />
+											<span class="input-group-addon"><span
+												class="glyphicon glyphicon-calendar"></span> </span>
+										</div>
+
+									</div>
+									<label for="inputEmail" class="control-label col-sm-3">
+										To <span style="color: red"
+										ng-show="enquiryDetail.requiredToDate==undefined ||enquiryDetail.requiredToDate==''">*</span>
+									</label>
+
+
+									<div class="col-sm-3">
+
+										<!-- <div class="datePicker">
+										<p class="input-group">
+											<input type="text" class="form-control" datetime-picker="dd-MM-yyyy HH:mm" min-date="mindate"
+												ng-model="booking.toDateTime" is-open="open.date2" /> <span
+												class="input-group-btn">
+												<button type="button" class="btn btn-default"
+													ng-click="openCalendar($event, 'date2')">
+													<i class="fa fa-calendar"></i>
+												</button>
+											</span>
+										</p>
+									</div>  -->
+										<div class='input-group date' datetimepicker>
+											<input type='text' class="form-control"
+												ng-model="enquiryDetail.requiredToDate" ng-readonly="true" />
+											<span class="input-group-addon"><span
+												class="glyphicon glyphicon-calendar"></span> </span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /.box-body -->
+						</div>
+
+
+
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+									<!-- <label for="inputEmail" class="control-label col-sm-2">Number
+									of Days 
+								</label>
+
+
+								<div class="col-sm-3">
+
+									<input type="text" class="form-control"
+										ng-model="numberOfDays" allow-only-numbers
+										disabled>
+
+								</div>
+								 -->
+									<label for="inputEmail" class="control-label col-sm-3">Number
+										of Addl.Rooms </label>
+
+
+									<div class="col-sm-3">
+
+										<input type="text" class="form-control"
+											ng-model="booking.additionalRooms" allow-only-numbers>
+
+									</div>
+
+
+								</div>
+								<div>
+									<!-- /.box-body -->
+								</div>
+							</div>
+						</div>
+						<br />
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+
+
+								<button class="btn btn-primary"
+									ng-disabled="((!booking.brideName||!booking.brideFatherName||!booking.groomName||!booking.groomFatherName||!booking.marriageDate)&&(!booking.celebrityName))||(!enquiryDetail.requiredToDate||!enquiryDetail.requiredFromDate)"
+									ng-click="BookFunctionhall(booking)">Confirm</button>
+
+								<button class="btn btn-danger" ng-click="gotoEnquiryList()">Cancel</button>
+							</div>
+						</div>
+						<br />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+		format : "dd-mm-yyyy",
+		startDate : "new Date()",
+		todayBtn : "linked",
+		autoclose : true,
+		todayHighlight : true,
+	});
+</script>
+<script type="text/javascript">
+	var d = new Date();
+	$('.date').datetimepicker({
+		//language:  'fr',
+		format : "dd-mm-yyyy hh:ii:ss",
+		todayBtn : 1,
+		autoclose : 1,
+		todayHighlight : 1,
+		startView : 2,
+		forceParse : 0,
+		showMeridian : 0,
+		startDate : new Date(d.getFullYear(), d.getMonth(), d.getDate()),
+		minuteStep : 1,
+		pickerPosition : "auto"
+	});
+</script>

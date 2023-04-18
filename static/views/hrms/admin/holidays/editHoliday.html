@@ -1,0 +1,139 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Holidays</h2>
+		<ol class="breadcrumb">
+			<li><a >Admin</a></li>
+			<li><a >Holidays</a></li>
+			<li class="active">Update Holiday</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Holiday</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="row">
+							<div class="box-body">
+								<div class="form-group">
+
+
+									<label for="inputEmail" class="control-label col-sm-2">Location
+
+									</label>
+
+									<div class="col-sm-4">
+										<input type="text" class="form-control"
+											ng-model="holidayDetails.location.city" ng-disabled="true">
+									</div>
+
+									<label for="inputEmail" class="control-label col-sm-2">Calender
+										Year </label>
+
+
+									<div class="col-sm-4">
+										<input type="text" class="form-control" ng-model="fullDate"
+											ng-disabled="true">
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="box-body">
+
+								<div class="form-group">
+
+									<label for="inputEmail" class="control-label col-sm-2">Holiday
+										Name <span style="color: red"
+										ng-show="holidayDetails.holidayName==undefined ||holidayDetails.holidayName==''">*</span>
+									</label>
+
+
+									<div class="col-sm-4">
+										<input type="text" class="form-control" placeholder=""
+											ng-model="holidayDetails.holidayName" only-letters-input
+											maxlength="35">
+									</div>
+
+									<label for="inputEmail" class="control-label col-sm-2">Date
+										<span style="color: red"
+										ng-show="holidayDetails.holidayDate==undefined ||holidayDetails.holidayDate==''">*</span>
+									</label>
+
+
+									<div class="col-sm-4">
+
+										<div class="input-group date">
+											<div class="input-group-addon trigger1">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<input id="datepicker" ng-model="holidayDetails.holidayDate"
+												class="form-control pull-right" type="text" ng-readonly="true">
+										</div>
+
+									</div>
+
+
+								</div>
+							</div></div>	
+							<div class="row">
+							<div class="box-body">
+							<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-2"
+									placeholder="">Comments </label>
+
+								<div class="col-sm-10">
+
+									<textarea  class="form-control" ng-model="holidayDetails.comments" 
+										maxlength="1000" capitalize-first></textarea>
+
+								</div>
+							
+							</div>
+							</div>
+							</div>
+
+
+
+
+							<div class="row">
+								<div class="box-body">
+									<div class="box-footer">
+										<div class="col-sm-offset-2 col-sm-10">
+											<button class="btn btn-primary"
+												ng-disabled="!holidayDetails.holidayName ||!holidayDetails.holidayDate"
+												ng-click="updateHoliday(holidayDetails)">Update</button>
+											<button class="btn btn-danger" ng-click="gotoHolidaysList()">Cancel</button>
+										</div>
+									</div>
+								</div>
+							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+		format : "dd-mm-yyyy",
+		todayBtn : "linked",
+		daysOfWeekDisabled : [ 0 ],
+		autoclose : true,
+		todayHighlight : true,
+		forceParse : false
+	});
+	$(".trigger1").click(function() {
+		$("#datepicker").datepicker("show");
+	});
+</script>

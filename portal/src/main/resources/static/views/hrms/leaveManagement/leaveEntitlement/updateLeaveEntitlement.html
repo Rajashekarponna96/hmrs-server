@@ -1,0 +1,326 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Leave Management</h2>
+		<ol class="breadcrumb">
+			<li><a >Leave
+					Management</a></li>
+			<li><a >Leave Entitlements</a></li>
+			<li class="active"><strong>Update Leave Entitlement</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row"
+		ng-init="getEmployeeList();getAllLeavePeriods();getAllLeaveTypes();getAllLocations();">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Leave Entitlement</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Employee </label>
+							<div class="col-sm-5">
+								<input type="text"
+									ng-model="leaveEntitlementDetails.employeeFullName"
+									ng-disabled="true" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-xs-2">Calendar Year
+								 </label>
+							<div class="col-sm-5">
+								<input class="form-control" ng-model="fullPeriod"
+									ng-disabled="true">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-2">Leave
+								Type </label>
+
+
+							<div class="col-sm-5">
+								<input class="form-control"
+									ng-model="leaveEntitlementDetails.leaveType.name"
+									ng-disabled="true">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="employee" class="control-label col-sm-2">Entitlement
+								<span style="color: red"
+								ng-show="leaveEntitlementDetails.days==undefined ||leaveEntitlementDetails.entitlement==''">*</span>
+							</label>
+							<div class="col-sm-5">
+								<input type="text" ng-model="leaveEntitlementDetails.days"
+									class="form-control">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="employee" class="control-label col-sm-2">Allow
+								Carry Forward</label>
+							<div class="col-sm-1">
+								<input type="checkbox"
+									ng-model="leaveEntitlementDetails.allowCarryForward">
+							</div>
+						</div>
+
+						<div class="form-group"
+							ng-show="leaveEntitlementDetails.allowCarryForward"
+							ng-hide="!leaveEntitlementDetails.allowCarryForward">
+							<div class="box-body">
+								<div class="form-group">
+									<label class="control-label col-sm-2">Carry Forward
+										Days</label>
+									<div class="col-sm-5">
+										<input type="text"
+											ng-model="leaveEntitlementDetails.carryForwardDays"
+											class="form-control">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="employee" class="control-label col-sm-2">Comments</label>
+							<div class="col-sm-5">
+								<textarea ng-model="leaveEntitlementDetails.comments"
+									class="form-control" capitalize-first></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-disabled="!leaveEntitlementDetails.days||!leaveEntitlementDetails.leaveType||!leaveEntitlementDetails.leavePeriod"
+									ng-click="updateLeaveEntitlement(leaveEntitlementDetails)">Update</button>
+								<button class="btn btn-danger"
+									ng-click="gotoLeaveEntitlementList()">Cancel</button>
+								<!-- <button class="btn btn-default"
+									ng-click="reset(leaveEntitlement);">Reset</button> -->
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 
+
+
+
+<section class="content"
+	ng-init="getEmployeeList();getAllLeavePeriods();getAllLeaveTypes();">
+
+	<div class="row">
+		left column
+		<div class="col-md-12">
+			general form elements
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">Update Leave Entitlement</h3>
+				</div>
+				/.box-header
+
+				form start
+
+				<form roleDetail="form" name="myForm">
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="employee" class="control-label col-xs-2">Employee
+								</label>
+								<div class="col-xs-4">
+									<input type="text"
+										ng-model="leaveEntitlementDetails.employeeFullName"
+										ng-disabled="true" class="form-control">
+								</div>
+
+							</div>
+
+						</div>
+						/.box-body
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail" class="control-label col-xs-2">Location <span
+									style="color: red"
+									ng-show="leaveEntitlementDetails.role==undefined ||leaveEntitlementDetails.role==''">*</span>
+								</label>
+
+
+								<div class="col-xs-4">
+									<select class="form-control" ng-model="leaveEntitlementDetails.role"
+										ng-options="role as role.name for role in roleList">
+
+										<option value="">select</option>
+									</select>
+								</div>
+
+							</div>
+
+						</div>
+						/.box-body
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail" class="control-label col-xs-2">Unit <span
+									style="color: red"
+									ng-show="leaveEntitlementDetails.role==undefined ||leaveEntitlementDetails.role==''">*</span>
+								</label>
+
+
+								<div class="col-xs-4">
+									<select class="form-control" ng-model="leaveEntitlementDetails.role"
+										ng-options="role as role.name for role in roleList">
+
+										<option value="">select</option>
+									</select>
+								</div>
+
+							</div>
+
+						</div>
+						/.box-body
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail" class="control-label col-xs-2">Leave
+									Period </label>
+
+
+								<div class="col-xs-4">
+									<input class="form-control" ng-model="fullPeriod"
+										ng-disabled="true">
+
+
+								</div>
+
+							</div>
+
+						</div>
+						/.box-body
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail" class="control-label col-xs-2">Leave
+									Type </label>
+
+
+								<div class="col-xs-4">
+									<input class="form-control"
+										ng-model="leaveEntitlementDetails.leaveType.name"
+										ng-disabled="true">
+								</div>
+
+							</div>
+
+						</div>
+						/.box-body
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="employee" class="control-label col-xs-2">Entitlement
+									<span style="color: red"
+									ng-show="leaveEntitlementDetails.days==undefined ||leaveEntitlementDetails.entitlement==''">*</span>
+								</label>
+
+
+								<div class="col-xs-4">
+									<input type="text" ng-model="leaveEntitlementDetails.days"
+										class="form-control">
+								</div>
+
+							</div>
+
+						</div>
+						/.box-body
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="employee" class="control-label col-xs-2">Allow
+									Carry Forward</label>
+
+
+								<div class="col-xs-1">
+									<input type="checkbox"
+										ng-model="leaveEntitlementDetails.allowCarryForward">
+								</div>
+
+							</div>
+
+						</div>
+						/.box-body
+					</div>
+					<div class="row"
+						ng-show="leaveEntitlementDetails.allowCarryForward"
+						ng-hide="!leaveEntitlementDetails.allowCarryForward">
+						<div class="box-body">
+							<div class="form-group">
+
+								<label class="control-label col-xs-2">Carry Forward Days</label>
+								<div class="col-xs-4">
+									<input type="text"
+										ng-model="leaveEntitlementDetails.carryForwardDays">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="employee" class="control-label col-xs-2">Comments</label>
+
+
+								<div class="col-xs-4">
+									<textarea ng-model="leaveEntitlementDetails.comments" rows="5"
+										cols="50"></textarea>
+								</div>
+
+							</div>
+
+						</div>
+						/.box-body
+					</div>
+				</form>
+				<div class="row">
+					<div class="box-body">
+						<div class="box-footer">
+
+							<div class="col-xs-offset-2 col-xs-10">
+
+								<button class="btn btn-success"
+									ng-disabled="!leaveEntitlementDetails.days||!leaveEntitlementDetails.leaveType||!leaveEntitlementDetails.leavePeriod"
+									ng-click="updateLeaveEntitlement(leaveEntitlementDetails)">Update</button>
+								<button class="btn btn-danger"
+									ng-click="gotoLeaveEntitlementList()">Cancel</button>
+
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+			/.box
+
+
+		</div>
+	</div>
+
+
+	/.row
+</section>
+ -->

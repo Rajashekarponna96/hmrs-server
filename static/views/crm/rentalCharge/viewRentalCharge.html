@@ -1,0 +1,65 @@
+
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Rental Charges</h2>
+		<ol class="breadcrumb">
+			<li><a >CRM</a></li>
+			<li><a >Rental Charges</a></li>
+			<li class="active">View Rental Charge</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>View Rental Charge</h5>
+					<div class="ibox-tools" uib-dropdown>
+						<a href="" ui-sref="home.crm.rentalChargeList" class="btn btn-success ">Back</a>
+					</div>
+
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+					
+						<div class="col-lg-6">
+							<dl class="dl-horizontal">
+
+								<dt>Hall Name:</dt>
+								<dd>{{rentalChargeDetails.functionHall.name}}</dd>
+								<dt>Hall Rent per Day:</dt>
+								<dd>{{rentalChargeDetails.hallRentPerDay.amount}}</dd>
+								
+								<dt>Room Rent per Day:</dt>
+								<dd>{{rentalChargeDetails.roomRentPerDay.amount}}</dd>
+								<dt>Electricity Charges per Unit:</dt>
+								<dd>{{rentalChargeDetails.electricityChargePerUnit.amount}}</dd>
+								
+							</dl>
+						</div>
+						
+						<div class="col-lg-6">
+							<dl class="dl-horizontal">
+
+								<dt>Service Tax (%):</dt>
+								<dd>{{rentalChargeDetails.serviceTax.value}}</dd>
+								<dt>Non Refundable Advance:</dt>
+								<dd>{{rentalChargeDetails.nonRefundableAdvance.amount}}</dd>
+								<dt>Cleaning Charges</dt>
+								<dd>{{rentalChargeDetails.cleaningCharges.amount}}</dd>
+								<dt>With Effective From :</dt>
+								<dd>{{locationWiseActDetail.effectiveDate}}</dd>
+								<dt>Generator Rent per Hour:</dt>
+								<dd>{{rentalChargeDetails.generatorRentPerHour.amount}}</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

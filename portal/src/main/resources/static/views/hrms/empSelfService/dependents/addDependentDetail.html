@@ -1,0 +1,131 @@
+<div class="mail-box-header">
+	<div class="col-lg-10">
+		<h2>Dependent Details</h2>
+		<ol class="breadcrumb">
+			<li><a >Employee Self Service</a></li>
+			<li class="active">Dependent Details</li>
+			<li class="active">Add Dependent Detail</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="mail-box">
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Dependent</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<div class="control-label col-sm-3">
+									<label for="inputEmail">Dependent Name <span style="color: red"
+										ng-show="dependent.fisrtName==undefined ||dependent.fisrtName==''">*</span>
+									</label>
+								</div>
+
+								<div class="col-sm-9">
+
+									<input type="text" class="form-control" placeholder=""
+										ng-model="dependent.fisrtName" only-letters-input maxlength="90" capitalize-first>
+
+								</div>
+						</div>
+						<div class="form-group">
+							<div class="control-label col-sm-3">
+									<label for="inputEmail">RelationShip <span
+										style="color: red"
+										ng-show="dependent.relationType==undefined ||dependent.relationType==''">*</span></label>
+
+								</div>
+								<div class="col-sm-9">
+
+								<select class="form-control" ng-model="dependent.relationType">
+								
+								<option value="Father">Father</option>
+								<option value="Mother">Mother</option>
+								<option value="Husband">Husband</option>
+								<option value="Wife">Wife</option>
+								<option value="Brother">Brother</option>
+								<option value="Sister">Sister</option>
+								<option value="Son">Son</option>
+								<option value="Daughter">Daughter</option>
+								</select>
+
+								</div>
+
+						</div>
+						
+						<div class="form-group">
+						
+									<label for="inputEmail" class="control-label col-sm-3">Date Of Birth<span
+										style="color: red"
+										ng-show="dependent.dob==undefined ||dependent.dob==''">*</span> </label>
+
+
+								<div class="col-sm-3">
+										
+									<div class="input-group date">
+										<div class="input-group-addon trigger">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input id="datepicker" ng-model="dependent.dob" class="form-control"
+											type="text" ng-readonly="true">
+									</div>
+								</div>
+
+								<label for="inputEmail" class="control-label col-sm-3">Is Your Nominee? <span
+										style="color: red"
+										ng-show="dependent.nominee==undefined ||dependent.nominee==''">*</span></label>
+
+
+								<div class="col-sm-3">
+									<select class="form-control" ng-model="dependent.nominee">
+									<option value="true">Yes</option>
+								    <option value="false">No</option>
+									
+									</select>
+								</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+
+								<button  class="btn btn-primary" ng-disabled="!dependent.relationType||!dependent.fisrtName||!dependent.nominee"
+						ng-click="addDependent(dependent)"  my-click-once>Save</button>
+						<button class="btn btn-danger" ng-click="gotoDependentDetail()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+
+
+
+
+<script>
+$('#doubleclick').click(function(){ $('#doubleclick').prop('disabled',true)});
+$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+	format : "dd-mm-yyyy",
+	endDate: new Date(),
+	todayBtn : "linked",
+	autoclose : true,
+	todayHighlight : true,
+	forceParse: false
+});
+$(".trigger").click(function(){ $("#datepicker").datepicker("show"); }); 
+
+</script>
+
+
+

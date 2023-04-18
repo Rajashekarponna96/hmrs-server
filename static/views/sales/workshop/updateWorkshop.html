@@ -1,0 +1,140 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Sales</h2>
+		<ol class="breadcrumb">
+			
+			<li><a >sales</a></li>
+			<li><a >Workshops</a></li>
+			<li class="active">Update Workshop</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="init()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Workshop</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" name="myForm" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Code <span
+								style="color: red"
+								ng-show="workshopDetails.code==undefined || workshopDetails.code==''">*</span></label>
+
+							<div class="col-sm-10">
+								<input type="text" class="form-control"
+									ng-model="workshopDetails.code" maxlength="3"
+									placeholder="Workshop code" capitalize>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Address <span
+								style="color: red"
+								ng-show="workshopDetails.address.street1==undefined || workshopDetails.address.street1==''">*</span></label>
+
+							<div class="col-sm-10">
+								<textarea class="form-control"
+									ng-model="workshopDetails.address.street1" capitalize-first>
+								</textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Location <span
+								style="color: red"
+								ng-show="workshopDetails.location==undefined || workshopDetails.location==''">*</span></label>
+
+							<div class="col-sm-4">
+								<select class="form-control" ng-model="workshopDetails.location"
+									ng-options="location as location.city for location in locationList track by location.id">
+									<option value="">select</option>
+								</select>
+
+							</div>
+							<label class="col-sm-2 control-label">In-charge Name <span
+								style="color: red"
+								ng-show="workshopDetails.inCharge==undefined || workshopDetails.inCharge==''">*</span></label>
+
+							<div class="col-sm-4">
+								<input type="text" ng-model="workshopDetails.inCharge"
+									uib-typeahead="employee as employee.fullName for employee in employeeList | filter:$viewValue "
+									class="form-control" capitalize-first> <span style="color: red"
+									ng-show="employee.superior.id==undefined && employee.superior.length>=3">select
+									employee from suggestions shown in above field</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Mobile No. <span
+								style="color: red"
+								ng-show="workshopDetails.mobile==undefined ||workshopDetails.mobile==''||workshopDetails.mobile.length<10">*</span></label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="workshopDetails.mobile" allow-only-numbers
+									maxlength="10" placeholder="Mobile No.">
+
+							</div>
+							<label class="col-sm-2 control-label">Landline No. <span
+								style="color: red"
+								ng-show="workshopDetails.landLine==undefined || workshopDetails.landLine==''"></span></label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="workshopDetails.landLine" allow-only-numbers
+									maxlength="10" placeholder="Landline No.">
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">FAX No. <span
+								style="color: red"
+								ng-show="workshopDetails.fax==undefined || workshopDetails.fax==''"></span></label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="workshopDetails.fax" maxlength="14"
+									placeholder="FAX No" allow-only-numbers>
+
+							</div>
+							<label class="col-sm-2 control-label">Email <span
+								style="color: red"
+								ng-show="workshopDetails.email==undefined || workshopDetails.email==''"></span></label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="workshopDetails.email" name="email" maxlength="1000" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/ "><span
+									ng-hide="myForm.email.$valid" style="color: red"> Please
+									Enter a valid Email Address</span>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Description </label>
+
+							<div class="col-sm-10">
+								<textarea class="form-control"
+									placeholder="Workshop Description"
+									ng-model="workshopDetails.description" capitalize-first></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+
+								<button class="btn btn-primary"
+									ng-disabled = "!workshopDetails.code||!workshopDetails.address||!workshopDetails.location||!workshopDetails.inCharge||!workshopDetails.mobile||!myForm.email.$valid"
+									ng-click="updateWorkshop(workshopDetails)">Update</button>
+								<button class="btn btn-danger" ng-click="gotoWorkshopList()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

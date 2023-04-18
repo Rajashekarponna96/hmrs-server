@@ -1,0 +1,8 @@
+package com.srmt.model.sales;
+
+public enum CustomerType {
+	
+	FIRST_TIME_USER, CAPTIVATE_CUSTOMER,
+	FORUM_CUSTOMER, MARKET_LOAD_OPERATOR,
+	COMPETITOR, RETAIL_EXISTING_CUSTOMER
+}

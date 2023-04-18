@@ -1,0 +1,207 @@
+<section class="content-header">
+	<h1>Regional Offices</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+		<li><a href="#">Regional offices</a></li>
+		<li class="active">update Regional office</li>
+	</ol>
+</section>
+<section class="content" ng-init="getCountries()">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">Update Regional office</h3>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+
+
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+
+
+								<label for="inputEmail" class="control-label col-xs-2">Code:</label>
+
+
+								<div class="col-xs-3">
+
+									<input type="text" class="form-control" placeholder=""
+										ng-model="regionalOfficeDetail.code">
+
+								</div>
+								<label for="inputEmail" class="control-label col-xs-2">Name:</label>
+
+
+								<div class="col-xs-3">
+
+									<input type="text" class="form-control" placeholder=""
+										ng-model="regionalOfficeDetail.name">
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+							<div class="form-group">
+
+								<label for="inputEmail" class="control-label col-xs-2">Country:</label>
+
+
+								<div class="col-xs-3">
+									 <select class="form-control"
+										ng-model="address.country"
+										ng-options="country as country.name for country in countriesList"
+										ng-change="getStates(address.country.id)">
+									</select>
+
+								</div>
+
+								<label for="inputEmail" class="control-label col-xs-2">State:</label>
+
+
+								<div class="col-xs-3">
+									 <select class="form-control"
+										ng-model="address.state"
+										ng-options="state as state.name for state in statesList"
+										ng-change="getDistricts(address.state.id)">
+									</select>
+
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+
+								<label for="inputEmail" class="control-label col-xs-2">District:</label>
+								<div class="col-xs-3">
+									 <select class="form-control"
+										ng-model="address.district"
+										ng-options="district as district.name for district in districtList"
+									>
+									</select>
+
+								</div>
+
+
+
+								<label for="inputEmail" class="control-label col-xs-2">City:</label>
+								<div class="col-xs-3">
+								<input type="text" class="form-control" placeholder=""
+										ng-model="regionalOfficeDetail.city">
+									<!-- <select ng-model="regionalOfficeDetail.city"
+										ng-options="city as city.name for city in citiesList">
+									</select> -->
+
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+
+								<label for="inputEmail" class="control-label col-xs-2"
+									placeholder=""> Address:</label>
+
+								<div class="col-xs-10">
+
+									<textarea ng-model="regionalOfficeDetail.address" cols="120" rows=3></textarea>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+
+								<label for="inputEmail" class="control-label col-xs-2">PIN
+									Code:</label>
+
+
+								<div class="col-xs-3">
+
+									<input type="text" class="form-control" placeholder=""
+										ng-model="regionalOfficeDetail.pinCode">
+
+								</div>
+
+
+								<label for="inputEmail" class="control-label col-xs-2">Phone:</label>
+
+
+								<div class="col-xs-3">
+
+									<input type="text" class="form-control" placeholder=""
+										ng-model="regionalOfficeDetail.phone">
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+
+								<label for="inputEmail" class="control-label col-xs-2">Fax:</label>
+
+
+								<div class="col-xs-3">
+
+									<input type="text" class="form-control" placeholder=""
+										ng-model="regionalOfficeDetail.fax">
+
+								</div>
+
+
+								<label for="inputEmail" class="control-label col-xs-2">Notes:</label>
+
+
+								<div class="col-xs-3">
+
+									<input type="text" class="form-control" placeholder=""
+										ng-model="regionalOfficeDetail.notes">
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+			</div>
+			<div class="box-footer">
+
+				<button class="btn btn-primary" ng-click="updateRegionalOffice(regionalOfficeDetail)">update</button>
+				<button class="btn btn-danger" ng-click="gotoRegionalOfficeList()">Cancel</button>
+
+			</div>
+			</form>
+		</div>
+		<!-- /.box -->
+
+
+	</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+

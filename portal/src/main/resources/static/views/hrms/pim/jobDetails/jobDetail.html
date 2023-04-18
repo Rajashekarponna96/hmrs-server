@@ -1,0 +1,199 @@
+<div class="mail-box-header">
+	<div class="col-lg-10">
+		<h2>Job Details</h2>
+		<ol class="breadcrumb">
+			<li>On-Boarding</li>
+			<li class="active">Job Details</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+
+<div class="mail-box" ng-init="getAlltLocations()">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Job Details</h5>
+
+					</div>
+					<div class="ibox-content">
+						<form method="get" class="form-horizontal">
+
+							<form role="form">
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+
+
+											<label for="inputEmail" class="control-label col-sm-3">Location <span
+												style="color: red"
+												ng-show="person.department.location==undefined ||person.department.location==''">*</span>
+											</label>
+
+
+											<div class="col-sm-9">
+												<select class="form-control"
+													ng-model="person.department.location"
+													ng-options="location as location.city for location in locationList track by location.id"
+													ng-change="getDepartmentsByLocation(person.department.location.id)">
+													<option value="">select</option>
+												</select>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+
+										<div class="form-group">
+
+											<div class="control-label col-sm-3">
+												<label for="inputEmail">Department <span
+													style="color: red"
+													ng-show="person.department==undefined ||person.department==''">*</span>
+												</label>
+											</div>
+
+											<div class="col-sm-9">
+												<select class="form-control" ng-model="person.department"
+													ng-options="department as department.name for department in departmentList track by department.id"
+													ng-change="getDesignations()">
+												</select>
+											</div>
+
+
+										</div>
+
+
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="box-body">
+
+										<div class="form-group">
+
+											<div class="control-label col-sm-3">
+												<label for="inputEmail"> Desigantion <span
+													style="color: red"
+													ng-show="person.designatin==undefined ||person.designatin==''">*</span>
+												</label>
+											</div>
+
+											<div class="col-sm-9">
+												<select class="form-control" ng-model="person.designatin"
+													ng-options="designation as designation.name for designation in designationList track by designation.id"
+													ng-change="getAllEmploymentTypes()">
+												</select>
+											</div>
+
+
+										</div>
+
+
+									</div>
+								</div>
+
+
+								<div class="row">
+									<div class="box-body">
+
+										<div class="form-group">
+
+											<div class="control-label col-sm-3">
+
+												<label for="inputEmail">Date Of Joining <span
+													style="color: red"
+													ng-show="person.dateOfjoining==undefined ||person.dateOfjoining==''">*</span>
+												</label>
+											</div>
+											<div class="col-sm-9">
+
+												<div class="input-group date">
+													<div class="input-group-addon trigger">
+														<i class="fa fa-calendar"></i>
+													</div>
+													<input id="datepicker" ng-model="person.dateOfjoining"
+														class="form-control pull-right" type="text" ng-readonly="true">
+												</div>
+
+
+											</div>
+
+
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="box-body">
+
+											<div class="form-group">
+
+												<label for="inputEmail" class="control-label col-sm-3">Employment
+													Type <span style="color: red"
+													ng-show="person.employmentType==undefined ||person.employmentType==''">*</span>
+												</label>
+
+
+												<div class="col-sm-9">
+													<select class="form-control"
+														ng-model="person.employmentType"
+														ng-options="employeType as employeType.name for employeType in employmentTypeList track by employeType.id">
+
+
+													</select>
+												</div>
+
+
+											</div>
+
+
+										</div>
+									</div>
+
+
+									<div class="row">
+										<div class="box-body">
+											<div class="box-footer">
+
+												<div class="col-sm-offset-2 col-sm-10">
+
+													<button class="btn btn-primary"
+														ng-disabled="!person.employmentType||!person.dateOfjoining||!person.designatin||!person.department||!person.department.location"
+														ng-click="addJobDetail(person)">Save</button>
+
+													
+												</div>
+											</div>
+
+										</div>
+									</div>
+							</form>
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+	</div>
+	</div>
+	<script>
+		$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+			format : "dd-mm-yyyy",
+			endDate : new Date(),
+			todayBtn : "linked",
+			autoclose : true,
+			todayHighlight : true,
+			forceParse : false
+		});
+		$(".trigger").click(function() {
+			$("#datepicker").datepicker("show");
+		});
+	</script>

@@ -1,0 +1,33 @@
+<ion-view view-title="Appointments"> <ion-nav-bar
+	class="bar-positive"> <ion-nav-back-button
+	class="button-clear">
+<i class="icon ion-chevron-left"></i>Back</ion-nav-back-button> <ion-nav-buttons side="right">
+<button class="button-clear light" ui-sref="app.addAppointment"><i class="ion-plus-round"></i></button>
+</ion-nav-buttons></ion-nav-bar>
+<ion-content class="" ng-init="init();">
+<div class="row header">
+
+	<div class="col col-25">Customer Name</div>
+	<div class="col col-25">Mobile</div>
+	<div class="col col-25">Vehicle</div>
+	<div class="col col-25">Action</div>
+</div>
+<div class="row" ng-repeat="customer in appointmentList">
+	<div class="col col-25">{{customer.fisrtName}}</div>
+	<div class="col col-25">{{customer.mobile}}</div>
+ 	<div class="col col-25">{{}}</div>
+	<div class="col col-25">
+		<i class="ion-eye" ng-click="gotoViewAppointment(customer);"></i>
+	</div>
+</div>
+ <ion-infinite-scroll
+    on-infinite="getAppointments()"
+    distance="1%" ng-if="page<totalPages">
+  </ion-infinite-scroll>
+ 
+  
+</ion-content>
+<div class="bar bar-footer bar-positive">
+	<div class="title">SRI RAMADAS MOTORS TRANSPORT LIMITED</div>
+</div>
+</ion-view>

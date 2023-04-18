@@ -1,0 +1,101 @@
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view style="height: 210px;">
+    <ion-header-bar class="secondary-background secondary-text-color">
+      <h1 class="title">Choose Your Language</h1>
+    </ion-header-bar>
+    <ion-content>
+		<ion-scroll	direction="y" ng-cloak>
+			<div class="list">
+				<a class="item item-icon-right" href="#" ng-repeat="language in languages" 
+						ng-click="selectLanguage(language)">
+					{{language.name}}
+				    <i class="icon ion-ios-checkmark-empty" ng-if="preferredLanguage.code==language.code"></i>
+	  			</a>
+			</div>
+		</ion-scroll>
+    </ion-content>
+  </ion-popover-view>
+</script>
+
+<ion-view class="gradient" ng-cloak>
+<div class="row">
+	<div class="col">
+		<div class="row">
+			<img src="img/sr_logo.png"
+				style="margin-left: auto; margin-right: auto;" />
+		</div>
+		<div class="row">
+			<h5 style="margin-left: auto; margin-right: auto;">SRI RAMADAS
+				MOTOR TRANSPORT LIMITED</h5>
+		</div>
+		<div class="row">
+			<img src="img/log_sc_sr.png"
+				style="margin-left: auto; margin-right: auto;">
+		</div>
+		<!-- <div class="row">
+			<div class="col text-center">
+				<span style="color: #aeaeae; font-weight: lighter;">{{preferredLanguage.name}}</span>&nbsp;-&nbsp;<span
+					style="font-weight: bold;" ng-click="openPopover($event)"
+					translate="change"></span>
+			</div>
+		</div> -->
+		<div class="row">
+			<div class="col col-offset-25">
+				<input type="radio" ng-model="Language" ng-value="languages[0]"
+					ng-change="selectLanguage();">English
+			</div>
+			<div class="col">
+				<input type="radio" ng-model="Language" ng-value="languages[1]"
+					ng-change="selectLanguage();">Telugu
+			</div>
+			<!-- <div class="col">
+				<label class="item item-radio"> <ion-radio name="group1">
+					<div class="item-content">English</div>
+					<i class="radio-icon ion-checkmark"></i></label>
+			</div>
+			<div class="col">
+				<label class="item item-radio"> <ion-radio name="group1">
+					<div class="item-content">Telugu</div>
+					<i class="radio-icon ion-checkmark"></i></label>
+			</div> -->
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<label class="item
+					item-input item-transparent"><input
+					type="text" placeholder="{{usernameLabel}}"
+					translate-attr-placeholder="username"
+					translate-value-browser="{{app.browser}}" id="placeholder-bg"
+					ng-model="user.userName"> </label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<label class="item item-input item-transparent"> <input
+					type="password" placeholder="{{passwordLabel}}" translate
+					translate-attr-placeholder="password"
+					translate-value-browser="{{app.browser}}" id="password-bg"
+					ng-model="user.password">
+				</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<button class="button button-block button-positive"
+					translate="login" ng-click="doLoginForSalesRep()">Login</button>
+			</div>
+		</div>
+		<!-- <div class="row">
+			<div class="col">
+				<div class="row">
+					<div class="col" style="text-align: center;">
+						<a href="#" ui-sref="forgotpassword" translate="forgotPassword"></a>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+</div>
+</ion-view>

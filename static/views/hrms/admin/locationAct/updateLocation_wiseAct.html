@@ -1,0 +1,182 @@
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Location wise Act</h2>
+		<ol class="breadcrumb">
+			<li><a >Admin</a></li>
+			<li><a >Location wise Act</a></li>
+		<li class="active">Update Location wise Act</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Location wise Act</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+
+								<div class="control-label col-sm-3">
+									<label for="inputEmail">Act Name
+									</label>
+								</div>
+
+								<div class="col-sm-3">
+
+									<input class="form-control" ng-model="locationWiseActDetail.actShedule.act.name" ng-disabled="true">
+
+								</div>
+								<div class="control-label col-sm-3">
+									<label for="inputEmail">Schedule Name</label>
+
+								</div>
+								<div class="col-sm-3">
+
+									<input class="form-control" ng-model="locationWiseActDetail.actShedule.name"
+										ng-disabled="true">
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+							<div class="form-group">
+
+								<label for="inputEmail" class="control-label col-sm-3">Location 
+								</label>
+
+
+								<div class="col-sm-3">
+									<input class="form-control" ng-model="locationWiseActDetail.location.city" ng-disabled="true"
+										>
+								</div>
+
+								<label for="inputEmail" class="control-label col-sm-3">State</label>
+
+
+								<div class="col-sm-3">
+									<input class="form-control" type="text" ng-model="locationWiseActDetail.location.state.name" disabled>
+										
+								</div>
+
+
+							</div>
+
+
+						</div>
+					</div>
+					 
+					<div class="row">
+						<div class="box-body">
+
+							<div class="form-group">
+
+								<label for="inputEmail" class="control-label col-sm-3">Department </label>
+								<div class="col-sm-3">
+									<input class="form-control" ng-model="locationWiseActDetail.name" ng-disabled="true"
+>								</div>
+
+								<label for="inputEmail" class="control-label col-sm-3">With
+									Effective From </label>
+								<div class="col-sm-3">
+									<!-- <div class="datePicker">
+										<p class="input-group">
+											<input type="text" class="form-control"
+												datepicker-options="{startingDay:1}"
+												uib-datepicker-popup="dd-MM-yyyy"
+												ui-date-format="mm/dd/yyyy"
+												ng-model="locationWiseActDetail.effectiveDate" is-open="popup1.opened"
+												close-text="Close" /> <span class="input-group-btn">
+												<button type="button" class="btn btn-default"
+													ng-click="open1()">
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+										</p>
+									</div> -->
+									<div class="input-group date">
+										<div class="input-group-addon trigger1">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input id="datepicker" ng-model="locationWiseActDetail.effectiveDate" class="form-control pull-right"
+											type="text" ng-readonly=true >
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+
+							<div class="form-group">
+								<label for="inputEmail" class="control-label col-sm-3">Rev.
+									Basic <span
+										style="color: red"
+										ng-show="locationWiseActDetail.basic==undefined||locationWiseActDetail.basic==''">*</span></label>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" placeholder=""
+										ng-model="locationWiseActDetail.basic" allow-only-numbers>
+								</div>
+								<div class="control-label col-sm-3">
+									<label for="inputEmail">Rev. DA  <span
+										style="color: red"
+										ng-show="locationWiseActDetail.da==undefined||locationWiseActDetail.da==''">*</span></label>
+								</div>
+								<div class="col-sm-3">
+									<input type="text" class="form-control" placeholder=""
+										ng-model="locationWiseActDetail.da" allow-only-numbers>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+							<div class="box-footer">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button class="btn btn-primary"
+										ng-disabled="!locationWiseActDetail.da||!locationWiseActDetail.basic||!locationWiseActDetail.effectiveDate"
+										ng-click="addLocationWiseActMapping(locationWiseActDetail,locationWiseActDetail.actShedule)">Apply Act</button>
+									<button class="btn btn-danger" ng-click="gotoLocation_wiseActList()">Cancel</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+ 
+$("#datepicker").datepicker({
+	format : "dd-mm-yyyy",
+	todayBtn : "linked",
+	autoclose : true,
+	todayHighlight : true,
+	forceParse : false,
+});
+
+$(".trigger1").click(function() {
+	$("#datepicker").datepicker("show");
+});
+</script>

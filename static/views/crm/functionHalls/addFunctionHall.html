@@ -1,0 +1,144 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Function Halls</h2>
+		<ol class="breadcrumb">
+			<li><a >CRM</a></li>
+			<li><a >Function Halls</a></li>
+			<li class="active">Add Function Hall</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" >
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Function Hall</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Hall Code <span
+								style="color: red"
+								ng-show="functionHall.code==undefined ||functionHall.code==''">*</span>
+							</label>
+							<div class="col-sm-4">
+
+								<input type="text" class="form-control"
+									ng-model="functionHall.code" capitalize maxlength="4">
+
+							</div>
+
+							<label class="col-sm-2 control-label">Hall Name <span
+								style="color: red"
+								ng-show="functionHall.name==undefined ||functionHall.name==''">*</span></label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="functionHall.name" capitalize-first
+									only-alpha-numeric maxlength="30">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Seating Capacity <span
+								style="color: red"
+								ng-show="functionHall.seatingCapacity==undefined ||functionHall.seatingCapacity==''">*</span>
+							</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="functionHall.seatingCapacity" allow-only-numbers>
+							</div>
+							<label class="col-sm-2 control-label">Dining Capacity <span
+								style="color: red"
+								ng-show="functionHall.dinningCapacity==undefined ||functionHall.dinningCapacity==''">*</span>
+							</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="functionHall.dinningCapacity" allow-only-numbers>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Address <span
+								style="color: red"
+								ng-show="functionHall.address.street1==undefined ||functionHall.address.street1==''">*</span></label>
+							<div class="col-sm-10">
+
+								<textarea class="form-control" placeholder="Message"
+									ng-model="functionHall.address.street1" capitalize-first></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-2">
+								Incharge  Name <span style="color: red"
+								ng-show="functionHall.contactPerson.title==undefined||functionHall.contactPerson.title==''||functionHall.contactPerson.fisrtName==undefined ||functionHall.contactPerson.fisrtName==''||functionHall.contactPerson.lastName==undefined ||functionHall.contactPerson.lastName==''">*</span>
+							</label>
+							<div class="col-sm-2">
+								<select class="form-control"
+									ng-model="functionHall.contactPerson.title">
+									<option value="Mr">Mr</option>
+									<option value="Mrs">Mrs</option>
+									<option value="Ms">Ms</option>
+
+								</select>
+							</div>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" placeholder="FirstName"
+									ng-model="functionHall.contactPerson.fisrtName"
+									capitalize-first only-letters-input maxlength="30">
+							</div>
+
+							<div class="col-sm-2">
+								<input type="text" class="form-control" placeholder="MiddleName"
+									ng-model="functionHall.contactPerson.middleName"
+									capitalize-first only-letters-input maxlength="30">
+							</div>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" placeholder="lastName"
+									ng-model="functionHall.contactPerson.lastName" capitalize-first
+									only-letters-input maxlength="30">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Mobile <span
+								style="color: red"
+								ng-show="functionHall.contactPerson.mobile==undefined||functionHall.contactPerson.mobile.length<10||functionHall.contactPerson.mobile==''">*</span>
+							</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="functionHall.contactPerson.mobile" allow-only-numbers
+									maxlength="10">
+							</div>
+							<label class="col-sm-2 control-label">Landline Number 
+							</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="functionHall.contactPerson.homePhone"
+									allow-only-numbers maxlength="13">
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Description </label>
+							<div class="col-sm-10">
+
+								<textarea class="form-control" placeholder="Message"
+									ng-model="functionHall.description" capitalize-first></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-disabled="!functionHall.contactPerson.title||functionHall.contactPerson.mobile.length<10||!functionHall.code||!functionHall.name|| !functionHall.address.street1||!functionHall.dinningCapacity||!functionHall.seatingCapacity||!functionHall.dinningCapacity||!functionHall.seatingCapacity||!functionHall.contactPerson.lastName||!functionHall.contactPerson.fisrtName||!functionHall.contactPerson.mobile"
+									ng-click="addFunctionHall(functionHall)">Save</button>
+								<button class="btn btn-danger" ng-click="gotoFunctionHallList()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

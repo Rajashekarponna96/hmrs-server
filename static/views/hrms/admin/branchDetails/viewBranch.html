@@ -1,0 +1,157 @@
+<section class="content-header">
+	<h1>Admin</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+		<li><a href="#">Branch office</a></li>
+		<li class="active"> Branch office Details</li>
+	</ol>
+</section>
+<section class="content">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title"> Branch office  Details</h3>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+						<div class="box-body">
+
+							<div class="col col-md-4"><b>Branch Code</b> </div><div class="col col-md-4">{{viewBranch.code}}</div>
+
+
+					</div>
+				   </div>
+					
+					
+					
+					<div class="row">
+						<div class="box-body">
+							
+							
+								<div class="col col-md-4"><b>Branch Name</b> </div><div class="col col-md-4">{{viewBranch.name}}</div>
+
+
+
+					</div>
+				   </div>
+				   
+				   
+				   
+				   <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Country</b></div><div class="col col-md-4"> {{viewBranch.regionalOfficeMasterOFtheBranch.country}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>state</b></div><div class="col col-md-4"> {{viewBranch.regionalOfficeMasterOFtheBranch.state}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>District</b></div><div class="col col-md-4"> {{viewBranch.regionalOfficeMasterOFtheBranch.district}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>city</b></div><div class="col col-md-4"> {{viewBranch.city}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Address</b></div><div class="col col-md-4"> {{viewBranch.address}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>PIN Code</b></div><div class="col col-md-4"> {{viewBranch.pinCode}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Phone</b></div><div class="col col-md-4"> {{viewBranch.phone}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Fax</b></div><div class="col col-md-4"> {{viewBranch.fax}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Notes</b></div><div class="col col-md-4"> {{viewBranch.notes}}</div>
+
+
+
+					</div>
+				   </div>
+				     
+					<div class="box-footer">
+						<div class="col-xs-offset-2 col-xs-10">
+						
+							<button class="btn btn-primary" ng-click="gotoBranchDetailsPage()">Back</button>
+						
+					</div>
+					</div>
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+

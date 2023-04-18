@@ -1,0 +1,330 @@
+<section class="content-header">
+	<h1>PIM</h1>
+	<ol class="breadcrumb">
+		<li><a ><i class="fa fa-dashboard"></i> PIM</a></li>
+		<li><a >Personal Details</a></li>
+		<li class="active">Add Personal Details</li>
+	</ol>
+</section>
+<section class="content"
+	ng-init="getCountries();getRegionalOfficeList()">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title"> Personal Details</h3>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail" class="control-label col-xs-6">
+
+								</label> <label for="inputEmail" class="control-label col-xs-2">
+									First name<span style="color: red"
+									ng-show="personObj.fisrtName==undefined ||personObj.fisrtName==''">*</span>
+								</label> <label for="inputEmail" class="control-label col-xs-2">
+									Middle name </label> <label for="inputEmail"
+									class="control-label col-xs-2"> Last name<span
+									style="color: red"
+									ng-show="personObj.lastName==undefined ||personObj.lastName==''">*</span>
+								</label>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail" class="control-label col-xs-3">
+									Full Name </label>
+
+
+								<div class="col-xs-3">
+									<select class="form-control" ng-model="personObj.title">
+										<option value="Mr">Mr</option>
+										<option value="Miss">Miss</option>
+										<option value="Mis">Mis</option>
+
+									</select>
+								</div>
+								<div class="col-xs-2">
+									<input type="text" class="form-control" placeholder=""
+										ng-model="personObj.fisrtName" letters-only>
+								</div>
+
+								<div class="col-xs-2">
+									<input type="text" class="form-control" placeholder=""
+										ng-model="personObj.middleName" letters-only>
+								</div>
+								<div class="col-xs-2">
+									<input type="text" class="form-control" placeholder=""
+										ng-model="personObj.lastName" letters-only>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail" class="control-label col-xs-3">
+									Father/Husband:<span style="color: red"
+									ng-show="regionalOffice==undefined ||regionalOffice==''">*</span>
+								</label>
+
+
+								<div class="col-xs-3">
+									<select class="form-control" ng-model="personObj.primaryDependent.title">
+										<option value="Mr">Mr</option>
+										<option value="Miss">Miss</option>
+										<option value="Mis">Mis</option>
+
+									</select>
+								</div>
+								<div class="col-xs-2">
+									<input type="text" class="form-control" placeholder=""
+										ng-model="personObj.primaryDependent.fisrtName" letters-only>
+								</div>
+								<div class="col-xs-2">
+									<input type="text" class="form-control" placeholder=""
+										ng-model="personObj.primaryDependent.middleName" letters-only>
+								</div>
+								<div class="col-xs-2">
+									<input type="text" class="form-control" placeholder=""
+										ng-model="personObj.primaryDependent.lastName" letters-only>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+
+
+								<label for="inputEmail" class="control-label col-xs-3">Date
+									of Birth:<span style="color: red"
+									ng-show="personObj.dob==undefined ||personObj.dob==''">*</span>
+								</label>
+
+
+								<div class="col-xs-3">
+
+									<div class="datePicker">
+										<p class="input-group">
+											<input type="text" class="form-control"
+												uib-datepicker-popup="dd-MM-yyyy"
+												ui-date-format="mm/dd/yyyy" ng-model="personObj.dob"
+												is-open="popup1.opened" close-text="Close" /> <span
+												class="input-group-btn">
+												<button type="button" class="btn btn-default"
+													ng-click="open1()">
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+										</p>
+									</div>
+								</div>
+								<div class="col-xs-1"></div>
+								<label for="inputEmail" class="control-label col-xs-2">Gender:<span
+									style="color: red"
+									ng-show="personObj.gender==undefined ||personObj.gender==''">*</span></label>
+
+
+								<div class="col-xs-3">
+
+									<select class="form-control" ng-model="personObj.gender">
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
+									</select>
+
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+							<div class="form-group">
+
+								<label for="inputEmail" class="control-label col-xs-3">Marital
+									Status:<span style="color: red"
+									ng-show="personObj.maritalStutus==undefined ||personObj.maritalStutus==''">*</span>
+								</label>
+
+
+								<div class="col-xs-3">
+									<select class="form-control" ng-model="personObj.maritalStutus">
+										<option value="Single">Single</option>
+										<option value="Married">Married</option>
+										<option value="Divorced">Divorced</option>
+									</select>
+								</div>
+								<div class="col-xs-1"></div>
+								<label for="inputEmail" class="control-label col-xs-2">Blood
+									Group:</label>
+
+
+								<div class="col-xs-3">
+									<input type="text" class="form-control" placeholder=""
+										ng-model="personObj.bloodGroup">
+								</div>
+
+
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+
+							<div class="form-group">
+
+								<label for="inputEmail" class="control-label col-xs-3">Attach
+									Photo:</label>
+
+
+								<div class="col-xs-8">
+									<input type="text" class="form-control" placeholder=""
+										ng-model="regionalOffice.country">
+								</div>
+
+								<button class="btn btn-primary">Attach</button>
+
+							</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+					
+								<button
+									class="btn btn-primary" ng-click="updatePerson(personObj)">Update</button>
+
+								<button class="btn btn-danger" ng-click="gotopersonaldetail()">Cancel</button>
+
+						
+
+						</div>
+					</div>
+
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+<section class="content" ng-init="getDocumnets()" >
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+				<div class="row">
+						<div class="col col-md-6">
+					<h3 class="box-title">Attachments</h3>
+					</div>
+
+						<div class="col col-md-6" align="right">
+					
+					<div class="pull-right">
+					<h4>
+					<li><a ui-sref="home.employee.addContactFile"></i>Add File</a></li>
+					</h4>
+					</div>
+					</div>
+				</div>
+				</div>
+				
+				
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+
+						<div class="box-body">
+						
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th>S.No</th>
+										<th>file name</th>
+										<th>Memory</th>
+										<th>Type</th>
+										
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="document in documentsList">
+										<td>{{$index+1}}</td>
+										<td>{{document.name}}</td>
+										<td>{{document.size}}</td>
+										<td>{{document.type}}</td>
+										
+									<td><button class="btn btn-primary"
+												ng-click="goToViewDocument(document)" data-toggle="tooltip" tooltip-placement="top" tooltip="View" title="View"><span title="view" class="glyphicon glyphicon-eye-open"></span></button>&nbsp;
+											<button class="btn btn-primary"
+												ng-click="goToUpdateDocument(document)" data-toggle="tooltip" tooltip-placement="bottom" tooltip="Update" title="Update"><span class="glyphicon glyphicon-edit"></span></button>&nbsp;
+											<button class="btn btn-danger"
+												ng-click="deleteDocuments(document)" data-toggle="tooltip" tooltip-placement="bottom" tooltip="Delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+									</tr>
+									
+									
+									
+									
+								</tbody>
+
+							</table>
+						
+
+						</div>
+						
+						<!-- /.box-body -->
+					</div>
+
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+
+
+
+
+
+
+
+
+

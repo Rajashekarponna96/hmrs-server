@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title></title>
+
+<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+
+<!-- ionic/angularjs js -->
+<script src="lib/ionic/js/ionic.bundle.js"></script>
+
+<!-- cordova script (this will be a 404 during development) -->
+<script src="lib/pouch-db/pouchdb.min.js"></script>
+<script src="lib/ng-cordova.js"></script>
+<script src="cordova.js"></script>
+
+<script src="lib/ngstorage/ngStorage.min.js"></script>
+
+<!--  For change Language Scripts -->
+<script src="lib/languageJsFiles/angular-translate.min.js"></script>
+<!-- <script
+	src="lib/languageJsFiles/angular-translate-interpolation-messageformat.js"></script> -->
+<script src="lib/languageJsFiles/angular-translate-storage-cookie.js"></script>
+<script src="lib/languageJsFiles/angular-translate-storage-local.js"></script>
+<script src="lib/languageJsFiles/angular-translate-loader-url.js"></script>
+<script
+	src="lib/languageJsFiles/angular-translate-loader-static-files.js"></script>
+<script src="lib/languageJsFiles/angular-translate-handler-log.js"></script>
+
+
+<!-- Languages -->
+<script src="js/languages/language_en.js"></script>
+<script src="js/languages/language_te.js"></script>
+
+<!-- your app's js -->
+
+<!-- Routing -->
+<script src="js/app.js"></script>
+<script src="js/config/httpInterceptor.js"></script>
+<script src="js/route/route.js"></script>
+<script src="js/route/clientsRoute.js"></script>
+<script src="js/route/inventoryRoute.js"></script>
+<script src="js/route/appointmentsRoute.js"></script>
+
+<script src="../plugins/cordova-plugin-x-toast/www/Toast.js"></script>
+<script src="js/factory/toastService.js"></script>
+
+<!-- constant Routes -->
+
+<script src="js/constants/constants.js"></script>
+<script src="js/constants/crmConstants.js"></script>
+<script src="js/constants/uploadConstants.js"></script>
+
+<!-- Models -->
+<script src="js/factory/ModelFactory.js"></script>
+<script src="js/factory/ValidationFactory.js"></script>
+<script src="js/service/online/loginServiceOnline.js"></script>
+<script src="js/service/online/inventoryServiceOnline.js"></script>
+<script src="js/service/online/uploadServiceOnline.js"></script>
+
+<!-- Controllers -->
+<script src="js/controllers/online/loginCtrlOnline.js"></script>
+<script src="js/controllers/online/clientControllerOnline.js"></script>
+<script src="js/controllers/online/inventoryControllerOnline.js"></script>
+<script src="js/controllers/online/personalInfoControllerOnline.js"></script>
+<script src="js/controllers/online/appointmentController.js"></script>
+
+<!-- Services -->
+<script src="js/factory/userService.js"></script>
+<script src="js/service/online/lookups/countryServiceOnline.js"></script>
+<script src="js/service/online/lookups/stateServiceOnline.js"></script>
+<script src="js/service/online/lookups/districtServiceOnline.js"></script>
+<script src="js/service/online/personalInfoServiceOnline.js"></script>
+<script src="js/service/online/clientServiceOnline.js"></script>
+<script src="js/service/online/appointmentServiceOnline.js"></script>
+<script src="js/service/offline/lookups/countryServiceOffline.js"></script>
+<script src="js/service/offline/loginServiceOffline.js"></script>
+<script src="js/service/offline/EmployeeServiceOffline.js"></script>
+<script src="js/service/offline/clientServiceOffline.js"></script>
+<script src="js/service/offline/inventoryServiceOffline.js"></script>
+<script src="js/service/offline/locationServiceOffline.js"></script>
+<script src="js/service/offline/vehicleModelServiceOffline.js"></script>
+
+<!-- Directives -->
+<script src="js/directives/allow-only-numbers.js"></script>
+<script src="js/directives/allow-only-alphabets.js"></script>
+<script src="js/directives/capitalize.js"></script>
+<script src="js/directives/capitalizeFirst.js"></script>
+
+</head>
+<body ng-app="srmt">
+	<ion-nav-view></ion-nav-view>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>View Personal Detail</h2>
+		<ol class="breadcrumb">
+			<li><a >On-Boarding</a></li>
+			<li><a >View Personal Detail</a></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>View Employee Detail</h5>
+					<div class="ibox-tools" uib-dropdown>
+						<a href="" ng-click="gotopersonaldetail()" class="btn btn-success ">Back</a>
+					</div>
+
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-lg-6">
+							<dl class="dl-horizontal">
+
+								<dt>Full Name:</dt>
+								<dd>{{person.fullName}}</dd>
+								<dt>Gender:</dt>
+								<dd>{{person.gender}}</dd>
+								<dt>Marital Status:</dt>
+								<dd>{{person.maritalStutus}}</dd>
+								<dt>Blood Group:</dt>
+								<dd>{{person.bloodGroup}}</dd>
+								
+								<dt>Address:</dt>
+								<dd>{{person.address.street1}}</dd>
+								
+								<dd>{{person.address.city}}</dd>
+								
+								<dd>{{person.address.district.name}}</dd>
+								
+								<dd>{{person.address.state.name}}</dd>
+								
+								<dd>{{person.address.country.name}}</dd>
+								
+								<dd>{{person.address.pinCode}}</dd>
+								
+								
+								
+
+							</dl>
+						</div>
+						<div class="col-lg-6">
+							<dl class="dl-horizontal">
+
+								<dt>DOB:</dt>
+								<dd>{{person.dob | date:"dd-MM-yyyy"}}</dd>
+								<dt>Mobile:</dt>
+								<dd>{{person.mobile}}</dd>
+								<dt>Email:</dt>
+								<dd>{{person.email}}</dd>
+								<dt>EmployeeId:</dt>
+								<dd>{{person.employeeId}}</dd>
+								
+								<dt>Department:</dt>
+								<dd>{{person.department.name}}</dd>
+								<dt>Date Of Joining</dt>
+								<dd>{{person.dateOfjoining}}</dd>
+								<dt>Designation</dt>
+								<dd>{{person.designatin.name}}</dd>
+								<dt>Employment Type</dt>
+								<dd>{{person.employmentType.name}}</dd>
+								<dt>Primary Dependent</dt>
+								<dd>{{person.primaryDependent.fullName}}</dd>
+							<dt ng-show="person.terminationDate!=undefined">Termination Date</dt>
+							<dd ng-show="person.terminationDate!=undefined">{{person.terminationDate}}</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-sm-offset-3 col-sm-3"><button ng-hide="person.active==true || person.terminationDate!=undefined" class="btn btn-success" ng-click="setStatus()">Approve</button></div>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

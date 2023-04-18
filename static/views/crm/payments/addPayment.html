@@ -1,0 +1,280 @@
+<div class="mail-box-header">
+	<div class="col-lg-10">
+		<h2>Payments</h2>
+		<ol class="breadcrumb">
+			<li><a >CRM</a></li>
+			<li class="active">Payments</li>
+			<li class="active">Add Payment</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="mail-box" ng-init="getCountries();getRegionalOfficeList()">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Personal Details</h5>
+
+					</div>
+					<div class="ibox-content">
+						<form method="get" class="form-horizontal">
+
+
+							<div class="row">
+								<div class="box-body">
+									<div class="form-group">
+										<label for="inputEmail" class="control-label col-sm-3">Booking
+											ID<span style="color: red"
+											ng-show="booking.id==undefined ||booking.id==''">*</span>
+										</label>
+
+
+										<div class="col-sm-3">
+
+											<input type="text" class="form-control" placeholder=""
+												ng-model="booking.bookingSerialNo" disabled>
+
+										</div>
+
+										<label for="inputEmail" class="control-label col-sm-3">Function
+											Hall </label>
+
+
+										<div class="col-sm-3">
+
+											<input type="text" class="form-control" placeholder=""
+												ng-model="booking.functionHallEnquiry.functionHall.name"
+												disabled>
+
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="box-body">
+									<div class="form-group">
+										<label for="inputEmail" class="control-label col-sm-3">
+											Customer Name </label>
+
+
+										
+										<div class="col-sm-9">
+											<input type="text" class="form-control"
+												placeholder="FullName"
+												ng-model="booking.functionHallEnquiry.customer.fullName"
+												capitalize-first only-letters-input disabled>
+										</div>
+
+										
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="row">
+								<div class="box-body">
+									<div class="form-group">
+										<label for="inputEmail" class="control-label col-sm-3">City
+										</label>
+
+
+										<div class="col-sm-3">
+
+											<input type="text" class="form-control" placeholder=""
+												ng-model="booking.functionHallEnquiry.customer.address.city"
+												capitalize-first only-letters-input disabled>
+
+										</div>
+
+										<label for="inputEmail" class="control-label col-sm-3">Booking
+											Purpose </label>
+
+
+										<div class="col-sm-3">
+
+											<input type="text" class="form-control" placeholder=""
+												ng-model="booking.functionHallEnquiry.purpose"
+												capitalize-first only-letters-input disabled>
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="box-body">
+									<div class="form-group">
+
+
+										<label for="inputEmail" class="control-label col-sm-3">Payment
+											Type <span style="color: red"
+											ng-show="payment.paymentType==undefined ||payment.paymentType==''">*</span>
+										</label>
+
+
+										<div class="col-sm-3">
+
+											<select class="form-control" ng-model="payment.paymentType">
+												<option value="Advance">Advance</option>
+												<option value="Security">Security</option>
+											</select>
+
+										</div>
+										<label for="inputEmail" class="control-label col-sm-3">Payment
+											Mode <span style="color: red"
+											ng-show="payment.paymentMode==undefined ||payment.paymentMode==''">*</span>
+										</label>
+
+
+										<div class="col-sm-3">
+											<select class="form-control" ng-model="payment.paymentMode">
+												<option value="Cash">Cash</option>
+												<option value="Cheque">Cheque</option>
+												<option value="DD">DD</option>
+											</select>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row"
+								ng-show="payment.paymentMode=='Cheque'||payment.paymentMode=='DD'">
+								<div class="box-body">
+									<div class="form-group">
+
+										<label for="inputEmail" class="control-label col-sm-3">Cheque/DD
+											No <span style="color: red"
+											ng-show="payment.cheque_DDNo==undefined ||payment.cheque_DDNo==''">*</span>
+										</label>
+
+
+										<div class="col-sm-3">
+
+											<input type="text" class="form-control"
+												ng-model="payment.cheque_DDNo" ng-disabled="organization.id"
+												capitalize only-alpha-numeric>
+
+										</div>
+
+										<label for="inputEmail" class="control-label col-sm-3">Cheque/DD
+											Date<span style="color: red"
+											ng-show="payment.checue_DDDate==undefined ||payment.checue_DDDate==''">*</span>
+
+										</label>
+
+
+										<div class="col-sm-3">
+
+
+											<div class="input-group date trigger1">
+												<div class="input-group-addon">
+													<i class="fa fa-calendar"></i>
+												</div>
+												<input id="datepicker" ng-model="payment.checue_DDDate"
+													class="form-control pull-right" type="text"
+													ng-readonly="true">
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+
+							<div class="row"
+								ng-show="payment.paymentMode=='Cheque'||payment.paymentMode=='DD'">
+								<div class="box-body">
+									<div class="form-group">
+										<label for="inputEmail" class="control-label col-sm-3">Bank
+											Name <span style="color: red"
+											ng-show="payment.bankName==undefined ||payment.bankName==''">*</span>
+										</label>
+
+
+										<div class="col-sm-3">
+
+											<input type="text" class="form-control"
+												ng-model="payment.bankName" capitalize-first
+												only-letters-input>
+
+										</div>
+
+
+									</div>
+								</div>
+								<!-- /.box-body -->
+							</div>
+
+							<div class="row">
+								<div class="box-body">
+									<div class="form-group">
+										<label for="inputEmail" class="control-label col-sm-3">Payble
+											Amount <span style="color: red"
+											ng-show="payment.payable.amount==undefined ||payment.payable.amount==''">*</span>
+										</label>
+
+
+										<div class="col-sm-3">
+
+											<input type="text" class="form-control"
+												ng-model="payment.payable.amount" allow-only-numbers>
+										</div>
+
+
+									</div>
+
+								</div>
+								<!-- /.box-body -->
+							</div>
+
+
+
+
+
+							<div class="row">
+								<div class="box-body">
+									<div class="box-footer">
+
+										<div class="col-sm-offset-2 col-sm-10">
+
+											<button class="btn btn-primary"
+												ng-disabled="!payment.payable.amount||!payment.paymentMode||!payment.paymentType"
+												ng-click="payPayment(payment)">Save Payment</button>
+											<button class="btn btn-danger"
+												ng-click="gotoBookingInfoList()">Cancel</button>
+
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+		format : "dd-mm-yyyy",
+		todayBtn : "linked",
+		autoclose : true,
+		todayHighlight : true,
+	});
+	$(".trigger1").click(function() {
+		$("#datepicker").datepicker("show");
+	});
+	$(".trigger2").click(function() {
+		$("#datepicker1").datepicker("show");
+	});
+</script>

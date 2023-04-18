@@ -1,0 +1,273 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Agents</h2>
+		<ol class="breadcrumb">
+			<li><a>Transport</a></li>
+			<li><a>Agents</a></li>
+			<li class="active">Add Agents</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="getControls()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Agents</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+
+							<label class="col-sm-2 control-label">Control
+							<span style="color: red" ng-show="control==undefined || control==''">*</span>
+							 </label>
+							<div class="col-sm-5 m-b-xs">
+								<select class="form-control" ng-model="control"
+									ng-options="control as control.name for control in controlList"
+									ng-change="getStations(control.id)">
+									<option value="">select</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+
+							<label class="col-sm-2 control-label">Station 
+							<span style="color: red" ng-show="control==undefined || control==''">*</span>
+							
+							</label>
+							<div class="col-sm-5 m-b-xs">
+								<select class="form-control" ng-model="station"
+									ng-options="station as station.name for station in stationslist"
+									>
+									<option value="">select</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Agent Code <span
+								style="color: red"
+								ng-show="agent.agentCode==undefined ||agent.agentCode==''">*</span>
+							</label>
+							<div class="col-sm-4">
+
+								<input class="form-control" ng-model="agent.agentCode"
+									capitalize maxlength="4">
+
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2">
+								Agent Name <span style="color: red"
+								ng-show="agent.agentName.title==undefined||agent.agentName.title==''||agent.agentName.fisrtName==undefined ||agent.agentName.fisrtName==''||agent.agentName.lastName==undefined ||agent.agentName.lastName==''">*</span>
+							</label>
+							<div class="col-sm-2">
+								<select class="form-control"
+									ng-model="agent.agentName.title">
+									<option value="Mr">Mr</option>
+									<option value="Mrs">Mrs</option>
+									<option value="Ms">Ms</option>
+
+								</select>
+							</div>
+							<div class="col-sm-3">
+								<input class="form-control" placeholder="FirstName"
+									ng-model="agent.agentName.fisrtName" capitalize-first
+									only-letters-input maxlength="30">
+							</div>
+
+							<div class="col-sm-2">
+								<input class="form-control" placeholder="MiddleName"
+									ng-model="agent.agentName.middleName" capitalize-first
+									only-letters-input maxlength="30">
+							</div>
+							<div class="col-sm-3">
+								<input class="form-control" placeholder="lastName"
+									ng-model="agent.agentName.lastName" capitalize-first
+									only-letters-input maxlength="30">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Agent Address <span
+								style="color: red"
+								ng-show="agent.agentAddress==undefined ||agent.agentAddress==''">*</span></label>
+							<div class="col-sm-10">
+
+								<textarea class="form-control" placeholder="Message"
+									ng-model="agent.agentAddress" capitalize-first></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Mobile <span
+								style="color: red"
+								ng-show="agent.agentMobile==undefined||agent.agentMobile.length<10||agent.agentMobile==''">*</span>
+							</label>
+							<div class="col-sm-4">
+								<input class="form-control"
+									ng-model="agent.agentMobile" allow-only-numbers
+									maxlength="10">
+							</div>
+							<label class="col-sm-2 control-label">Landline Number </label>
+							<div class="col-sm-4">
+								<input class="form-control"
+									ng-model="agent.agentLand" allow-only-numbers
+									maxlength="13">
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">PAN Number <span
+								style="color: red"
+								ng-show="agent.agentPan==undefined ||agent.agentPan==''">*</span>
+							</label>
+							<div class="col-sm-4">
+								<input class="form-control"
+									ng-model="agent.agentPan">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2 ">
+								Appointment Date <span style="color: red"
+								ng-show="agent.appointmentDate==''">*</span>
+							</label>
+							<div class="col-sm-3">
+
+								<div class="input-group date trigger1">
+									<div class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+									</div>
+									<input id="datepicker" ng-model="agent.appointmentDate"
+										class="form-control" ng-readonly="true">
+								</div>
+							</div>
+							<label class="control-label col-sm-2">
+								Agreement Date <span style="color: red"
+								ng-show="agent.agreementDate==''">*</span>
+							</label>
+							<div class="col-sm-3">
+								<div class="input-group date trigger2">
+									<div class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+									</div>
+									<input id="datepicker1" ng-model="agent.agreementDate"
+										class="form-control" ng-readonly="true">
+								</div>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">
+								Surity Name <span style="color: red"
+								ng-show="agent.surityName.title==undefined||agent.surityName.title==''||agent.surityName.fisrtName==undefined ||agent.surityName.fisrtName==''||agent.surityName.lastName==undefined ||agent.surityName.lastName==''">*</span>
+							</label>
+							<div class="col-sm-2">
+								<select class="form-control"
+									ng-model="agent.surityName.title">
+									<option value="Mr">Mr</option>
+									<option value="Mrs">Mrs</option>
+									<option value="Ms">Ms</option>
+
+								</select>
+							</div>
+							<div class="col-sm-3">
+								<input class="form-control" placeholder="FirstName"
+									ng-model="agent.surityName.fisrtName"
+									capitalize-first only-letters-input maxlength="30">
+							</div>
+
+							<div class="col-sm-2">
+								<input class="form-control" placeholder="MiddleName"
+									ng-model="agent.surityName.middleName"
+									capitalize-first only-letters-input maxlength="30">
+							</div>
+							<div class="col-sm-3">
+								<input class="form-control" placeholder="lastName"
+									ng-model="agent.surityName.lastName" capitalize-first
+									only-letters-input maxlength="30">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Surity Address <span
+								style="color: red"
+								ng-show="agent.surityAddress==undefined ||agent.surityAddress==''">*</span></label>
+							<div class="col-sm-10">
+
+								<textarea class="form-control" placeholder="Message"
+									ng-model="agent.surityAddress" capitalize-first></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Surity Property
+								Details </label>
+							<div class="col-sm-10">
+
+								<textarea class="form-control" placeholder="Message"
+									ng-model="agent.surityPropertyDetails" capitalize-first></textarea>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Description </label>
+							<div class="col-sm-10">
+
+								<textarea class="form-control" placeholder="Message"
+									ng-model="agent.description" capitalize-first></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-sm-2 col-md-offset-2">Active
+								<input type="radio" name="radio" ng-value="true"
+								ng-model="agent.active" />
+								<div class="col-sm-2"></div>
+							</label> <label class="control-label col-sm-2">Inactive <input
+								type="radio" name="radio" ng-value="false"
+								ng-model="agent.active">
+
+							</label>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-disabled="!agent.agentCode"
+									class="fa-hand-o-right" ng-click="gotoConfirm(agent,station,control)">
+									<i class=""></i>Next
+								</button>
+								<button class="btn btn-danger" class="fa-hand-o-right"
+									ui-sref="home.agent.agentList">
+									<i class=""></i>Cancel
+								</button>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$("#datepicker,#datepicker1").datepicker({
+		format : "dd-mm-yyyy",
+		todayBtn : "linked",
+		autoclose : true,
+		todayHighlight : true,
+		forceParse : false,
+	});
+
+	$(".trigger1").click(function() {
+		$("#datepicker").datepicker("show");
+	});
+	$(".trigger2").click(function() {
+		$("#datepicker1").datepicker("show");
+	});
+</script>

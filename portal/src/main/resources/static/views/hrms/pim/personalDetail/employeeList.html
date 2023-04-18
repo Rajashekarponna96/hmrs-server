@@ -1,0 +1,151 @@
+
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>On-Boarding</h2>
+		<ol class="breadcrumb">
+			
+			<li><a>On-Boarding</a></li>
+			<li class="active"><strong>Personal Details</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="row wrapper wrapper-content" ng-init="getAlltLocations()">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>Personal Details</h5>
+				<div class="ibox-tools" uib-dropdown>
+					<button class="btn btn-success" ng-if="hasFeatureWithAction('On-Boarding').createAction" ng-click="goToAddPersonalDeatails()">Add
+						Personal Details</button>
+				</div>
+				
+			</div>
+
+			<div class="ibox-content">
+			<div class="row">
+					<div class="box-body">
+						<div class="form-group">
+							<label for="email" class="control-label col-md-2 ">Employee Id
+								 <!-- <span style="color: red"
+							ng-show="leavePeriod==undefined ||leavePeriod==''">*</span> -->
+							</label>
+							<div class="col-md-2">
+								<input class="form-control" ng-model="employeeId">
+							</div>
+
+							<label for="pwd" class="control-label col-md-2">Location
+							</label>
+							<div class="col-md-2">
+								<select class="form-control" ng-model="location"
+									ng-change="getDepartmentsByLocation(location.id)"
+									ng-options="location as location.city for location in locationList">
+									<option value="">All</option>
+								</select>
+							</div>
+
+							<label for="email" class="control-label col-md-1">Department
+								
+							</label>
+							<div class="col-md-2">
+								<select class="form-control" ng-model="department"
+									ng-options="department as department.name for department in departmentList">
+									<option value="">All</option>
+								</select>
+							</div>
+
+							<div class="col-md-1">
+								<button type="submit" class="btn btn-success"
+									ng-click="searchEmployee(employeeId, location, department)">Search</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table  table-hover table-striped">
+						<thead>
+							<tr>
+								<th>S.No</th>
+								<th>Employee ID</th>
+								<th>Full Name</th>
+								<th>Location</th>
+								<th>Department</th>
+								<th>Date Of Birth</th>
+								<th>Gender</th>
+								<th>Marital Status</th>
+								<th>Active</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="employee in employeeList">
+								<td>{{(page*size)+($index+1)}}</td>
+								<td>{{employee.employeeId}}</td>
+								<td>{{employee.fullName}}</td>
+								<td>{{employee.department.location.city}}</td>
+								<td>{{employee.department.name}}</td>
+								<td>{{employee.dob}}</td>
+								<td>{{employee.gender}}</td>
+								<td>{{employee.maritalStutus}}</td>
+								<td ng-show="employee.active==false">No</td>
+								<td ng-show="employee.active==true">Yes</td>
+								
+								<td><button
+										ng-if="hasFeatureWithAction('On-Boarding').viewAction"
+										class="btn btn-success"
+										ng-click="gotoViewPersonDetail(employee)"
+										data-toggle="tooltip" tooltip-placement="top" tooltip="View"
+										title="View">
+										<span title="view" class="glyphicon glyphicon-eye-open"></span>
+									</button>&nbsp;
+									<button
+										ng-if="hasFeatureWithAction('On-Boarding').updateAction && employee.terminationDate==undefined"
+										class="btn btn-primary"
+										ng-click="gotoAddPageForUpdatePerson(employee)"
+										data-toggle="tooltip" tooltip-placement="bottom"
+										tooltip="Update" title="Update">
+										<span class="glyphicon glyphicon-edit"></span>
+									</button>&nbsp;
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+				<div class="row" ng-show="count==0">
+				<h3 class="active">No Records Found</h3>
+				</div>
+				
+					<div class="row" ng-show="count!=0">
+					<div class="col-sm-4 m-b-xs">
+						<p>Number of Records:{{count}}</p>
+					</div>
+					<div class="col-sm-2 m-b-xs">
+						Records per Page <select ng-model="PerPage"
+							ng-change="recordsPerPage()">
+							<option ng-selected="true">10</option>
+							<option>25</option>
+							<option>50</option>
+						</select>
+					</div>
+
+					<div class="col-sm-4">
+						<ul class="pagination">
+							<li><a ng-click="firstPage()">First</a></li>
+							<li><a ng-click="prevPage()">Previous</a></li>
+							<li><a ng-click="nextPage()">Next</a></li>
+							<li><a ng-click="lastPage()">Last</a></li>
+
+						</ul>
+					</div>
+			</div>
+				
+				
+
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,127 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Attendance</h2>
+		<ol class="breadcrumb">
+			<li><a>Attendance</a></li>
+			<li><a>Employee Attendance</a></li>
+			<li class="active"><strong>Update Attendance</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="init()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Employee Attendance</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-2">Employee
+								<span style="color: red"
+								ng-show="attendanceData.employee==undefined || attendanceData.employee==''">*</span>
+							</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									ng-model="attendanceData.employee"
+									uib-typeahead="employee as employee.fullName for employee in employeeList| filter:$viewValue "
+									only-alpha-numeric>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-2">
+								Attendance Date <span style="color: red"
+								ng-show="attendanceData.date==undefined || attendanceData.date==''">*</span>
+							</label>
+							<div class="col-sm-8">
+
+								<div class="input-group date">
+									<div class="input-group-addon trigger">
+										<i class="fa fa-calendar"></i>
+									</div>
+									<input ng-model="attendanceData.date" class="form-control datepicker"
+										type="text" ng-readonly="true">
+								</div>
+
+
+
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label for="inputPassword" class="control-label col-sm-2">Time-In<span
+								style="color: red"
+								ng-show="attendanceData.timeIn==undefined || attendanceData.timeIn==''">*</span>
+							</label>
+
+							<div class="col-sm-3">
+								<div data-autoclose="true" clock-picker="" class="input-group ">
+									<input type="text" ng-model="attendanceData.timeIn"
+										class="form-control"> <span class="input-group-addon">
+										<span class="fa fa-clock-o"></span>
+									</span>
+								</div>
+
+							</div>
+							<label for="inputPassword" class="control-label col-sm-2">Time-Out<span
+								style="color: red"
+								ng-show="attendanceData.timeout==undefined || attendanceData.timeout==''">*</span>
+							</label>
+
+							<div class="col-sm-3">
+
+								<div data-autoclose="true" clock-picker="" class="input-group ">
+									<input type="text" ng-model="attendanceData.timeout"
+										class="form-control"> <span class="input-group-addon">
+										<span class="fa fa-clock-o"></span>
+									</span>
+								</div>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-click="updateEmpAttendance(attendanceData)">Update</button>
+								<button class="btn btn-danger" ng-click="gotoAttendanceList()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$('.datepicker').datepicker({
+		format : "dd-mm-yyyy",
+		endDate : new Date(),
+		autoclose : true,
+		forceParse : false
+	});
+	$(".trigger").click(function() {
+		$(".datepicker").datepicker("show");
+	});
+</script>
+
+<script>
+	var input = $('#input-a');
+	input.clockpicker({
+		autoclose : true
+	});
+
+	// Manual operations
+	$('#button-a').click(function(e) {
+		// Have to stop propagation here
+		e.stopPropagation();
+		input.clockpicker('show').clockpicker('toggleView', 'minutes');
+	});
+	$('#button-b').click(function(e) {
+		// Have to stop propagation here
+		e.stopPropagation();
+		input.clockpicker('show').clockpicker('toggleView', 'hours');
+	});
+</script>

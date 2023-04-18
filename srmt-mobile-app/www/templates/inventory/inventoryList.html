@@ -1,0 +1,65 @@
+<ion-view view-title="Inventory" ng-init="getLocationsAndVehicleModelsByEmployeeId()"> <ion-nav-bar
+	class="bar-positive"> <ion-nav-back-button
+	class="button-clear">
+<i class="icon ion-chevron-left"></i>Back</ion-nav-back-button> </ion-nav-bar> 
+<ion-content class="">  <ion-list>
+<div ng-repeat="productLine in productLines">
+	<ion-item> 
+	<p>Model Number:{{ productLine.number }}</p>
+	<p>Model :{{ productLine.model.name}}</p>
+	<p>Parent Product Line :{{productLine.parentProductLine.name}}</p>
+	<p>Segment : {{productLine.sgement.name}}
+	</ion-item>
+</div>
+</ion-list> 
+<!-- <div class="list">
+	<div class="item item-divider"></div>
+	<a class="item item-thumbnail-right" href="#"> <img
+		src="img/in_sr_bus.png">
+		<h2>Vehicle Name:</h2>
+		<p>Model Name:</p>
+		<p>Stock Availability:</p>
+	</a>
+</div>
+<div class="list">
+	<a class="item item-thumbnail-right" href="#"> <img
+		src="img/in_sr_car.png">
+		<h2>Vehicle Name:</h2>
+		<p>Model Name:</p>
+		<p>Stock Availability:</p>
+	</a>
+</div>
+<div class="list">
+	<a class="item item-thumbnail-right" href="#"> <img
+		src="img/in_sr_lo.png">
+		<h2>Vehicle Name:</h2>
+		<p>Model Name:</p>
+		<p>Stock Availability:</p>
+	</a>
+</div>
+<div class="list">
+	<a class="item item-thumbnail-right" href="#"> <img
+		src="img/in_sr_midvan.png">
+		<h2>Vehicle Name:</h2>
+		<p>Model Name:</p>
+		<p>Stock Availability:</p>
+	</a>
+</div>
+<div class="list">
+	<a class="item item-thumbnail-right" href="#"> <img
+		src="img/in_sr_ttminvan.png">
+		<h2>Vehicle Name:</h2>
+		<p>Model Name:</p>
+		<p>Stock Availability:</p>
+	</a>
+</div>
+<div class="list">
+	<a class="item item-thumbnail-right" href="#"> <img
+		src="img/in_sr_ttvan.png">
+		<h2>Vehicle Name:</h2>
+		<p>Model Name:</p>
+		<p>Stock Availability:</p>
+	</a>
+</div> -->
+</ion-content>
+</ion-view>

@@ -1,0 +1,119 @@
+<ion-view view-title="View Client"
+	ng-init="getLocationsAndVehicleModelsByEmployeeId()"> <ion-nav-bar
+	class="bar-positive"> <ion-nav-back-button
+	class="button-clear" ng-click="gotoClientList()">
+<i class="icon ion-chevron-left"></i>Back</ion-nav-back-button> </ion-nav-bar> <ion-content class="">
+<ion-list>
+<div class="lsit card">
+
+	<div class="item text-center">
+		<h2>
+			<i class="icon ion-person"></i> {{ clientDetail.fisrtName }}
+		</h2>
+	</div>
+	<div class="item item-body">
+
+		<p>
+			<strong> Date</strong> : {{clientDetail.date}}
+		</p>
+	</div>
+	<div class="item item-divider">Contact Details</div>
+	<div class="item item-text-wrap">
+		<p>
+			<i class="icon ion-android-pin"></i> <strong>Address </strong>: {{
+			clientDetail.address.city }}
+		</p>
+		<p>{{ clientDetail.address.district.name }}</p>
+		<p>{{ clientDetail.address.state.name }}</p>
+		<p>{{ clientDetail.address.country.name }}</p>
+		<p>
+			<i class="icon ion-android-call"></i><strong> Mobile </strong>: {{
+			clientDetail.mobile }}
+		</p>
+		<p>
+			<strong>Land Line </strong>: {{ clientDetail.homePhone }}
+		</p>
+	</div>
+	<div class="item item-divider">
+		<i class="icon ion-android-bus"></i> Item Details
+	</div>
+	<div class="item item-text-wrap">
+		<p>
+			<strong>Segment </strong>:
+			{{clientDetail.productLine.parentProductLine.segment.name}}
+		</p>
+		<p>
+			<strong>Parent Product Line </strong>:
+			{{clientDetail.productLine.parentProductLine.name}}
+		</p>
+		<p>
+			<strong>Model </strong>: {{clientDetail.productLine.model.name}}
+		</p>
+		<p>
+			<strong>Model Number</strong>: {{ clientDetail.productLine.number }}
+		</p>
+		<br />
+		<p>
+			<strong>Vehicle Quantity</strong> : {{clientDetail.vehicleQuantity}}
+		</p>
+		<p>
+			<strong>Status</strong> : <strong ng-show="clientDetail.optId==undefined||clientDetail.optId==null">C0</strong>
+			<strong ng-show="clientDetail.optId!=undefined">C1</strong> 
+		</p>
+	</div>
+	<div class="item item-divider">
+		<i class="icon ion-cash"></i> Price Details
+	</div>
+	<div class="row">
+		<div class="col col-50">
+			<strong>Vehicle Price</strong>:
+		</div>
+		<div class="col col-50 text-right">{{clientDetail.pricePerVehicle.amount}}</div>
+
+	</div>
+	<div class="row">
+		<div class="col col-50">
+			<strong>Total</strong>:
+		</div>
+		<div class="col col-50 text-right">{{clientDetail.totalCost}}</div>
+	</div>
+	<div class="row">
+		<div class="col col-50">
+			<strong>TR</strong>:
+		</div>
+		<div class="col col-50 text-right">{{clientDetail.trAmount.amount}}</div>
+	</div>
+	<div class="row">
+		<div class="col col-50">
+			<strong>Tax</strong>:
+		</div>
+		<div class="col col-50 text-right">{{clientDetail.taxAmount.amount}}</div>
+	</div>
+	<div class="row">
+		<div class="col col-50">
+			<strong>Insurance Amount</strong>:
+		</div>
+		<div class="col col-50 text-right">{{clientDetail.vehicleInsurance.amount}}</div>
+	</div>
+	<div class="row">
+		<div class="col col-50">
+			<strong>Other Charges</strong>:
+		</div>
+		<div class="col col-50 text-right">{{clientDetail.otherCharges.amount}}</div>
+	</div>
+	<div class="row">
+		<div class="col col-50">
+			<strong>Grand Total</strong>:
+		</div>
+		<div class="col col-50 text-right">{{clientDetail.grandTotal}}</div>
+	</div>
+	<br />
+
+	<p>
+		<strong>Remarks </strong>: {{ clientDetail.remarks }}
+	</p>
+</div>
+<ion-item>
+<p></p>
+
+</ion-item> </ion-list> </ion-content> </ion-view>

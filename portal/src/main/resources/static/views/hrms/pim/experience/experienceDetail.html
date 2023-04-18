@@ -1,0 +1,179 @@
+<div class="mail-box-header">
+	<div class="col-lg-10">
+		<h2>Experience Details</h2>
+		<ol class="breadcrumb">
+			<li><a >OnBoarding</a></li>
+			<li class="active">Experience Details</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="mail-box">
+	<div class="row" ng-init="getAllExperience()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Experience Detail</h5>
+					<div class="ibox-tools" uib-dropdown>
+						<button class="btn btn-success"
+							ng-click="gotoAddExperienceDetail()">Add Experience
+							Details</button>
+					</div>
+				</div>
+
+				<div class="ibox-content">
+					<div class="table-responsive">
+						<table class="table  table-hover table-striped">
+							<thead>
+								<tr>
+									<th>S.No</th>
+									<th>Company</th>
+									<th>Job Title</th>
+									<th>From Date</th>
+									<th>To Date</th>
+									<!-- <th>No Of Years</th> -->
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="experience in experienceList">
+										<td>{{($index+1)}}</td>
+										<td>{{experience.companyName}}</td>
+										<td>{{experience.jobTitle}}</td>
+										<td>{{experience.fromDate}}</td>
+										<td>{{experience.toDate}}</td>
+										<!-- <td>{{experience.numOfYears}}</td> -->
+
+
+										<td>
+											<button class="btn btn-primary"
+												ng-click="gotoUpdateExperience(experience)"
+												data-toggle="tooltip" tooltip-placement="bottom"
+												tooltip="Update" title="Update">
+												<span class="glyphicon glyphicon-edit"></span>
+											</button>&nbsp;
+											<button class="btn btn-danger"
+												ng-click="deleteOpen(experience.id)" data-toggle="tooltip"
+												tooltip-placement="bottom" tooltip="Delete" title="Delete">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button>
+										</td>
+									</tr>
+
+							</tbody>
+						</table>
+					</div>
+
+					<div class="row" ng-init="getDocumnets()">
+						<!-- left column -->
+						<div class="col-md-12">
+							<!-- general form elements -->
+							<div class="box box-primary">
+								<div class="box-header with-border">
+									<div class="row">
+										<div class="col col-md-6">
+											<h3 class="box-title">Attachments</h3>
+										</div>
+
+										<div class="col col-md-6" align="right">
+
+											<div class="pull-right">
+												<h4>
+													<button class="btn btn-primary"
+														ui-sref="home.employee.addExperienceDocument">Add
+														File</button>
+												</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+								<!-- /.box-header -->
+
+								<!-- form start -->
+
+								<form role="form">
+									<div class="row">
+
+										<div class="box-body">
+											<div class="table-responsive">
+
+												<table class="table table-hover">
+													<thead>
+														<tr>
+															<th>S.No</th>
+															<th>Title/Description</th>
+															<th>Memory</th>
+															<th>Type</th>
+
+															<th>Action</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="document in documentsList">
+															<td>{{$index+1}}</td>
+															<td><a target="_blank"
+																href="{{docPath(document.imagepath)}}">{{document.name}}</a></td>
+															<td>{{document.size}}</td>
+															<td>{{document.type}}</td>
+
+															<td><!-- <button class="btn btn-primary"
+																	ng-click="goToViewDocument(document)"
+																	data-toggle="tooltip" tooltip-placement="top"
+																	tooltip="View" title="View">
+																	<span title="view" class="glyphicon glyphicon-eye-open"></span>
+																</button>&nbsp; -->
+																<button class="btn btn-primary"
+																	ng-click="goToUpdateDocument(document)"
+																	data-toggle="tooltip" tooltip-placement="bottom"
+																	tooltip="Update" title="Update">
+																	<span class="glyphicon glyphicon-edit"></span>
+																</button>&nbsp; <!-- <button class="btn btn-danger"
+												ng-click="deleteDocuments(document)" data-toggle="tooltip"
+												tooltip-placement="bottom" tooltip="Delete" title="Delete">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button> --></td>
+														</tr>
+
+
+
+
+													</tbody>
+
+												</table>
+											</div>
+
+										</div>
+
+										<!-- /.box-body -->
+									</div>
+
+								</form>
+							</div>
+							<!-- /.box -->
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

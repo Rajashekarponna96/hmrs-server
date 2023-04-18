@@ -1,0 +1,163 @@
+<section class="content-header">
+	<h1>Admin</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+		<li><a href="#">Branch Details</a></li>
+		<li class="active">Branch List</li>
+	</ol>
+</section>
+<section class="content" ng-init="getAllRegionalOffice()">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+				<div class="row">
+						<div class="col col-md-6">
+					<h3 class="box-title">Branch List</h3>
+					</div>
+
+						<div class="col col-md-6" align="right">
+					
+					<div class="pull-right">
+					<h4>
+						<button class="btn btn-primary"
+							ng-click="gotoAddBranchDetailsPage()">Add Branch</button>
+					</h4>
+					</div>
+					</div>
+				</div>
+				</div>
+				<label for="inputEmail" class="control-label col-xs-2">Regional
+					Office:<span style="color: red"
+					ng-show="regionalOfficeId==undefined">*</span>
+				</label>
+
+
+				<div class="col-xs-3">
+					<select class="form-control" ng-model="regionalOfficeId"
+						ng-options="regionalOffice as regionalOffice.name for regionalOffice in regionalOfficeList"
+						ng-change="getBranchesByRegionalOfficeList(regionalOfficeId.id)">
+					</select>
+
+				</div>
+				<label for="inputEmail" class="control-label col-xs-2">Branch
+					Office: </label>
+
+
+				<div class="col-xs-3">
+					<select class="form-control" ng-model="branchId"
+						ng-options="branch as branch.name for branch in branchList">
+					</select>
+				</div>
+				<div class="col-xs-2">
+					<button class="btn btn-primary"
+						ng-click="searchRegistrationOffice(regionalOfficeId,branchId)">Search</button>
+				</div>
+				
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+
+						<div class="box-body">
+						
+							<table class="table table-hover table-striped">
+								<thead>
+									<tr>
+										<th>S.No</th>
+										<th>Name</th>
+										<th>City</th>
+										<th>State</th>
+										<th>Address</th>
+										<th>Phone</th>
+										<th>Region</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="branch in BranchOfficeList">
+										<td>{{(page*size)+($index+1)}}</td>
+										<td>{{branch.name}}</td>
+										<td>{{branch.city}}</td>
+										<td>{{branch.regionalOfficeMasterOFtheBranch.state}}</td>
+										<td>{{branch.address}}</td>
+										<td>{{branch.phone}}</td>
+										<td>{{branch.regionalOfficeMasterOFtheBranch.code}}</td>
+										
+									<td><button class="btn btn-primary"
+												ng-click="gotoViewBranch(branch)" data-toggle="tooltip" tooltip-placement="top" tooltip="View" title="View"><span title="view" class="glyphicon glyphicon-eye-open"></span></button>&nbsp;
+											<button class="btn btn-primary"
+												ng-click="gotoUpdateBranchDetailsPage(branch)" data-toggle="tooltip" tooltip-placement="bottom" tooltip="Update" title="Update"><span class="glyphicon glyphicon-edit"></span></button>&nbsp;
+											<button class="btn btn-danger"
+												ng-click="deleteBranch(branch)" data-toggle="tooltip" tooltip-placement="bottom" tooltip="Delete" title="Delete"><span class="glyphicon glyphicon-trash"></span></button></td>
+									</tr>
+									
+									
+									
+									
+								</tbody>
+
+							</table>
+							<div class="box-footer">
+							<div ng-hide="count > 0">
+								
+									<h3>No Records Found!</h3>
+								
+							</div>
+
+							<div class="row" ng-show="count > 0">
+								<br />
+
+
+								<div class="col-xs-3 col-xs-offset-1">
+									<p>Number of Records:{{count}}</p>
+								</div>
+
+
+								<div class="col-xs-3">
+									Records per Page <select ng-model="PerPage"
+										ng-change="recordsPerPage()">
+										<option ng-selected="true">10</option>
+										<option>25</option>
+										<option>50</option>
+									</select>
+								</div>
+								<div class="col-xs-3">
+									<ul class="pagination">
+										<li><a  ng-click="firstPage()">First</a></li>
+										<li><a  ng-click="prevPage()">Previous</a></li>
+										<li><a  ng-click="nextPage()">Next</a></li>
+										<li class="disabled"><a href="#" ng-click="lastPage()">Last</a></li>
+
+									</ul>
+								</div>
+
+
+
+							</div>
+
+						</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+
+
+
+
+

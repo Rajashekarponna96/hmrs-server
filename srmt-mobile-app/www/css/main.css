@@ -1,0 +1,80 @@
+/* Empty. Add your own CSS if you like */
+.bar-positive {
+	background-color: #3b5998 !important;
+	border: 0px !important;
+}
+
+.primary-background {
+	background-color: #3b5998;
+}
+
+.primary-text-color * {
+	color: #d8dfea;
+	font-family: Roboto;
+}
+
+.secondary-background {
+	background-color: #8b9dc3;
+}
+
+.secondary-text-color * {
+	color: #FFFFFF;
+	font-family: Roboto;
+}
+
+.nopadding {
+	padding: 0px;
+}
+
+.item.item-input.item-transparent {
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+	border-bottom: 2px solid #afbdd4;
+	padding-left: 0px;
+}
+
+input.primary-text-color {
+	color: #d8dfea;
+	font-family: Roboto;
+}
+
+.profile-pic {
+	border: 1px solid gray;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px !important;
+	max-width: 150px;
+	max-height: 150px;
+}
+
+.header .col {
+	background-color: lightgrey;
+}
+
+.col {
+	border-bottom-style: none;
+	border-right-style: none;
+}
+.bar .title {
+	font-size: 14px!important;
+}
+.gradient{
+	background: rgb(111,178,220); /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(rgb(111,178,220), white); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgb(111,178,220), white); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgb(111,178,220), white); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgb(111,178,220), white); /* Standard syntax */
+}
+.light button{
+	color : white;
+}
+.inlist {
+	background-color: #06C;
+	
+}
+
+.inlist:last-child {
+  margin-bottom: 0px; }
+  .list:last-child.card {
+    margin-bottom: 40px; }

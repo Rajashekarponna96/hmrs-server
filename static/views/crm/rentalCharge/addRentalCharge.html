@@ -1,0 +1,182 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Rate Card</h2>
+		<ol class="breadcrumb">
+			<li><a >CRM</a></li>
+			<li><a >Rate Card</a></li>
+			<li class="active">Add Rate Card</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight"
+	ng-init="getAllFunctionHalls()">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Rate Card</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+
+							<div class="control-label col-sm-3">
+								<label for="inputEmail">Hall Name <span
+									style="color: red"
+									ng-show="rentalCharge.functionHall==undefined ||rentalCharge.functionHall==''">*</span>
+								</label>
+							</div>
+
+							<div class="col-sm-3">
+								<select class="form-control"
+									ng-model="rentalCharge.functionHall"
+									ng-options="hall as hall.name for hall in hallList">
+									<option value="">select</option>
+								</select>
+							</div>
+							<div class="control-label col-sm-3">
+								<label for="inputEmail">Hall Rent per Day <span
+									style="color: red"
+									ng-show="rentalCharge.hallRentPerDay.amount==undefined ||rentalCharge.hallRentPerDay.amount==''">*</span>
+								</label>
+
+							</div>
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control" placeholder=""
+									ng-model="rentalCharge.hallRentPerDay.amount"
+									allow-only-numbers>
+							</div>
+
+						</div>
+						<div class="form-group">
+
+							<label for="inputEmail" class="control-label col-sm-3">Room
+								Rent per Day<span style="color: red"
+								ng-show="rentalCharge.roomRentPerDay.amount==undefined ||rentalCharge.roomRentPerDay.amount==''">*</span>
+							</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" placeholder=""
+									ng-model="rentalCharge.roomRentPerDay.amount"
+									allow-only-numbers>
+							</div>
+							<label for="inputEmail" class="control-label col-sm-3">Electricity
+								Charge per Unit <span style="color: red"
+								ng-show="rentalCharge.electricityChargePerUnit.amount==undefined ||rentalCharge.electricityChargePerUnit.amount==''">*</span>
+							</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" placeholder=""
+									ng-model="rentalCharge.electricityChargePerUnit.amount"
+									allow-only-numbers>
+							</div>
+						</div>
+						<div class="form-group">
+
+							<label for="inputEmail" class="control-label col-sm-3">Service
+								Tax <span style="color: red"
+								ng-show="rentalCharge.serviceTax.value==undefined ||rentalCharge.serviceTax.value==''">*</span>
+							</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" placeholder=""
+									ng-model="rentalCharge.serviceTax.value" allow-only-numbers>
+							</div>
+
+							<label for="inputEmail" class="control-label col-sm-3">Non-Refundable
+								Advance <span style="color: red"
+								ng-show="rentalCharge.nonRefundableAdvance.amount==undefined ||rentalCharge.nonRefundableAdvance.amount==''">*</span>
+							</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" placeholder=""
+									ng-model="rentalCharge.nonRefundableAdvance.amount"
+									allow-only-numbers>
+							</div>
+						</div>
+
+
+
+
+
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">Cleaning
+								Charges <span style="color: red"
+								ng-show="rentalCharge.cleaningCharges.amount==undefined ||rentalCharge.cleaningCharges.amount==''">*</span>
+							</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" placeholder=""
+									ng-model="rentalCharge.cleaningCharges.amount"
+									allow-only-numbers>
+							</div>
+
+							<label for="inputEmail" class="control-label col-sm-3">Generator
+								Rent per Hour <span style="color: red"
+								ng-show="rentalCharge.generatorRentPerHour.amount==undefined ||rentalCharge.generatorRentPerHour.amount==''">*</span>
+							</label>
+							<div class="col-sm-3">
+								<input type="text" class="form-control" placeholder=""
+									ng-model="rentalCharge.generatorRentPerHour.amount"
+									allow-only-numbers>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">With
+								Effect From <span style="color: red"
+								ng-show="rentalCharge.effectiveDate==undefined ||rentalCharge.effectiveDate==''">*</span>
+							</label>
+							<div class="col-sm-3">
+								<div class="input-group date trigger1">
+									<div class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+									</div>
+									<input id="datepicker" ng-model="rentalCharge.effectiveDate"
+										class="form-control pull-right" type="text" ng-readonly="true">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2 col-md-offset-2">Active
+								<input type="radio" name="radio" ng-value="true"
+								ng-model="rentalCharge.active" />
+							<div class="col-sm-2"></div>
+							</label> <label class="control-label col-sm-2">Inactive <input
+								type="radio" name="radio" ng-value="false"
+								ng-model="rentalCharge.active">
+
+							</label>
+						</div>
+ 
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-disabled="!rentalCharge.functionHall||!rentalCharge.hallRentPerDay.amount||!rentalCharge.roomRentPerDay.amount||!rentalCharge.electricityChargePerUnit.amount||!rentalCharge.serviceTax.value||!rentalCharge.nonRefundableAdvance.amount||!rentalCharge.cleaningCharges.amount||!rentalCharge.generatorRentPerHour.amount||!rentalCharge.effectiveDate"
+									ng-click="addRentalCharge(rentalCharge)">Save</button>
+								<button class="btn btn-danger" ng-click="gotoRentalChargeList()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+		format : "dd-mm-yyyy",
+		startDate : "new Date()",
+		todayBtn : "linked",
+		autoclose : true,
+		todayHighlight : true,
+	});
+	$(".trigger1").click(function() {
+		$("#datepicker").datepicker("show");
+	});
+	$(".trigger2").click(function() {
+		$("#datepicker1").datepicker("show");
+	});
+</script>

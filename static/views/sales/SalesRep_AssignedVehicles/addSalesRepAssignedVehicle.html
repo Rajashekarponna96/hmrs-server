@@ -1,0 +1,159 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>SalesRepAssignedVehicle</h2>
+		<ol class="breadcrumb">
+			<li><a>Sales</a></li>
+			<li><a>SalesRepAssignedVehicle</a></li>
+			<li class="active">Add SalesRepAssignedVehicle</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight"
+	ng-init="init()">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add SalesRepAssignedVehicle</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Sales Rep Code <span
+								style="color: red" ng-show="employee==undefined ||employee==''">*</span>
+							</label>
+							<div class="col-sm-4">
+
+								<input type="text" ng-model="employee"
+									uib-typeahead="salesRepresentative as salesRepresentative.salesRepCode for salesRepresentative in salesRepresentativeList | filter:$viewValue "
+									class="form-control"  typeahead-on-select="getLocationsAndProductLinesById(employee.id)" capitalize> <span style="color: red"
+									ng-show="employee.id==undefined && employee.length>=3">select
+									employee from suggestions shown in above field</span>
+							</div>
+
+							<label class="col-sm-2 control-label">Sales Rep Name </label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="employee.fullName" capitalize-first maxlength="35"
+									disabled="true">
+							</div>
+						</div>
+						
+						
+						<div class="form-group">
+
+							<label class="col-sm-2 control-label">Locations <span
+								style="color: red"
+								ng-show="employee.locations==undefined || employee.locations==''">*</span></label>
+
+							<div class="col-sm-4">
+
+								<select multiple class="form-control"
+									ng-model="employee.locations"
+									ng-options="loaction as loaction.city for loaction in locationList">
+								</select>
+							</div>
+
+							<label class="col-sm-2 control-label">Remarks </label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="employee.salesRemarks" capitalize-first>
+							</div>
+						</div>
+						<div class="ibox-title">
+					<h5>Select ProductLine</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Product Line <span
+								style="color: red"
+								ng-show="productLine==undefined ||productLine==''">*</span>
+							</label>
+							<div class="col-sm-4">
+
+								<select class="form-control" ng-model="productLine"
+									ng-options="productLine as productLine.number for productLine in productLinesList"
+									>
+									<option value="">select</option>
+								</select>
+							</div>
+							<div class="col-sm-1">
+								<button class="btn btn-primary" ng-disabled="!productLine" ng-click="addProductLine(productLine)">Add</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="ibox-content">
+					<div class="table-responsive">
+						<table datatable="ng" dt-options="dtOptions"
+							class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<!-- <th>Select</th> -->
+									<th>S.No</th>
+									<th>Model No</th>
+									<th>Color</th>
+									<th>Model</th>
+									<th>Parent ProductLine</th>
+									<th>Segment</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="productline in productLines">
+									<td>{{$index+1}}</td>
+									<td>{{productline.number}}</td>
+									<td><span ng-repeat="color in productline.colors"> {{color+","}}</span></td>
+									<td>{{productline.model.name}}</td>
+									<td>{{productline.parentProductLine.name}}</td>
+									<td>{{productline.parentProductLine.segment.name}}</td>
+									
+									<td>
+										<button class="btn btn-danger"
+											ng-click="deleteProductLine($index)" data-toggle="tooltip"
+											tooltip-placement="bottom" tooltip="Delete" title="Delete">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>
+									</td>
+
+
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-disabled="!employee||!employee.locations"
+									ng-click="updatePerson(employee)">Save</button>
+								<button class="btn btn-danger"
+									ng-click="gotoSalesRepAssignedVehicles()"
+									ui-sref="home.tdv.SalesRepAssignedVehicleList">Cancel</button>
+							</div>
+						</div>
+				</div>
+						
+
+						
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <script type="text/javascript">
+    var config = {
+      '.chosen-select'           : {},
+      '.chosen-select-deselect'  : {allow_single_deselect:true},
+      '.chosen-select-no-single' : {disable_search_threshold:10},
+      '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+      '.chosen-select-width'     : {width:"95%"}
+    }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
+  </script> -->

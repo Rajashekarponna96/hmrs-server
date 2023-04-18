@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.2.final using JasperReports Library version 6.2.2  -->
+<!-- 2016-07-12T15:15:57 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="dac3772a-a52a-4360-8f5f-452136c8ba9d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="3"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="address" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<field name="fisrtName" class="java.lang.String"/>
+	<field name="productLine" class="com.srmt.model.sales.tdv.ProductLine"/>
+	<field name="vehicleQuantity" class="java.lang.Integer"/>
+	<field name="pricePerVehicle" class="com.arbiva.lang.Money"/>
+	<field name="trAmount" class="com.arbiva.lang.Money"/>
+	<field name="taxAmount" class="com.arbiva.lang.Money"/>
+	<field name="otherCharges" class="com.arbiva.lang.Money"/>
+	<field name="vehicleInsurance" class="com.arbiva.lang.Money"/>
+	<field name="address" class="com.srmt.model.hrms.Address"/>
+	<field name="date" class="java.time.LocalDate"/>
+	<variable name="productName" class="java.lang.String">
+		<variableExpression><![CDATA[$F{productLine}.getNumber()]]></variableExpression>
+	</variable>
+	<variable name="productUnitPrice" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{pricePerVehicle}.getAmount()]]></variableExpression>
+	</variable>
+	<variable name="vehicleTotalPrice" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{productUnitPrice}*$F{vehicleQuantity}]]></variableExpression>
+	</variable>
+	<variable name="insuranceAmount" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{vehicleInsurance}.getAmount()]]></variableExpression>
+	</variable>
+	<variable name="trAmount" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{trAmount}.getAmount()]]></variableExpression>
+	</variable>
+	<variable name="taxAmount" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{taxAmount}.getAmount()]]></variableExpression>
+	</variable>
+	<variable name="otherChargesAmount" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{otherCharges}.getAmount()]]></variableExpression>
+	</variable>
+	<variable name="grandTotal" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{vehicleTotalPrice}+$V{insuranceAmount}+$V{trAmount}+$V{taxAmount}+$V{otherChargesAmount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="160" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="453" y="5" width="100" height="25" forecolor="#FCFEFF" backcolor="#063D77" uuid="ff207400-67d1-4feb-90f2-89726156e368"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TATA MOTORS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="5" width="287" height="24" forecolor="#063D77" uuid="5d5c8c8e-4eb4-439e-979d-a287d2f60be9"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ SRI RAMADAS MOTOR TRANSPORT LTD]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="31" width="555" height="1" forecolor="#063D77" uuid="ea32312a-e232-4ff2-af45-1a23400f9d24">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()==1)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.25"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="89" y="35" width="170" height="15" forecolor="#063D77" uuid="5f9e4510-d206-43c1-80b8-23746d655354">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Commercial Vehicle Dealer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="3" width="80" height="26" forecolor="#063D77" uuid="a527055b-0f69-40e0-9441-fd00109d5945">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SRMT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="46" width="555" height="39" uuid="4b4a76c8-84d4-41ba-8a96-b8f0969a2008"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[QUOTATION CUM PROFORMA INVOICE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="90" width="555" height="1" uuid="66f0da70-eabb-40fc-b13d-f71b358fa186"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="101" width="168" height="15" uuid="03209d43-43a8-4011-89a0-348b14ebdd85"/>
+				<text><![CDATA[To]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="4" y="120" width="168" height="14" uuid="38876223-3ac5-44ca-9b18-3e2bcaa87e42"/>
+				<textFieldExpression><![CDATA[$F{fisrtName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="383" y="97" width="39" height="15" uuid="bf1aad7e-7313-4a13-b9ff-858d85883c4d"/>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="428" y="98" width="124" height="14" uuid="4e9633b2-2092-4a23-872e-6e6ca3d50fde"/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="138" width="235" height="22" uuid="21a7a0ea-e15a-416e-bad8-a73bdc39fa37"/>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28">
+			<staticText>
+				<reportElement x="3" y="7" width="100" height="20" uuid="08bc8bef-d5a1-4beb-a19e-9c870db92521"/>
+				<text><![CDATA[Particulars]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="7" width="100" height="20" uuid="475b6fb0-a37e-42af-8922-03b81624f5d4"/>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="7" width="100" height="20" uuid="b80efc96-74b6-4cf4-8457-72c5ddadad56"/>
+				<text><![CDATA[Unit Price Rs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="7" width="100" height="20" uuid="290c0509-e5c5-4ba2-ada4-dd5c7b4b11b4"/>
+				<text><![CDATA[Amount Rs]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="27" width="555" height="1" uuid="7c5b4dc8-c03f-4f65-a271-6ef265979778"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="90">
+			<textField>
+				<reportElement x="170" y="0" width="100" height="17" uuid="4bf3e392-c800-4a4c-bec6-a57b4b37f847"/>
+				<textFieldExpression><![CDATA[$F{vehicleQuantity}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="38" width="147" height="14" uuid="2ff41f56-0439-409f-8755-2bc161e02cf0"/>
+				<text><![CDATA[TR (Approx)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="21" width="147" height="14" uuid="ba6db5a6-ba31-4669-a594-6067279027c8"/>
+				<text><![CDATA[INSURANCE(Approx)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="5" y="2" width="148" height="16" uuid="80d6826d-4392-492e-91d4-c7ee8d4064cc"/>
+				<textFieldExpression><![CDATA[$V{productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="0" width="100" height="17" uuid="2976f2ff-8a11-48a9-9f8d-2a9b5b38cd20"/>
+				<textFieldExpression><![CDATA[$V{productUnitPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="104" height="14" uuid="137be6d3-93b3-4884-8863-f38fedee2c3d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{vehicleTotalPrice}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="57" width="147" height="14" uuid="a3a0475b-2f05-48d7-ae94-2cd6d8d8d212"/>
+				<text><![CDATA[Tax(Approx)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="76" width="147" height="14" uuid="14a10c60-f366-45b6-b378-afe186229881"/>
+				<text><![CDATA[Other Charges(Approx)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="451" y="21" width="104" height="14" uuid="41bccc55-85e0-4901-919f-af24cb2b83e0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{insuranceAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="38" width="104" height="14" uuid="0552740a-eb92-4ea4-bee2-37e852c8dab0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{trAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="57" width="104" height="14" uuid="f0f03c3a-80c3-4143-9b73-ce473d8ea06a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{taxAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="76" width="104" height="14" uuid="df7f251e-edbf-4e5b-a120-13181647c1f9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{otherChargesAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="413">
+			<staticText>
+				<reportElement x="399" y="363" width="153" height="18" uuid="95944e82-aef7-4c95-91c3-4988ad04efa6"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Authorised Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="336" width="112" height="18" uuid="444e1d6f-1895-4f74-824d-db9330153eba"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[For S.R.M.T Limited]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="8" width="49" height="18" uuid="2ad74e54-0fda-40db-ac1c-46f9054684db"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="3" width="555" height="1" uuid="d570a761-4a62-4643-87cc-21d7266d7188"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="45" width="100" height="15" uuid="29408e7c-bd93-4ba6-895c-58fe9e5b0d36"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Terms and Conditions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="368" width="153" height="18" uuid="01e1bb09-0f50-446e-b8ed-0d82e5a87737"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer's Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="395" width="140" height="18" forecolor="#063D77" uuid="c433c32e-c655-4de1-ae6b-a98863067779"/>
+				<textElement verticalAlignment="Bottom" markup="rtf">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIN :37970161861]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="395" width="195" height="18" forecolor="#063D77" uuid="c9bbb403-53d4-4663-bf7c-f3c64726379d"/>
+				<textElement verticalAlignment="Bottom" markup="rtf">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CIN: U60231AP1944PLC000223]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="75" width="555" height="15" uuid="4f3d71d7-5c4e-4167-8d53-b2eec826e2f0"/>
+				<text><![CDATA[1)Above prices are  current ex-shpw rooms prices.Buyers will  have to pay prices prevailing at the time of delivery.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="93" width="555" height="15" uuid="3a8e92bf-bd1b-4b72-95f8-d870e918b307"/>
+				<text><![CDATA[2)optionals,accessories,insurance,registration,taxes,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="424" y="7" width="129" height="19" uuid="79c7c400-b859-4679-8a2a-da5415f40eb3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{grandTotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="115">
+			<line>
+				<reportElement x="0" y="5" width="555" height="1" uuid="4a1d22de-acde-4805-a314-04b80b8e652b"/>
+			</line>
+			<staticText>
+				<reportElement x="4" y="9" width="270" height="47" forecolor="#063D77" uuid="80cff9ec-6837-4e9d-a191-eeacee7ad60c"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Regd. Office:P.B.No.42, Subhash Road,KAKINADA-533001
+Tel No 2373211-14,Fax No 08842362977,Email ho@srmt.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="282" y="9" width="270" height="47" forecolor="#063D77" uuid="24c581f5-11b8-491c-b649-6895bc09bd09"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Branch Auto Nagar,Visakapatnam-530012
+Tel No 2373211-14,Fax No 08842362977,Email ho@srmt.com]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

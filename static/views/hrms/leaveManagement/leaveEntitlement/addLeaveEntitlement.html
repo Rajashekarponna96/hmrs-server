@@ -1,0 +1,155 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Leave Management</h2>
+		<ol class="breadcrumb">
+			<li><a>Leave Management</a></li>
+			<li><a>Leave Entitlements</a></li>
+			<li class="active"><strong>Add Leave Entitlement</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row"
+		ng-init="getEmployeeList();getAllLeavePeriods();getAllLeaveTypes();getAllLocations();">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Leave Entitlement</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Employee </label>
+
+							<div class="col-sm-4">
+								<input type="text" ng-model="leaveEntitlement.employee"
+									uib-typeahead="employee as employee.fullName for employee in employeeList| filter:$viewValue "
+									class="form-control"
+									ng-disabled="leaveEntitlement.allEmployees||leaveEntitlement.location"
+									capitalize-first> <span style="color: red"
+									ng-show="leaveEntitlement.employee.id==undefined && leaveEntitlement.employee!=undefined && leaveEntitlement.employee.length>=3">select
+									employee from suggestions shown in above field</span>
+
+							</div>
+							<div class="col-xs-1">
+								<input type="checkbox" ng-model="leaveEntitlement.allEmployees"
+									ng-disabled="leaveEntitlement.employee.id!=undefined||leaveEntitlement.location">
+							</div>
+							<label for="employee" class="control-label pull-left col-sm-2">
+								All employees</label>
+
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Location </label>
+
+							<div class="col-sm-5">
+								<select class="form-control"
+									ng-model="leaveEntitlement.location"
+									ng-options="location as location.city for location in locationList"
+									ng-change="getDepartments(leaveEntitlement.location.id);"
+									ng-disabled="leaveEntitlement.employee.id!=undefined||leaveEntitlement.allEmployees">
+
+									<option value="">select</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Department </label>
+							<div class="col-sm-5">
+								<select class="form-control"
+									ng-model="leaveEntitlement.department"
+									ng-options="department as department.code for department in departmentList"
+									ng-disabled="leaveEntitlement.employee.id!=undefined||leaveEntitlement.allEmployees">
+
+									<option value="">select</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Calendar Year <span
+								style="color: red"
+								ng-show="leaveEntitlement.leavePeriod==undefined ||leaveEntitlement.leavePeriod==''">*</span></label>
+							<div class="col-sm-5">
+								<select class="form-control"
+									ng-model="leaveEntitlement.leavePeriod"
+									ng-options="leavePeriod as leavePeriod.startDate+' to '+leavePeriod.endDate for leavePeriod in leavePeriodList">
+
+									<option value="">select</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Leave Type <span
+								style="color: red"
+								ng-show="leaveEntitlement.leaveType==undefined ||leaveEntitlement.leaveType==''">*</span>
+							</label>
+							<div class="col-sm-5">
+								<select class="form-control"
+									ng-model="leaveEntitlement.leaveType"
+									ng-options="leaveType as leaveType.name for leaveType in leaveTypeList">
+
+									<option value="">select</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Entitlement <span
+								style="color: red"
+								ng-show="leaveEntitlement.days==undefined ||leaveEntitlement.days==''">*</span>
+							</label>
+							<div class="col-sm-5">
+								<input type="text" ng-model="leaveEntitlement.days"
+									class="form-control" allow-only-numbers>
+							</div>
+						</div>
+
+
+
+						<div class="form-group">
+							<label for="employee" class="control-label col-sm-2">Allow
+								Carry Forward</label>
+							<div class="col-sm-2">
+								<input type="checkbox"
+									ng-model="leaveEntitlement.allowCarryForward">
+							</div>
+						</div>
+
+						<div class="form-group"
+							ng-show="leaveEntitlement.allowCarryForward"
+							ng-hide="!leaveEntitlement.allowCarryForward">
+
+							<label class="control-label col-sm-2">CarryForward Days</label>
+							<div class="col-sm-5">
+								<input type="text" class="form-control"
+									ng-model="leaveEntitlement.carryForwardDays" allow-only-numbers>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2">Comments</label>
+
+							<div class="col-sm-5">
+								<textarea class="form-control"
+									ng-model="leaveEntitlement.comments" capitalize-first></textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-disabled="!leaveEntitlement.days||!leaveEntitlement.leaveType||!leaveEntitlement.leavePeriod"
+									ng-click="addLeaveEntitlement(leaveEntitlement)" my-click-once>Save</button>
+								<button class="btn btn-danger"
+									ng-click="gotoLeaveEntitlementList()">Cancel</button>
+								<!-- <button class="btn btn-default"
+									ng-click="reset(leaveEntitlement);">Reset</button> -->
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

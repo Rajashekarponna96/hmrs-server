@@ -1,0 +1,80 @@
+<section class="content-header">
+	<h1>Terminate Employee</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> PIM</a></li>
+		<!-- <li><a href="#">Organization</a></li> -->
+		<li class="active">Terminate</li>
+	</ol>
+</section>
+
+<section class="content" ng-init="findOrganizationByFirst();">
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">Terminating Employee</h3>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row" ng-repeat="model in myModel">
+
+						<div class="box-body">
+							<div class="form-group">
+
+
+								<div class="control-label col-xs-2">
+									<label>{{model.label}}</label>
+								</div>
+
+								<div class="col-xs-3">
+									<span ng-if="model.type=='select'"> <select
+										class="form-control" ng-model="model.data"
+										ng-options="option.name for option in model.options"><option
+												value="">select</option></select>
+									</span>
+									
+									<div ng-if="model.type=='date'">
+										<!-- <div class="col-xs-3">
+											<div class="datePicker">
+												<p class="input-group">
+													<input type="text" class="form-control"
+														uib-datepicker-popup="dd-MM-yyyy"
+														ui-date-format="mm/dd/yyyy" ng-model="model.data"
+														is-open="popup1.opened" close-text="Close" />
+													<span class="input-group-btn">
+														<button type="button" class="btn btn-default" ng-click="open1()">
+															<i class="glyphicon glyphicon-calendar"></i>
+														</button>
+													</span>
+												</p>
+											</div>
+										</div> -->
+										<input type="text" ng-model="model.value"/>
+									</div>
+									
+									<span ng-if="model.type=='textarea'"> <textarea
+											ng-model="model.value"></textarea>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer">
+						<div class="col-xs-offset-2 col-xs-10">
+							<button ng-show="true" class="btn btn-success"
+								ng-click="addTerminateEmployee(myModel)">Save</button>
+
+							<button ng-show="organization.id!=undefined"
+								class="btn btn-success" ng-click="updateReporting()">Update</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

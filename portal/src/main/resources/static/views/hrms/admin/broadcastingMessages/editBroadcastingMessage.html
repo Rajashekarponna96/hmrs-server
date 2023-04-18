@@ -1,0 +1,160 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>BroadCasting Messages</h2>
+		<ol class="breadcrumb">
+			<li><a >Admin</a></li>
+			<li><a >BroadCasting Messages</a></li>
+			<li class="active">Update BroadCasting Message</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Country</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label for="inputEmail" name="code"
+								class="control-label col-sm-2">Message Type <span
+								style="color: red"
+								ng-show="broadCasteMessageDetail.messageType==undefined ||broadCasteMessageDetail.messageType==''">*</span>
+							</label>
+
+
+							<div class="col-sm-8">
+
+
+								<select class="form-control"
+									ng-model="broadCasteMessageDetail.messageType">
+									<!-- ng-options="broadCasteMessage.messageType as broadCasteMessage.messageType for broadCasteMessage in broadCasteMessageList"> -->
+									<option value=""></option>
+									<option value="Event">Event</option>
+									<option value="Notification">Notification</option>
+									<option value="Function">Function</option>
+								</select>
+
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword" class="control-label col-sm-2">Name
+								 <span style="color: red"
+								ng-show="broadCasteMessageDetail.name==undefined || broadCasteMessageDetail.name==''">*</span>
+							</label>
+
+							<div class="col-sm-8">
+
+								<input type="text" name="name" class="form-control"
+									ng-model="broadCasteMessageDetail.name" capitalize-first
+									only-alpha-numeric maxlength="35">
+
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="inputPassword" class="control-label col-sm-2">visibleFrom
+								 <span style="color: red"
+								ng-show="broadCasteMessageDetail.validFrom==undefined || broadCasteMessageDetail.validFrom==''">*</span>
+							</label>
+
+							<div class="col-sm-3">
+								<!-- <div class="datePicker">
+									<p class="input-group">
+										<input type="text" class="form-control"
+											uib-datepicker-popup="dd-MM-yyyy" datepicker-options="{startingDay:1}"
+											ng-model="broadCasteMessageDetail.validFrom"
+											is-open="popup1.opened" ng-required="true" close-text="Close" />
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												ng-click="open1()">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div> -->
+								<div class="input-group date">
+										<div class="input-group-addon trigger1">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input id="datepicker" ng-model="broadCasteMessageDetail.validFrom" class="form-control pull-right"
+											type="text" ng-readonly="true">
+									</div>
+							</div>
+							<label for="inputPassword" class="control-label col-sm-2">To
+								 <span style="color: red"
+								ng-show="broadCasteMessageDetail.toValid==undefined || broadCasteMessageDetail.toValid==''">*</span>
+							</label>
+
+							<div class="col-sm-3">
+								<!-- <div class="datePicker">
+									<p class="input-group">
+										<input type="text" class="form-control"
+											uib-datepicker-popup="dd-MM-yyyy" ui-date-format="mm/dd/yyyy"
+											ng-model="broadCasteMessageDetail.toValid" datepicker-options="{startingDay:1}"
+											is-open="popup2.opened" close-text="Close" /> <span
+											class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												ng-click="open2()">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div> -->
+								<div class="input-group date">
+										<div class="input-group-addon trigger2">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input id="datepicker1" ng-model="broadCasteMessageDetail.toValid" class="form-control pull-right"
+											type="text" ng-readonly="true">
+									</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-2"
+								placeholder="Description"> Message <span
+								style="color: red"
+								ng-show="broadCasteMessageDetail.message==undefined || broadCasteMessage.message==''">*</span></label>
+
+							<div class="col-sm-8">
+
+								<textarea ng-model="broadCasteMessageDetail.message" class="form-control" maxlength="1000" capitalize-first></textarea>
+
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+
+								<button class="btn btn-primary"
+										ng-disabled="!broadCasteMessageDetail.messageType ||!broadCasteMessageDetail.name||!broadCasteMessageDetail.validFrom||!broadCasteMessageDetail.toValid||!broadCasteMessageDetail.message"
+										ng-click="updateBroadCasteMessage(broadCasteMessageDetail)">Update</button>
+									<button class="btn btn-danger"
+										ng-click="gotoBraodcastingMessagesList()">Cancel</button>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+	format : "dd-mm-yyyy",
+	startDate: "new Date()",
+	todayBtn : "linked",
+	autoclose : true,
+	todayHighlight : true,
+	forceParse: false
+});
+$(".trigger1").click(function(){ $("#datepicker").datepicker("show"); });
+$(".trigger2").click(function(){ $("#datepicker1").datepicker("show"); });
+</script>

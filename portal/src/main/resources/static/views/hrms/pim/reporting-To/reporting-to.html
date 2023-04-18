@@ -1,0 +1,103 @@
+<div class="mail-box-header">
+	<div class="col-lg-10">
+		<h2>Reporting-To</h2>
+		<ol class="breadcrumb">
+			<li><a > OnBoarding</a></li>
+			<li class="active">Reporting-To</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="mail-box" ng-init="getEmployeeList();getSuperior()">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Reporing-To</h5>
+
+					</div>
+					<div class="ibox-content">
+						<form method="get" class="form-horizontal">
+
+							<form role="form">
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+
+
+											<div class="control-label col-sm-3">
+												<label for="inputEmail"> Name <span
+													style="color: red"
+													ng-show="employee.superior==undefined ||employee.superior==''">*</span>
+												</label>
+
+											</div>
+											<div class="col-sm-9">
+												<input type="text" ng-model="employee.superior"
+													uib-typeahead="employee as employee.fullName for employee in employeeList | filter:$viewValue "
+													class="form-control" capitalize-first> <span style="color: red"
+													ng-show="employee.superior.id==undefined && employee.superior.length>=3" >select
+													employee from suggestions shown in above field</span>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+
+										<div class="form-group">
+
+											
+														<div class="control-label col-sm-3">
+															<label for="inputEmail">Comments</label>
+
+														</div>
+														<div class="col-sm-8">
+
+															<textarea class="form-control"
+																ng-model="employee.reportingCommnets" capitalize-first></textarea>
+
+
+														</div>
+
+													</div>
+
+												</div>
+												<!-- /.box-body -->
+											</div>
+
+
+										
+
+								<div class="row">
+									<div class="box-body">
+										<div class="box-footer">
+
+											<div class="col-sm-offset-2 col-sm-10">
+
+											<button class="btn btn-primary"
+									ng-click="addReportingTo(employee)"
+									ng-disabled=employee.superior==undefined>Save</button>
+
+
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</form>
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+</div>

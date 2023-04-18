@@ -1,0 +1,113 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Users</h2>
+		<ol class="breadcrumb">
+			<li><a >User
+					Management</a></li>
+			<li><a >Users</a></li>
+			<li class="active"><strong>Add User</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="init()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add User</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" name="myForm" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Employee <span
+								style="color: red"
+								ng-show="user.employee.id==undefined ||user.employee==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<input type="text" ng-model="user.employee"
+									uib-typeahead="employee as employee.fullName for employee in activeAndNotNullEmployees| filter:$viewValue "
+									class="form-control" capitalize-first><span style="color: red"
+									ng-show="user.employee.id==undefined && user.employee!=undefined && user.employee.length>=3">select
+									employee from suggestions shown in above field</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label"> Role <span
+								style="color: red"
+								ng-show="user.role==undefined ||user.role==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<select class="form-control" ng-model="user.role"
+									ng-options="role as role.name for role in roleList">
+
+									<option value="">select</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">User Name <span
+								style="color: red"
+								ng-show="user.userName==undefined || user.userName==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<input type="text" class="form-control" ng-model="user.userName"
+									maxlength="35">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Password <span
+								style="color: red"
+								ng-show="user.password==undefined || user.password==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="pw1"
+									name="password" ng-model="user.password" required
+									maxlength="35" />
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Confirm Password <span
+								style="color: red" ng-show="myForm.password_c.$error.required">*</span>
+							</label>
+
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="pw2"
+									name="password_c" ng-model="user.confirmPassword"
+									valid-password-c required /> <span style="color: red"
+									ng-show="!myForm.password_c.$error.required && myForm.password_c.$error.noMatch && myForm.password.$dirty">Passwords
+									do not match.</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2 col-md-offset-2">Active
+								<input type="radio" name="radio" ng-value="true"
+								ng-model="user.isActive" />
+							<div class="col-sm-2"></div>
+							</label> <label class="control-label col-sm-2">Inactive <input
+								type="radio" name="radio" ng-value="false"
+								ng-model="user.isActive">
+
+							</label>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary" ng-click="addUser()"
+									ng-disabled="user.employee.id==undefined||!user.role||!user.userName||!user.password||!myForm.password_c.$dirty||!myForm.password_c.$error.required && myForm.password_c.$error.noMatch && myForm.password.$dirty">Save</button>
+								<button class="btn btn-danger" ng-click="gotoUserList()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,147 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Model</h2>
+		<ol class="breadcrumb">
+
+			<li><a>sales</a></li>
+			<li><a>Product Line</a></li>
+			<li class="active">Add Model</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight"
+	ng-init="getAllSegments();getAllModels()">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Model</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div ng-show="index==false" class="form-group">
+							<label class="col-sm-4 control-label">Segment <span
+								style="color: red" ng-show="segment==undefined ||segment==''">*</span></label>
+
+							<div class="col-sm-4">
+								<select class="form-control" ng-model="segment"
+									ng-options="Segment as Segment.name for Segment in segmentsList"
+									ng-change=getAllParentProductLinesBySegmentId(segment.id);>
+									<option value="">select</option>
+								</select>
+
+							</div></div>
+							<div ng-show="index==true" class="form-group">
+								<label class="col-sm-4 control-label">Segment </label>
+
+								<div class="col-sm-4">
+									<input class="form-control"
+										ng-model="model.parentProductLine.segment.name"
+										disabled="true">
+								</div>
+							</div>
+						<div  ng-show="index==false"  class="form-group">
+							<label class="col-sm-4 control-label">Parent Product Line<span
+								style="color: red" ng-show="model.parentProductLine==undefined || model.parentProductLine==''">*</span></label>
+
+							<div class="col-sm-4">
+								<select class="form-control"
+									ng-model="model.parentProductLine"
+									ng-options="parentProductLine as parentProductLine.name for parentProductLine in parentProductLines">
+									<option value="">select</option>
+								</select>
+
+							</div>
+
+						</div>
+						
+						<div  ng-show="index==true"  class="form-group">
+							<label class="col-sm-4 control-label">Parent Product Line</label>
+
+							<div class="col-sm-4">
+									<input class="form-control"
+										ng-model="model.parentProductLine.name"
+										disabled="true">
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">Code <span
+								style="color: red"
+								ng-show="model.code==undefined || model.code==''">*</span></label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="model.code" capitalize only-alpha-numeric
+									maxlength="5">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">Name <span
+								style="color: red"
+								ng-show="model.name==undefined || model.name==''">*</span></label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="model.name" capitalize-first
+									only-alpha-numeric maxlength="35">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+
+								<button ng-show="index==false" class="btn btn-primary"
+									ng-disabled="!model.code||!model.name||!model.parentProductLine||!segment"
+									ng-click="addModel(model)">Save</button>
+								<button ng-show="index==true" class="btn btn-primary"
+									ng-disabled="!model.code||!model.name||!model.parentProductLine||!segment"
+									ng-click="updateModel(model)">Update</button>
+								<button class="btn btn-danger" ui-sref="home.tdv.productLine.productLineDetail">Cancel</button>
+							</div>
+						</div>
+					</form>
+					<br />
+					<div class="table-responsive">
+						<table datatable="ng" dt-options="dtOptions"
+							class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>S.No</th>
+									<th>Segment</th>
+									<th>Parent Product Line</th>
+									<th>Code</th>
+									<th>Name</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="model in modelList">
+
+									<td>{{($index+1)}}</td>
+									<td>{{model.parentProductLine.segment.name}}</td>
+									<td>{{model.parentProductLine.name}}</td>
+									<td>{{model.code}}</td>
+									<td>{{model.name}}</td>
+									<td>
+										<button class="btn btn-primary"
+											ng-click="editModel(model)"
+											data-toggle="tooltip" tooltip-placement="bottom"
+											tooltip="Update" title="Update">
+											<span class="glyphicon glyphicon-edit"></span>
+										</button>&nbsp;
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row" ng-show="parentProductLineList.length<=0">
+						<h3 class="active">No Records Found</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 

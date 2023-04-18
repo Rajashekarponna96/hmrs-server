@@ -1,0 +1,55 @@
+<ion-view view-title="Dashboard"> <ion-nav-bar class="bar-positive"> <ion-nav-buttons
+	side="left"> 
+<button class="button button-icon button-clear ion-navicon"
+	menu-toggle="left"></button>
+</ion-nav-buttons> </ion-nav-bar> <ion-content class="gradient">
+<div class="row nopadding">
+	<div class="col" align="center">
+		<div class="col nopadding" align="center">
+			<a ng-click="gotoClientList();"><h1>
+					<img src="img/clients.png">
+				</h1></a>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-50" align="center">
+		<div class="col nopadding" align="center">
+			<a ui-sref="app.inventoryList">
+				<h1>
+					<img src="img/inventory.png">
+				</h1>
+			</a>
+		</div>
+	</div>
+	<div class="col col-50" align="center">
+		<div class="col nopadding" align="center">
+			<a ui-sref="app.deals"><h1>
+					<img src="img/Deals.png">
+				</h1></a>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-50" align="center">
+		<div class="col nopadding" align="center">
+			<a ui-sref="app.appointments">
+				<h1>
+					<img src="img/Appointments.png">
+				</h1>
+			</a>
+		</div>
+	</div>
+
+	<div class="col col-50" align="center">
+		<div class="col nopadding" align="center">
+			<a ui-sref="app.settings">
+				<h1>
+					<img src="img/Settings.png">
+				</h1>
+			</a>
+		</div>
+	</div>
+</div>
+</ion-content>
+</ion-view>

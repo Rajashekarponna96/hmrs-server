@@ -1,0 +1,137 @@
+
+<section class="content-header">
+	<h1>User Management</h1>
+	<ol class="breadcrumb">
+		<li><a > User Management</a></li>
+		<li><a >Users</a></li>
+		<li class="active">View User</li>
+	</ol>
+</section>
+
+
+<section class="content">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">User Details</h3>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+						<div class="box-body">
+
+
+
+							<div class="col col-md-4">
+								<b>Employee </b>
+							</div>
+							<div class="col col-md-4">{{userDetail.employee.employeeId}}</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+
+
+							<div class="col col-md-4">
+								<b>Employee </b>
+							</div>
+							<div class="col col-md-4">{{userDetail.employee.fullName}}</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+
+
+							<div class="col col-md-4">
+								<b>Division </b>
+							</div>
+							<div class="col col-md-4">{{userDetail.employee.department.division.name}}</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+
+
+							<div class="col col-md-4">
+								<b>Department </b>
+							</div>
+							<div class="col col-md-4">{{userDetail.employee.department.name}}</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+
+							<div class="col col-md-4">
+								<b>Role </b>
+							</div>
+							<div class="col col-md-4">{{userDetail.role.name}}</div>
+
+
+
+						</div>
+					</div>
+
+
+					<div class="row">
+						<div class="box-body">
+
+
+							<div class="col col-md-4">
+								<b>user name </b>
+							</div>
+							<div class="col col-md-4">{{userDetail.userName}}</div>
+
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+
+							<div class="col col-md-4">
+								<b>Active </b>
+							</div>
+							<div class="col col-md-4">{{userDetail.active}}</div>
+
+
+
+						</div>
+					</div>
+
+					<div class="box-footer">
+						<div class="col-xs-offset-2 col-xs-10">
+
+							<button class="btn btn-success" ng-click="gotoUserList()">Back</button>
+
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>

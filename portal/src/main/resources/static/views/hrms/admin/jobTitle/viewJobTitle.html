@@ -1,0 +1,81 @@
+
+<section class="content-header">
+	<h1>Job Titles</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+		<li><a href="#">Job Titles</a></li>
+		<li class="active">View Job Title</li>
+	</ol>
+</section>
+
+
+<section class="content">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">Job Title Details</h3>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+						<div class="box-body">
+							
+							
+
+							<div class="col col-md-4"><b>Job Title Code</b> </div><div class="col col-md-4">{{getJobTitle.code}}</div>
+
+
+					</div>
+				   </div>
+					
+					
+					
+					<div class="row">
+						<div class="box-body">
+							
+							
+								<div class="col col-md-4"><b>Job Title Name</b> </div><div class="col col-md-4">{{getJobTitle.title}}</div>
+
+
+
+					</div>
+				   </div>
+				   
+				   
+				   
+				   <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Description</b></div><div class="col col-md-4"> {{getJobTitle.description}}</div>
+
+
+
+					</div>
+				   </div>
+					<div class="box-footer">
+						<div class="col-xs-offset-2 col-xs-10">
+						
+							<button class="btn btn-primary" ng-click="goTOjobTitleList()">Back</button>
+						
+					</div>
+					</div>
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+

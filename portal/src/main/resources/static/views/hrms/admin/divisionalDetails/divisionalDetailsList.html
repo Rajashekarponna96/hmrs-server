@@ -1,0 +1,138 @@
+
+
+<section class="content-header">
+	<h1>Divisions</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+		<li><a href="#">Divisions</a></li>
+		<li class="active">Division List</li>
+	</ol>
+</section>
+
+<section class="content" ng-init="getAllDivisionalDetails()">
+
+	<div class="row" ng-init="getCount()">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<div class="row">
+						<div class="col col-md-6" align="left">
+							<h3 class="box-title">Division List</h3>
+						</div>
+						<div class="col col-md-6" align="right">
+
+							<h4>
+								<button class="btn btn-primary"
+									ng-click="gotoAddDivisionalDetial()">Add Division</button>
+							</h4>
+						</div>
+					</div>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+
+						<div class="box-body">
+							<table class="table table-hover table-striped">
+								<thead>
+									<tr>
+										<th>S.No</th>
+										<th>Division Code</th>
+										<th>Division Title</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="divisionalDetail in divisionDetailsList">
+
+										<td>{{(page*size)+($index+1)}}</td>
+
+										<td>{{divisionalDetail.code}}</td>
+										<td>{{divisionalDetail.name}}</td>
+										<td><button class="btn btn-primary"
+												ng-click="gotoViewDivisionalDetails(divisionalDetail)"
+												data-toggle="tooltip" tooltip-placement="top" tooltip="View"
+												title="View">
+												<span title="view" class="glyphicon glyphicon-eye-open"></span>
+											</button>&nbsp;
+											<button class="btn btn-primary"
+												ng-click="gotoEditDivisionalDetail(divisionalDetail)"
+												data-toggle="tooltip" tooltip-placement="bottom"
+												tooltip="Update" title="Update">
+												<span class="glyphicon glyphicon-edit"></span>
+											</button>&nbsp;
+											<button class="btn btn-danger"
+												ng-click="deleteOpen(divisionalDetail.id)"
+												data-toggle="tooltip" tooltip-placement="bottom"
+												tooltip="Delete" title="Delete">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button></td>
+
+
+									</tr>
+
+								</tbody>
+							</table>
+							<div class="box-footer">
+							<div ng-hide="count > 0">
+								
+									<h3>No Records Found!</h3>
+								
+							</div>
+
+							<div class="row" ng-show="count > 0">
+								<br /> 
+
+
+								<div class="col-xs-3 col-xs-offset-1">
+									<p>Number of Records:{{count}}</p>
+								</div>
+
+
+								<div class="col-xs-3">
+									Records per Page <select ng-model="PerPage"
+										ng-change="recordsPerPage()">
+										<option ng-selected="true">10</option>
+										<option>25</option>
+										<option>50</option>
+									</select>
+								</div>
+								<div class="col-xs-3">
+									<ul class="pagination">
+										<li><a ng-click="firstPage()">First</a></li>
+										<li><a ng-click="prevPage()">Previous</a></li>
+										<li><a ng-click="nextPage()">Next</a></li>
+										<li><a ng-click="lastPage()">Last</a></li>
+
+									</ul>
+								</div>
+
+
+
+							</div>
+
+						</div>
+						</div>
+						<!-- /.box-body -->
+					</div>
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+
+
+
+
+

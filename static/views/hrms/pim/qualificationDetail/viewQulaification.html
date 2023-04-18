@@ -1,0 +1,107 @@
+<section class="content-header">
+	<h1>PIM</h1>
+	<ol class="breadcrumb">
+		<li><a >PIM</a></li>
+		<li><a >Qualification Details</a></li>
+		<li class="active">View Qualification Details</li>
+	</ol>
+</section>
+<section class="content">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">Qualification Details</h3>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+						<div class="box-body">
+
+							<div class="col col-md-4"><b>Level</b> </div><div class="col col-md-4">{{qualificationDetails.educationLevel.name}}</div>
+
+
+					</div>
+				   </div>
+					
+					
+					
+					<div class="row">
+						<div class="box-body">
+							
+							
+								<div class="col col-md-4"><b>Institute/College</b> </div><div class="col col-md-4">{{qualificationDetails.collegeName}}</div>
+
+
+
+					</div>
+				   </div>
+				   
+				   
+				   
+				   <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Year Of Passing</b></div><div class="col col-md-4"> {{qualificationDetails.collegeName}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b> % Marks</b></div><div class="col col-md-4"> {{qualificationDetails.marks}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Specialization</b></div><div class="col col-md-4"> {{qualificationDetails.specialization}}</div>
+
+
+
+					</div>
+				   </div>
+				    <div class="row">
+						<div class="box-body">
+							
+							
+							<div class="col col-md-4"><b>Comments</b></div><div class="col col-md-4"> {{qualificationDetails.commnets}}</div>
+
+
+
+					</div>
+				   </div>
+				    
+					<div class="box-footer">
+						<div class="col-xs-offset-2 col-xs-10">
+						
+							<button class="btn btn-primary" ng-click="gotoQualificationDetail()">Back</button>
+						
+					</div>
+					</div>
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+

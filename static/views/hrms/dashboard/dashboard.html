@@ -1,0 +1,107 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Dashboard</h2>
+		<ol class="breadcrumb">
+			<li><a> Home</a></li>
+
+			<li class="active">Dashboard</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+ 
+<div class="row">
+
+	<div class="col-lg-4">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<span class="label label-primary pull-right"></span>
+				<h5>
+					<i class="fa fa-file-o"></i> My Documents
+				</h5>
+			</div>
+			<div class="ibox-content">
+				<h1 class="no-margins">5</h1>
+				<small></small>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<span class="label label-info pull-right"> Annual</span>
+				<h5>
+					<i class="fa fa-edit"></i> My Leaves
+				</h5>
+			</div>
+			<div class="ibox-content">
+				<h1 class="no-margins">10</h1>
+
+				<!-- <div class="stat-percent font-bold text-info">40% <i class="fa fa-level-up"></i></div> -->
+				<!-- <small>New orders</small> -->
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<span class="label label-warning pull-right">Monthly</span>
+				<h5>
+					<i class="fa fa-table"></i> Attendance
+				</h5>
+			</div>
+			<div class="ibox-content">
+				<h1 class="no-margins">This Month</h1>
+
+				<!-- <div class="stat-percent font-bold text-warning">16% <i class="fa fa-level-up"></i></div>
+                <small>New orders</small> -->
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>
+					<i class="fa fa-envelope-o"></i> Broadcast Messages
+				</h5>
+				<div class="ibox-tools" uib-dropdown>
+					<a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a> 
+				</div>
+			</div>
+
+			<div class="ibox-content">
+				<div class="feed-activity-list">
+
+					<div class="feed-element">
+						<div ng-init="getBroadcastMessagesCurrentday();"
+							style="min-height: 320px !important">
+							<marquee scrollamount="3" direction="up"
+								onMouseOver="this.setAttribute('scrollamount', 0, 0);" OnMouseOut="this.setAttribute('scrollamount', 3, 0);">
+								<hr style="background: lightgray; border: 0; height: 1px" />
+								<div ng-if="broadCastMessageList.length>0">
+								<div ng-repeat="broadcastMessage in broadCastMessageList"
+									class="row">
+									<div class="col-xs-1">
+										<i class="fa fa-envelope-o"></i>
+									</div>
+									<div class="col-xs-10 product-info col-xs-offset-1">
+										<a ng-click="openMessage(broadcastMessage)"
+											class="product-title">{{broadcastMessage.name}} <span
+											class="label label-warning pull-right">{{broadcastMessage.messageType}}</span>
+										</a> <br/><span class="product-description">
+											{{broadcastMessage.message}} </span>
+										<hr style="background: lightgray; border: 0; height: 1px" />
+									</div>
+								</div>
+								</div>
+
+							</marquee>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

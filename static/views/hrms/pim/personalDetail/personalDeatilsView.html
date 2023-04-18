@@ -1,0 +1,55 @@
+
+<div class="wrapper wrapper-content">
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content mailbox-content">
+					<div class="file-manager">
+						<ul class="folder-list m-b-md" style="padding: 0">
+							<li><a ui-sref="home.employee.addPersonDetails"><i
+									class="fa fa-user"></i>Personal Details</a></li>
+
+							<li><a ui-sref="home.employee.addContactDetail1" href="#">
+									<i class="fa fa-map-marker" aria-hidden="true"></i> Contact
+									Details{{personObj.id}}
+							</a></li>
+							<li><a
+								ui-sref="home.employee.dependentDetail({person:person})"> <i
+									class="fa fa-child" aria-hidden="true"></i> Dependents
+							</a></li>
+							<li><a ui-sref="home.employee.jobDetail({person:person})"
+								href="#"><i class="fa fa-tasks" aria-hidden="true"></i>Job
+									Details</a></li>
+							<li><a ui-sref="home.employee.languageDetail" href="#">
+									<i class="fa fa-language" aria-hidden="true"></i>Language
+									Details
+							</a></li>
+							<li><a ui-sref="home.employee.qualificationDeatil" href="#">
+									<i class="fa fa-graduation-cap" aria-hidden="true"></i>
+									Qualifications
+							</a></li>
+							<li><a ui-sref="home.employee.experienceDetail" href="#">
+									<i class="fa fa-clock-o" aria-hidden="true"></i> Experience
+							</a></li>
+							<li><a ui-sref="home.employee.reportingTo" href="#"><i
+									class="fa fa-line-chart" aria-hidden="true"></i> Reporting-To</a></li>
+							<li><a ui-sref="home.employee.AddTerminateEmployment"
+								href="#"><i class="fa fa-user-times" aria-hidden="true"></i>
+									Terminate</a></li>
+						</ul>
+
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-9 animated fadeInRight">
+			<div ui-view></div>
+		</div>
+	</div>
+</div>
+
+
+
+
+

@@ -1,0 +1,48 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Vehicle</h2>
+		<ol class="breadcrumb">
+			<li><a>Sales</a></li>
+			<li><a>Vehicle</a></li>
+			<li class="active"><strong>View Vehicle</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>View Vehicle</h5>
+					<div class="ibox-tools" uib-dropdown>
+						<a href="" ui-sref="home.vehicle.vehiclelist"
+							class="btn btn-success ">Back</a>
+					</div>
+
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-lg-12">
+							<dl class="dl-horizontal">
+								<dt>Vehicle code:</dt>
+								<dd>{{vehicleData.code}}</dd>
+								<dt>Vehicle Name:</dt>
+								<dd>{{vehicleData.name}}</dd>
+								<dt>Vehicle Category:</dt>
+								<dd>{{vehicleData.vehicleCategory.name}}</dd>
+								<dt>Vehicle Colors:</dt>
+								<dd>{{vehicleData.colors}}</dd>
+								<dt>Vehicle Description:</dt>
+								<dd>{{vehicleData.description}}</dd>
+
+							</dl>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

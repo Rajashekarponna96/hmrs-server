@@ -1,0 +1,138 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Showroom</h2>
+		<ol class="breadcrumb">
+			
+			<li><a>sales</a></li>
+			<li><a>Showrooms</a></li>
+			<li class="active">Add Showroom</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="init()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Showroom</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form name="myForm" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Code <span
+								style="color: red"
+								ng-show="showroom.code==undefined || showroom.code==''">*</span></label>
+
+							<div class="col-sm-10">
+								<input type="text" class="form-control" ng-model="showroom.code"
+									maxlength="3" placeholder="Showroom code" capitalize>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Address <span
+								style="color: red"
+								ng-show="showroom.address.street1==undefined || showroom.address.street1==''">*</span></label>
+
+							<div class="col-sm-10">
+								<textarea class="form-control"
+									ng-model="showroom.address.street1" maxlength="1000" capitalize-first>
+								</textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Location <span
+								style="color: red"
+								ng-show="showroom.location==undefined || showroom.location==''">*</span></label>
+
+							<div class="col-sm-4">
+								<select class="form-control" ng-model="showroom.location"
+									ng-options="location as location.city for location in locationList">
+									<option value="">select</option>
+								</select>
+							</div>
+							<label class="col-sm-2 control-label">In-charge Name <span
+								style="color: red"
+								ng-show="showroom.incharge==undefined || showroom.incharge==''">*</span></label>
+
+							<div class="col-sm-4">
+								<input type="text" ng-model="showroom.incharge"
+									uib-typeahead="employee as employee.fullName for employee in employeeList | filter:$viewValue "
+									class="form-control" capitalize-first> <span style="color: red"
+									ng-show="showroom.incharge.id==undefined && showroom.incharge.length>=3">select
+									employee from suggestions shown in above field</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Mobile No. <span
+								style="color: red"
+								ng-show="showroom.mobile==undefined || showroom.mobile==''||showroom.mobile.length<10">*</span></label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="showroom.mobile" allow-only-numbers maxlength="10"
+									placeholder="Mobile No.">
+
+							</div>
+							<label class="col-sm-2 control-label">Landline No. <span
+								style="color: red"
+								ng-show="showroom.landLine==undefined || showroom.landLine==''"></span></label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="showroom.landLine" allow-only-numbers maxlength="14"
+									placeholder="Landline No.">
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">FAX No. <span
+								style="color: red"
+								ng-show="showroom.fax==undefined || showroom.fax==''"></span></label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control" ng-model="showroom.fax"
+									maxlength="14" placeholder="FAX No" allow-only-numbers>
+
+							</div>
+							<label class="col-sm-2 control-label">Email <span
+								style="color: red"
+								ng-show="showroom.email==undefined || showroom.email==''"></span></label>
+
+							<div class="col-sm-4">
+								<input type="email" class="form-control" name=email
+									ng-model="showroom.email" maxlength="1000" placeholder="Email"
+									ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/ ">
+									<span ng-hide="myForm.email.$valid" style="color:red"> Please Enter a valid Email Address</span>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Description </label>
+
+							<div class="col-sm-10">
+								<textarea class="form-control"
+									placeholder="Showroom Description" maxlength="1000"
+									ng-model="showroom.description" capitalize-first>
+								</textarea>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+
+								<button class="btn btn-primary"
+									ng-disabled="!showroom.code||!showroom.address||!showroom.location||!showroom.incharge||!showroom.mobile||!myForm.email.$valid||showroom.mobile.length<10"
+									ng-click="addShowroom(showroom)">Save</button>
+								<button class="btn btn-danger" ng-click="gotoShowroomList()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

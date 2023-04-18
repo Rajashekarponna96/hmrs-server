@@ -1,0 +1,152 @@
+<section class="content" ng-init="getDocumentsList()">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<div class="row">
+						<div class="col col-md-6">
+							<h3 class="box-title">Documents</h3>
+						</div>
+
+						<div class="col col-md-6" align="right">
+
+							<div class="pull-right">
+								<h4>
+									<button ng-if="hasFeatureWithAction('Documentation').createAction" class="btn btn-info" ng-click="gotoAddDocuments();">Add
+										Files</button>
+								</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+
+						<div class="box-body">
+
+							<table class="table table-hover">
+								<thead>
+									<tr>
+<!-- 										<th>S.No</th> -->
+										<th>Category Code</th>
+										<th>Name</th>
+										<th>Type</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody ng-repeat="documentCategory in documentCategoryList"
+									ng-click="toggleRow($index)">
+									<tr>
+<!-- 										<td>{{$index+1}}</td> -->
+										<td>{{documentCategory.code}}</td>
+										<td>{{documentCategory.name}}</td>
+									</tr>
+									<tr ng-repeat="document in documentCategory.documents" data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+									<td></td>
+										<td><a target="_blank" href="{{docPath(docData.imagepath)}}">{{document.name}}</a></td>
+										<td>{{document.type}}</td>
+										<td><button ng-if="hasFeatureWithAction('Documentation').updateAction" class="btn btn-primary"
+												ng-click="goToUpdateDocument(documentCategory,document)"
+												data-toggle="tooltip" tooltip-placement="bottom"
+												tooltip="Update" title="Update">
+												<span class="glyphicon glyphicon-edit"></span>
+											</button>
+											<!-- <button class="btn btn-danger"
+												ng-click="deleteOpenDoc(document.id)" data-toggle="tooltip"
+												tooltip-placement="bottom" tooltip="Delete" title="Delete">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button> --></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- /.box-body -->
+					</div>
+				</form>
+			</div>
+			<!-- /.box -->
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+<!-- <table class="table table-condensed" style="border-collapse:collapse;">
+
+    <thead>
+        <tr><th>&nbsp;</th>
+            <th>Job Name</th>
+            <th>Description</th>
+            <th>Provider Name</th>
+            <th>Region</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+                  <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            <td>OBS Name</td>
+            <td>OBS Description</td>
+            <td>hpcloud</td>
+            <td>nova</td>
+          <td> created</td>
+
+        </tr>
+        <tr>
+            <td colspan="12" class="hiddenRow"><div class="accordian-body collapse" id="demo1"> 
+              <table class="table table-striped">
+                      <thead>
+                        <tr><td><a href="WorkloadURL">Workload link</a></td><td>Bandwidth: Dandwidth Details</td><td>OBS Endpoint: end point</td></tr>
+                        <tr><th>Access Key</th><th>Secret Key</th><th>Status </th><th> Created</th><th> Expires</th><th>Actions</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>access-key-1</td><td>secretKey-1</td><td>Status</td><td>some date</td><td>some date</td><td><a href="#" class="btn btn-default btn-sm">
+                  <i class="glyphicon glyphicon-cog"></i></a></td></tr>
+                        
+                     
+                    
+                      </tbody>
+               	</table>
+              
+              </div> </td>
+        </tr>
+        <tr data-toggle="collapse" data-target="#demo2" class="accordion-toggle">
+                <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+                <td>OBS Name</td>
+            <td>OBS Description</td>
+            <td>hpcloud</td>
+            <td>nova</td>
+          <td> created</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="hiddenRow"><div id="demo2" class="accordian-body collapse">Demo2</div></td>
+        </tr>
+        <tr data-toggle="collapse" data-target="#demo3" class="accordion-toggle">
+            <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            <td>OBS Name</td>
+            <td>OBS Description</td>
+            <td>hpcloud</td>
+            <td>nova</td>
+          <td> created</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="hiddenRow"><div id="demo3" class="accordian-body collapse">Demo3</div></td>
+        </tr>
+    </tbody>
+</table> -->
+
+<!-- 
+<td>{{docData.name}}</td>
+<td>{{docData.size}}</td>
+<td>{{docData.type}}</td>
+ -->

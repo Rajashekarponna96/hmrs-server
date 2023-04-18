@@ -1,0 +1,419 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Update Booking Info</h2>
+		<ol class="breadcrumb">
+			<li><a>CRM</a></li>
+			<li><a>Booking Info</a></li>
+			<li class="active">Update Booking Info</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="getCountries()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Booking Info</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">Booking
+								ID <span style="color: red"
+								ng-show="booking.bookingSerialNo==undefined ||booking.bookingSerialNo==''">*</span>
+							</label>
+
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control" placeholder=""
+									ng-model="booking.bookingSerialNo" capitalize-first
+									only-letters-input disabled>
+
+							</div>
+
+							<label for="inputEmail" class="control-label col-sm-3">Booking
+								Date </label>
+
+
+							<div class="col-sm-3">
+
+
+								<input type="text" class="form-control"
+									ng-model="booking.bookingDate" disabled />
+
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">
+								Full Name </label>
+
+
+
+							<div class="col-sm-9">
+								<input type="text" class="form-control" placeholder="FirstName"
+									ng-model="booking.functionHallEnquiry.customer.fullName"
+									capitalize-first only-letters-input disabled>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">Customer
+								Address </label>
+
+
+							<div class="col-sm-9">
+								<textarea class="form-control"
+									ng-model="booking.functionHallEnquiry.customer.address.street1"
+									disabled></textarea>
+							</div>
+
+
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">Country
+
+							</label>
+
+
+							<div class="col-sm-3">
+
+								<input class="form-control"
+									ng-model="booking.functionHallEnquiry.customer.address.country.name"
+									disabled>
+
+							</div>
+							<label for="inputEmail" class="control-label col-sm-3">State
+							</label>
+
+
+							<div class="col-sm-3">
+								<input class="form-control"
+									ng-model="booking.functionHallEnquiry.customer.address.state.name"
+									disabled>
+								<!-- <select class="form-control"
+										ng-model="booking.customer.address.state"
+										ng-options="state as state.name for state in statesList track by state.id"
+										ng-change="getDistricts(booking.customer.address.state.id)">
+										<option value="">select</option>
+									</select> -->
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">District
+
+							</label>
+
+
+							<div class="col-sm-3">
+								<input class="form-control"
+									ng-model="booking.functionHallEnquiry.customer.address.district.name"
+									disabled>
+
+								<!-- <select class="form-control"
+										ng-model="booking.customer.address.district"
+										ng-options="district as district.name for district in districtList track by district.id">
+										<option value="">select</option>
+									</select> -->
+							</div>
+
+							<label for="inputEmail" class="control-label col-sm-3">City
+
+							</label>
+
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control"
+									ng-model="booking.functionHallEnquiry.customer.address.city"
+									ng-disabled="organization.id" capitalize only-alpha-numeric>
+
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">PAN
+								Number<!--  <span style="color: red"
+								ng-show="booking.functionHallEnquiry.customer.panNumber==undefined ||booking.functionHallEnquiry.customer.panNumber==''||booking.functionHallEnquiry.customer.panNumber.length<10">*</span> -->
+							</label>
+
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control"
+									ng-model="booking.functionHallEnquiry.customer.panNumber"
+									only-alpha-numeric capitalize>
+
+							</div>
+							<label for="inputEmail" class="control-label col-sm-3">Contact
+								Number </label>
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control"
+									ng-model="booking.functionHallEnquiry.customer.mobile" disabled>
+
+							</div>
+
+						</div>
+
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">Booking
+								Purpose </label>
+
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control"
+									ng-model="booking.functionHallEnquiry.purpose"
+									allow-only-numbers maxlength="10" disabled>
+							</div>
+							<label for="inputEmail" class="control-label col-sm-3">Function
+								Hall </label>
+
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control"
+									ng-model="booking.functionHallEnquiry.functionHall.name"
+									disabled>
+
+							</div>
+
+						</div>
+
+						<div class="form-group"
+							ng-show="booking.functionHallEnquiry.purpose=='Marriage'">
+							<label for="inputEmail" class="control-label col-sm-3">Groom
+								Name <span style="color: red"
+								ng-show="booking.groomName==undefined ||booking.groomName==''">*</span>
+							</label>
+
+
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control"
+									ng-model="booking.groomName">
+							</div>
+							<label for="inputEmail" class="control-label col-sm-3">Groom
+								Father Name <span style="color: red"
+								ng-show="booking.groomFatherName==undefined ||booking.groomFatherName==''">*</span>
+							</label>
+
+
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control"
+									ng-model="booking.groomFatherName">
+
+							</div>
+
+						</div>
+						<div class="form-group"
+							ng-show="booking.functionHallEnquiry.purpose=='Marriage'">
+							<label for="inputEmail" class="control-label col-sm-3">Bride
+								Name <span style="color: red"
+								ng-show="booking.brideName==undefined ||booking.brideName==''">*</span>
+							</label>
+
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control"
+									ng-model="booking.brideName">
+							</div>
+							<label for="inputEmail" class="control-label col-sm-3">Bride
+								Father Name <span style="color: red"
+								ng-show="booking.brideFatherName==undefined ||booking.brideFatherName==''">*</span>
+							</label>
+
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control"
+									ng-model="booking.brideFatherName">
+
+							</div>
+						</div>
+						<div class="form-group"
+							ng-show="booking.functionHallEnquiry.purpose=='Marriage'">
+							<label for="inputEmail" class="control-label col-sm-3">Marriage
+								Date <span style="color: red"
+								ng-show="booking.marriageDate==undefined ||booking.marriageDate==''">*</span>
+							</label>
+
+
+							<div class="col-sm-3">
+
+								<div class='input-group date' datetimepicker>
+									<input type='text' class="form-control"
+										ng-model="booking.marriageDate" ng-readonly="true" /> <span
+										class="input-group-addon"><span
+										class="glyphicon glyphicon-calendar"></span> </span>
+								</div>
+
+							</div>
+
+							<label for="inputEmail" class="control-label col-sm-3">
+								Wedding Card </label>
+							<!-- <a target="_blank" href="{{docPath(booking.weddingCard.imagepath)}}">Wedding card</a>
+ -->
+							<div class="col-sm-3">
+
+								<input type="file" name="file"
+									onchange="angular.element(this).scope().documnetUploads(this.files)" />
+							</div>
+
+						</div>
+
+						<div class="form-group"
+							ng-show="booking.functionHallEnquiry.purpose!='Marriage'">
+
+							<label ng-if="booking.functionHallEnquiry.purpose=='Annaprasa'"
+								for="inputEmail" class="control-label col-sm-3">Name Of
+								The Child <span style="color: red"
+								ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+							</label> <label ng-if="booking.functionHallEnquiry.purpose=='Other'"
+								for="inputEmail" class="control-label col-sm-3">Name Of
+								The Celebrity <span style="color: red"
+								ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+							</label> <label ng-if="booking.functionHallEnquiry.purpose=='Voni'"
+								for="inputEmail" class="control-label col-sm-3">Name Of
+								The Celebrity <span style="color: red"
+								ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+							</label> <label ng-if="booking.functionHallEnquiry.purpose=='Event'"
+								for="inputEmail" class="control-label col-sm-3">Name Of
+								The Event <span style="color: red"
+								ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+							</label> <label ng-if="booking.functionHallEnquiry.purpose=='Reception'"
+								for="inputEmail" class="control-label col-sm-3">Name Of
+								The Celebrities <span style="color: red"
+								ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+							</label> <label
+								ng-if="booking.functionHallEnquiry.purpose!='Reception'&& booking.functionHallEnquiry.purpose!='Marriage' &&
+									booking.functionHallEnquiry.purpose!='Annaprasa' && booking.functionHallEnquiry.purpose!='Voni' && booking.functionHallEnquiry.purpose!='Event'"
+								for="inputEmail" class="control-label col-sm-3">Name Of
+								The Celebrity <span style="color: red"
+								ng-show="booking.celebrityName==undefined ||booking.celebrityName==''">*</span>
+							</label>
+							<div class="col-sm-3">
+								<input type='text' class="form-control"
+									ng-model="booking.celebrityName" capitalize-first />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">Function
+								Date From <span style="color: red"
+								ng-show="booking.fromDateTime==undefined ||booking.fromDateTime==''">*</span>
+							</label>
+
+
+							<div class="col-sm-3">
+
+
+
+								<div class='input-group date' datetimepicker>
+									<input type='text' class="form-control"
+										ng-model="booking.fromDateTime" ng-readonly="true" /> <span
+										class="input-group-addon"><span
+										class="glyphicon glyphicon-calendar"></span> </span>
+								</div>
+							</div>
+							<label for="inputEmail" class="control-label col-sm-3">
+								To <span style="color: red"
+								ng-show="booking.toDateTime==undefined ||booking.toDateTime==''">*</span>
+							</label>
+
+
+							<div class="col-sm-3">
+
+
+								<div class='input-group date' datetimepicker>
+									<input type='text' class="form-control"
+										ng-model="booking.toDateTime" ng-readonly="true" /> <span
+										class="input-group-addon"><span
+										class="glyphicon glyphicon-calendar"></span> </span>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3">Number
+								of Addl. Days </label>
+
+
+							<div class="col-sm-3">
+
+								<input type="text" class="form-control"
+									ng-model="booking.additionalRooms" allow-only-numbers>
+
+							</div>
+
+							<label for="inputEmail" class="control-label col-sm-3">Status
+							</label>
+
+
+							<div class="col-sm-3">
+
+								<select type="text" class="form-control"
+									ng-model="booking.functionHallEnquiry.bookingStatus">
+									<option value="">select</option>
+									<option value="cancel">cancel</option>
+								</select>
+
+							</div>
+
+						</div>
+
+						<div class="form-group"
+							ng-show="booking.functionHallEnquiry.bookingStatus=='cancel'">
+							<label for="inputEmail" class="control-label col-sm-3">Reason<span
+								style="color: red"
+								ng-show="booking.functionHallEnquiry.bookingStatus!=undefined&&booking.reason==undefined && booking.reason.length<5">*</span>
+							</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control"
+									ng-model="booking.reason"> <span style="color: red"
+									ng-show="booking.reason!=undefined && booking.reason.length<20">Minimum 20 Characters</span>
+							</div>
+						</div>
+
+
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-disabled="((!booking.brideName||!booking.brideFatherName||!booking.groomName||!booking.groomFatherName||!booking.marriageDate)&&(!booking.celebrityName))||(!booking.toDateTime||!booking.fromDateTime||booking.functionHallEnquiry.customer.panNumber.length<10)||(booking.functionHallEnquiry.bookingStatus!=undefined&&booking.reason==undefined&&booking.reason.length<20) "
+									ng-click="updateBookFunctionhall(booking)">Update</button>
+								<button class="btn btn-danger" ng-click="gotoBookingInfoList()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var d = new Date();
+	$('.date').datetimepicker({
+		//language:  'fr',
+		format : "dd-mm-yyyy hh:ii:ss",
+		todayBtn : 1,
+		autoclose : 1,
+		todayHighlight : 1,
+		startView : 2,
+		forceParse : 0,
+		showMeridian : 0,
+		startDate : new Date(d.getFullYear(), d.getMonth(), d.getDate()),
+		minuteStep : 1,
+		pickerPosition : "top-left"
+	});
+</script>

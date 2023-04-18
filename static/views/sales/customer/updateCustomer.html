@@ -1,0 +1,441 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Update Customer</h2>
+		<ol class="breadcrumb">
+			<li><a> Sales</a></li>
+			<li><a>Customers</a></li>
+			<li class="active">Update Customer</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight"
+	ng-init="getAllSalesRepresentatives();getAllCountries();getLocationsAndProductLinesById(customerDetail.salesRepresentative.id);">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Customer</h5>
+				</div>
+				<div class="ibox-content">
+					<form name="myForm" class="form-horizontal">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>Sales Representative Details</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Rep Code </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.salesRepresentative.salesRepCode"
+													disabled="true">
+											</div>
+
+											<div class="control-label col-sm-2">
+												<label for="inputEmail">Rep Name </label>
+											</div>
+
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.salesRepresentative.fullName"
+													disabled>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<div class="control-label col-sm-3">
+												<label for="inputEmail">Micro Market <span
+													style="color: red"
+													ng-show="customerDetail.microMarket==undefined ||customerDetail.microMarket==''">*</span>
+												</label>
+											</div>
+
+											<div class="col-sm-3">
+												<input class="form-control"
+													ng-model="customerDetail.microMarket">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>Customer Details</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Customer Name <span style="color: red"
+												ng-show="customerDetail.fisrtName==undefined ||customerDetail.fisrtName	==''">*</span>
+											</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.fisrtName">
+											</div>
+
+											<div class="control-label col-sm-2">
+												<label for="inputEmail">Customer Type<span
+													style="color: red"
+													ng-show="customerDetail.customerType==undefined ||customerDetail.customerType==''">*</span>
+												</label>
+											</div>
+
+											<div class="col-sm-3">
+												<select class="form-control"
+													ng-model="customerDetail.customerType">
+													<option value="">select</option>
+													<option value="FIRST_TIME_USER">First Time User
+														(FTU)</option>
+													<option value="CAPTIVATE_CUSTOMER">Captivate
+														Customer</option>
+													<option value="FORUM_CUSTOMER">Forum Customer</option>
+													<option value="MARKET_LOAD_OPERATOR">Market Load
+														Operator</option>
+													<option value="RETAIL_EXISTING_CUSTOMER">Retail
+														Existing Customer</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+
+											<div class="control-label col-sm-3">
+												<label for="inputEmail">Country<span
+													style="color: red"
+													ng-show="customerDetail.address.country==undefined ||customerDetail.address.country==''">*</span>
+												</label>
+											</div>
+
+											<div class="col-sm-3">
+												<select class="form-control"
+													ng-model="customerDetail.address.country"
+													ng-options="country as country.name for country in countryList track by country.id"
+													ng-change="getStatesByCountryId(customerDetail.address.country.id)">
+													<option value="">select</option>
+												</select>
+											</div>
+											<div class="control-label col-sm-2">
+												<label for="inputEmail">State<span
+													style="color: red"
+													ng-show="customerDetail.address.state==undefined ||customerDetail.address.state==''">*</span>
+												</label>
+											</div>
+
+											<div class="col-sm-3">
+												<select class="form-control"
+													ng-model="customerDetail.address.state"
+													ng-options="state as state.name for state in stateList track by state.id"
+													ng-change="getDistrictsByStateId(customerDetail.address.state.id)">
+													<option value="">select</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+
+											<div class="control-label col-sm-3">
+												<label for="inputEmail">District <span
+													style="color: red"
+													ng-show="customerDetail.address.district==undefined ||customerDetail.address.district==''">*</span>
+												</label>
+											</div>
+
+											<div class="col-sm-3">
+												<select class="form-control"
+													ng-model="customerDetail.address.district"
+													ng-options="district as district.name for district in districtList track by district.id">
+													<option value="">select</option>
+												</select>
+											</div>
+											<label for="inputEmail" class="control-label col-sm-2">
+												City / Town </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.address.city">
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Mandal </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.address.mandal">
+											</div>
+
+											<label for="inputEmail" class="control-label col-sm-2">
+												Mobile <span style="color: red"
+												ng-show="customerDetail.mobile==undefined ||customerDetail.mobile==''">*</span>
+											</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.mobile" allow-only-numbers>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Landline </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.homePhone" allow-only-numbers>
+											</div>
+
+											<label for="inputEmail" class="control-label col-sm-2">
+												Email </label>
+											<div class="col-sm-3">
+												<input type="email" class="form-control" name="email"
+													ng-model="customerDetail.email"
+													ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/ " required><span
+													style="color: red" ng-show="person.email.$error.pattern">
+													Please enter a valid email address!</span>
+											</div>
+
+
+
+
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group">
+										<label for="inputEmail" class="control-label col-sm-3">
+											Source of Contact<span style="color: red"
+											ng-show="customerDetail.sourceOfContact==undefined ||customerDetail.sourceOfContact==''">*</span>
+										</label>
+										<div class="col-sm-3">
+											<select class="form-control"
+												ng-model="customerDetail.sourceOfContact">
+												<option value="">select</option>
+												<option value="field">Field</option>
+												<option value="walkin">Walk-in</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>Vehicle Details</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Model No<span style="color: red"
+												ng-show="customerDetail.productLine==undefined ||customerDetail.productLine==''">*</span>
+											</label>
+											<div class="col-sm-3">
+												<select class="form-control"
+													ng-model="customerDetail.productLine"
+													ng-options="productLine as productLine.number for productLine in productLines track by productLine.id">
+													<option value="">select</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Vehicle Application</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.vehicleApplication">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>Vehicle Details</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Price per Vehicle <span style="color: red"
+												ng-show="customerDetail.pricePerVehicle.amount==undefined ||customerDetail.pricePerVehicle.amount==''">*</span>
+											</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-change="onChange()"
+													ng-model="customerDetail.pricePerVehicle.amount"
+													allow-only-numbers>
+											</div>
+											<label for="inputEmail" class="control-label col-sm-2">
+												Quantity <span style="color: red"
+												ng-show="customerDetail.vehicleQuantity==undefined ||customerDetail.vehicleQuantity==''">*</span>
+											</label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-change="onChange()"
+													ng-model="customerDetail.vehicleQuantity"
+													allow-only-numbers>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Total Cost </label>
+											<div class="col-sm-3">
+												<input type="text" ng-model="customerDetail.totalCost"
+													ng-change="onChange()" class="form-control" disabled>
+											</div>
+											<label for="inputEmail" class="control-label col-sm-2">
+												Financier </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.financier">
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												TAX (Approx) </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-change="onChange()"
+													ng-model="customerDetail.taxAmount.amount"
+													allow-only-numbers>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												TR (Approx) </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-change="onChange()"
+													ng-model="customerDetail.trAmount.amount"
+													allow-only-numbers>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Other Charges (Approx) </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-change="onChange()"
+													ng-model="customerDetail.otherCharges.amount"
+													allow-only-numbers>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Insurance (Approx) </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-change="onChange()"
+													ng-model="customerDetail.vehicleInsurance.amount"
+													allow-only-numbers>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Grand Total </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.grandTotal" disabled>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h5>Customer Details</h5>
+							</div>
+							<div class="ibox-content">
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Opportunity Id </label>
+											<div class="col-sm-3">
+												<input type="text" class="form-control"
+													ng-model="customerDetail.optId">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+												Remarks </label>
+											<div class="col-sm-8">
+												<textarea class="form-control" placeholder=""
+													ng-model="customerDetail.remarks" capitalize-first></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-4">
+								<button class="btn btn-primary"
+									ng-disabled="!customerDetail.salesRepresentative||!customerDetail.microMarket ||!customerDetail.fisrtName||!customerDetail.customerType ||!customerDetail.address.country||!customerDetail.address.state||!customerDetail.address.district||!customerDetail.mobile ||!customerDetail.sourceOfContact||customer.mobile.length<10||!myForm.email.$valid||!customerDetail.pricePerVehicle.amount||!customerDetail.productLine||!customerDetail.vehicleQuantity||!customerDetail.sourceOfContact"
+									ng-click="updateCustomer(customerDetail)" my-click-once>Update</button>
+								<button class="btn btn-danger" ui-sref="home.tdv.customerList">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

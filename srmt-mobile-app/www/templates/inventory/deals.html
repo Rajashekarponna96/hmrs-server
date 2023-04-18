@@ -1,0 +1,32 @@
+<ion-view view-title="Deals"> <ion-nav-bar
+	class="bar-positive"> <ion-nav-back-button
+	class="button-clear">
+<i class="icon ion-chevron-left"></i>Back</ion-nav-back-button> </ion-nav-bar> <ion-content
+	class="has-footer">
+<div class="row header">
+	<div class="col">Customer Name</div>
+	<div class="col">Mobile</div>
+	<div class="col">Vehicle Name</div>
+	<div class="col">Vehicle Model</div>
+	<div class="col">Cost</div>
+	<div class="col" align="center">Date</div>
+	<div class="col">Action</div>
+</div>
+<div class="row" ng-repeat="data in customers">
+	<div class="col">{{data.name}}</div>
+	<div class="col">{{data.mobile}}</div>
+	<div class="col">{{data.vehicleName}}</div>
+	<div class="col">{{data.vehicleType}}</div>
+	<div class="col">{{data.cost}}</div>
+	<div class="col">{{data.date}}</div>
+	<div class="col">
+		<i class="icon ion-printer"></i>
+	</div>
+</div>
+
+
+</ion-content>
+<div class="bar bar-footer bar-positive">
+	<div class="title">SRI RAMADAS MOTORS TRANSPORT LIMITED</div>
+</div>
+</ion-view>

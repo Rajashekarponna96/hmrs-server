@@ -1,0 +1,118 @@
+<section class="content-header">
+	<h1>Marriage Certificate</h1>
+	<ol class="breadcrumb">
+		<li><a>CRM</a></li>
+		<li class="active">Function Halls</li>
+		<li class="active">Marriage Certificate</li>
+		<li class="active">View Marriage Certificate</li>
+	</ol>
+</section>
+
+
+
+<section class="content">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">View Marriage Certificate</h3>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+					<div class="row">
+						<div class="box-body">
+							<div class="col col-md-4">
+								<b>Receipt No</b>
+							</div>
+							<div class="col col-md-4">{{certificate.receiptNumber}}</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="box-body">
+							<div class="col col-md-4">
+								<b>Payment Date</b>
+							</div>
+							<div class="col col-md-4">{{certificate.paymentDate}}</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+
+
+							<div class="col col-md-4">
+								<b>Payment Type</b>
+							</div>
+							<div class="col col-md-4">{{certificate.paymentType}}</div>
+
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+
+							<div class="col col-md-4">
+								<b>Paid Amount</b>
+							</div>
+							<div class="col col-md-4">{{certificate.payable.amount}}</div>
+
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+
+							<div class="col col-md-4">
+								<b>Amount in words</b>
+							</div>
+							<div class="col col-md-4">{{certificate.amountInWords}}</div>
+
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="col col-md-4">
+								<b>Customer Name</b>
+							</div>
+							<div class="col col-md-4">{{certificate.booking.functionHallEnquiry.customer.fullName}}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="col col-md-4">
+								<b>Customer Contact</b>
+							</div>
+							<div class="col col-md-4">{{certificate.booking.functionHallEnquiry.customer.mobile}}</div>
+
+						</div>
+					</div>
+					<div class="box-footer">
+					<div class="col-xs-offset-2 col-md-3">
+							<button class="btn btn-success" ng-click="gotoCertificateList()">Back</button>
+							<button class="btn btn-primary" ng-click="gotoPrintCertiificate(certificate.id)">Print</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /.box -->
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+
+

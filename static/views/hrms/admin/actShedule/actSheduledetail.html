@@ -1,0 +1,112 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Admin</h2>
+		<ol class="breadcrumb">
+			<li><a >Home</a></li>
+			<li><a>Admin</a></li>
+			<li class="active"><strong>Act Shedules</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="row wrapper wrapper-content" ng-init="init()">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>Act Shedules</h5>
+				<div class="ibox-tools" uib-dropdown>
+					<button ng-if="hasFeatureWithAction('Act Shedules').createAction"
+						class="btn btn-success" ng-click="goToAddActSheduleDetail()">Add
+						Act Shedules</button>
+				</div>
+			</div>
+
+			<div class="ibox-content">
+				<div class="row">
+					<div class="box-body">
+						<div class="form-group">
+							<label for="email" class="control-label col-md-2 ">Act
+								Name <!-- <span style="color: red"
+							ng-show="leavePeriod==undefined ||leavePeriod==''">*</span> -->
+							</label>
+							<div class="col-md-2">
+								<select class="form-control" ng-model="act"
+									ng-options="act as act.name for act in actList"
+									ng-change="searchActShedules()">
+									<option value="">Select</option>
+								</select>
+
+							</div>
+
+
+
+
+
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="table-responsive">
+					<table class="table  table-striped">
+						<thead>
+							<tr>
+								<th>S.No</th>
+								<th>Act Name</th>
+								<th>Shedule Name</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="actShedule in actSheduleList">
+
+								<td>{{($index+1)}}</td>
+								<td>{{actShedule.act.name}}</td>
+								<td>{{actShedule.name}}</td>
+								<td>
+									<button ng-if="hasFeatureWithAction('Act Shedules').viewAction"
+										class="btn btn-success"
+										ng-click="goToViewActSheduleDetail(actShedule)"
+										data-toggle="tooltip" tooltip-placement="top" tooltip="View"
+										title="View">
+										<span title="view" class="glyphicon glyphicon-eye-open"></span>
+
+									</button>&nbsp;
+									<button
+										ng-if="hasFeatureWithAction('Act Shedules').updateAction"
+										class="btn btn-primary"
+										ng-click="goToEditActSheduleDetail(actShedule)"
+										data-toggle="tooltip" tooltip-placement="bottom"
+										tooltip="Update" title="Update">
+										<span class="glyphicon glyphicon-edit"></span>
+									</button>&nbsp; <!-- <button class="btn btn-danger"
+												ng-click="deleteOpen(actShedule.id)" data-toggle="tooltip"
+												tooltip-placement="bottom" tooltip="Delete" title="Delete">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button> -->
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+				<div ng-show="actSheduleList.length ==0">
+								<h3>No Records Found!</h3>
+
+				</div>
+				
+				
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+

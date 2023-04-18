@@ -1,0 +1,45 @@
+
+<div class="wrapper wrapper-content">
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content mailbox-content">
+					<div class="file-manager">
+						<!-- 	<div ng-show="person==undefined" class="row">
+							<div align="center">
+								<i><font style="font-size: 450%;"><span
+										class="glyphicon glyphicon-user"></span></font></i>
+							</div>
+						</div>
+						<div ng-show="person!=undefined" class="row">
+							<div align="center">
+								<img ng-src="{{imagePath()}}" width="190" height="130">
+							</div>
+						</div> -->
+						<ul class="folder-list m-b-md" style="padding: 0">
+							<li><a ui-sref="home.selfService.myinfo.updatePersonalDetail"
+								href="#"><i class="fa fa-user"></i>Personal Details</a></li>
+							<li><a ui-sref="home.selfService.myinfo.contactDetails" href="#"><i
+									class="fa fa-map-marker"></i>Contact Details</a></li>
+							<li><a ui-sref="home.selfService.myinfo.dependentDetails" href="#"><i
+									class="fa fa-child"></i>Dependents</a></li>
+							<li><a ui-sref="home.selfService.myinfo.jobDetails" href="#"><i
+									class="fa fa-tasks"></i>Job Details</a></li>
+							<li><a ui-sref="home.selfService.myinfo.languageDetails" href="#"><i
+									class="fa fa-language"></i>Language Details</a></li>
+							<li><a ui-sref="home.selfService.myinfo.qualificationDetails"
+								href="#"><i class="fa fa-graduation-cap"></i>Qualification Details</a></li>
+							<li><a ui-sref="home.selfService.myinfo.experienceDetails" href="#"><i
+									class="fa fa-clock-o"></i>Experience Details</a></li>
+						</ul>
+
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-9 animated fadeInRight">
+			<div ui-view></div>
+		</div>
+	</div>
+</div>

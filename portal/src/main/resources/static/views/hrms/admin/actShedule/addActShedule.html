@@ -1,0 +1,82 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Act Shedule</h2>
+		<ol class="breadcrumb">
+			<li><a >Admin</a></li>
+			<li><a >Act Shedule</a></li>
+			<li class="active">Add Act Shedule</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" ng-init="getActs()">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Act Shedule</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label for="inputEmail" name="code"
+								class="control-label col-sm-3">Act Name<span
+								style="color: red"
+								ng-show="act==undefined || act==''">*</span>
+							</label>
+
+
+							<div class="col-sm-4">
+
+								<select class="form-control" ng-model="act"
+								ng-options="act as act.name for act in actList">
+									<option value="">select</option>
+								</select>
+
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label for="inputPassword" class="control-label col-sm-3">Schedule Name
+								<span style="color: red"
+								ng-show="actShedule.name==undefined || actShedule.name==''">*</span>
+							</label>
+
+							<div class="col-sm-4">
+
+								<input type="text" name="name" class="form-control"
+									ng-model="actShedule.name" capitalize-first only-alpha-numeric maxlength="35">
+
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-3"
+									placeholder="">Description </label>
+
+								<div class="col-sm-4">
+
+									<textarea ng-model="actShedule.description" class="form-control" maxlength="1000" capitalize-first></textarea>
+
+								</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+
+								<button class="btn btn-primary"
+										ng-disabled="!actShedule.name||!act"
+										ng-click="addActShedule(actShedule)">Save</button>
+									<button class="btn btn-danger"
+										ng-click="goToActSheduleDetail()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

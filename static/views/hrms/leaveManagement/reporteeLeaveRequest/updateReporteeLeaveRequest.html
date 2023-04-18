@@ -1,0 +1,153 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Leave Management</h2>
+		<ol class="breadcrumb">
+			<li><a>Leave
+					Management</a></li>
+			<li><a>Update Employee Leave Request</a></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="getCountries()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Update Employee Leave Request</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label for="inputEmail" name="code"
+								class="control-label col-sm-2">Employee <span
+								style="color: red"
+								ng-show="employeeLeaveRequestDetails.employee==undefined ||employeeLeaveRequestDetails.employee==''">*</span>
+							</label>
+
+							<div class="col-sm-10">
+
+								<input type="text"
+									ng-model="employeeLeaveRequestDetails.employee"
+									uib-typeahead="employee as employee.fullName for employee in employeeList| filter:$viewValue "
+									class="form-control" ng-disabled="true"> <span
+									style="color: red"
+									ng-show="employee.superior.id==undefined && employee.superior.length>=3">select
+									employee from suggestions shown in above field</span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="inputPassword" class="control-label col-sm-2">
+								From <span style="color: red"
+								ng-show="employeeLeaveRequestDetails.fromDate==undefined || employeeLeaveRequestDetails.fromDate==''">*</span>
+							</label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="employeeLeaveRequestDetails.fromDate"
+									ng-disabled="true" />
+							</div>
+							<label for="inputPassword" class="control-label col-sm-2">To
+								<span style="color: red"
+								ng-show="employeeLeaveRequestDetails.toDate==undefined || employeeLeaveRequestDetails.toDate==''">*</span>
+							</label>
+
+							<div class="col-sm-4">
+								<input type="text" class="form-control"
+									ng-model="employeeLeaveRequestDetails.toDate"
+									ng-disabled="true" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword" class="control-label col-sm-2">Leave
+								Type <span style="color: red"
+								ng-show="employeeLeaveRequestDetails.leaveType==undefined || employeeLeaveRequestDetails.leaveType==''">*</span>
+							</label>
+
+							<div class="col-sm-6">
+								<input type="text" name="name" class="form-control"
+									ng-model="employeeLeaveRequestDetails.leaveType.name"
+									capitalize-first only-alpha-numeric ng-disabled="true">
+							</div>
+
+							<label for="inputPassword" class="control-label col-sm-2">No.of
+								Days <span style="color: red"
+								ng-show="employeeLeaveRequestDetails.leaveEntitlement.days==undefined || employeeLeaveRequestDetails.leaveEntitlement.days==''">*</span>
+							</label>
+							<div class="col-sm-2">
+								<input type="text" name="name" class="form-control"
+									ng-model="employeeLeaveRequestDetails.leaveEntitlement.days"
+									ng-disabled="true">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-2"
+								placeholder="Description"> Leave Request </label>
+
+							<div class="col-sm-10">
+
+								<textarea ng-model="employeeLeaveRequestDetails.reason"
+									class="form-control"></textarea>
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-2"
+								placeholder="Description"> Approver Comments <span
+								style="color: red"
+								ng-show="employeeLeaveRequestDetails.comments==undefined || employeeLeaveRequestDetails.comments==''">*</span></label>
+							<div class="col-sm-10">
+								<textarea ng-model="employeeLeaveRequestDetails.comments"
+									class="form-control"></textarea>
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="control-label col-sm-2"
+								placeholder="Description">Status <span
+								style="color: red"
+								ng-show="employeeLeaveRequestDetails.status==undefined || employeeLeaveRequestDetails.status==''">*</span></label>
+							<div class="col-sm-3">
+								<select class="form-control"
+									ng-model="employeeLeaveRequestDetails.status">
+									<option ng-value="Approved">Approved</option>
+									<option ng-value="Rejected">Rejected</option>
+									<option ng-value="Cancelled">Cancelled</option>
+								</select>
+							</div>
+
+						</div>
+
+
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-disabled="!employeeLeaveRequestDetails.comments||!employeeLeaveRequestDetails.status"
+									ng-click="updateEmployeeLeaveRequestDetails(employeeLeaveRequestDetails)">Update</button>
+								<button class="btn btn-danger"
+									ng-click="gotoEmployeeLeaveRequestList()">Cancel</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+		format : "dd-mm-yyyy",
+		daysOfWeekDisabled : [ 0 ],
+		todayBtn : "linked",
+		autoclose : true,
+		todayHighlight : true,
+	});
+	$(".trigger1").click(function() {
+		$("#datepicker").datepicker("show");
+	});
+	$(".trigger2").click(function() {
+		$("#datepicker1").datepicker("show");
+	});
+</script>

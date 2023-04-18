@@ -1,0 +1,65 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Agents</h2>
+		<ol class="breadcrumb">
+			<li><a>Transport</a></li>
+			<li><a>Agents</a></li>
+			<li class="active"><strong>View Agent</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>View Agent</h5>
+					<div class="ibox-tools" uib-dropdown>
+						<a href="" ui-sref="home.agent.agentList" class="btn btn-success ">Back</a>
+					</div>
+
+				</div>
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-lg-12">
+							<dl class="dl-horizontal">
+								<dt>Control :</dt>
+								<dd>{{controlDetail.name}}</dd>
+								<dt>Station:</dt>
+								<dd>{{stationDetail.name}}</dd>
+								<dt>Agent Code:</dt>
+								<dd>{{agentDetail.code}}</dd>
+								<dt>Agent Name :</dt>
+								<dd>{{agentDetail.contactPerson.fisrtName}} {{agent.contactPerson.lastName}}</dd>
+								<dt>Agent Address :</dt>
+								<dd>{{agentDetail.address.street1}}</dd>
+								<dt>Mobile :</dt>
+								<dd>{{agentDetail.contactPerson.mobile}}</dd>
+								<dt>Landline Number :</dt>
+								<dd>{{agentDetail.contactPerson.homePhone}}</dd>
+								<dt>PAN Number :</dt>
+								<dd>{{agentDetail.panNumber}}</dd>
+								<dt>Appointment Date :</dt>
+								<dd>{{agentDetail.appointmentDate}}</dd>
+								<dt>Agreement Date :</dt>
+								<dd>{{agentDetail.agreementDate}}</dd>
+								<dt>Surity Name:</dt>
+								<dd>{{agentDetail.surity.contactPerson.title}} {{agent.surity.contactPerson.fisrtName}}{{agent.surity.contactPerson.middleName}}{{agent.surity.contactPerson.lastName}}</dd>
+								<dt>Surity Address :</dt>
+								<dd>{{agentDetail.surity.address.street1}}</dd>
+								<dt>Surity Property Details :</dt>
+								<dd>{{agentDetail.surity.propertyDetails}}</dd>
+								<dt>Description :</dt>
+								<dd>{{agentDetail.description}}</dd>
+								<br />
+							</dl>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

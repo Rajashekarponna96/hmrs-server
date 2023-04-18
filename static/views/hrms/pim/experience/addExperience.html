@@ -1,0 +1,170 @@
+<div class="mail-box-header">
+	<div class="col-lg-10">
+		<h2>Experience Details</h2>
+		<ol class="breadcrumb">
+			<li><a>OnBoarding</a></li>
+			<li class="active">Experience Details</li>
+			<li class="active">Add Experience Detail</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="mail-box">
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Experience</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+					
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<div class="control-label col-sm-3">
+									<label for="inputEmail">Company <span
+										style="color: red"
+										ng-show="experience.companyName==undefined ||experience.companyName==''">*</span>
+									</label>
+
+								</div>
+								<div class="col-sm-9">
+
+									<input type="text" class="form-control"
+										ng-model="experience.companyName" only-letters-input capitalize-first>
+								</div>
+
+							</div>
+
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<div class="control-label col-sm-3">
+									<label for="inputEmail">Job Title <span
+										style="color: red"
+										ng-show="experience.jobTitle==undefined ||experience.jobTitle==''">*</span></label>
+								</div>
+
+								<div class="col-sm-9">
+
+									<input type="text" class="form-control"
+										ng-model="experience.jobTitle" only-letters-input capitalize-first>
+
+								</div>
+
+							</div>
+
+						</div>
+						<!-- /.box-body -->
+					</div>
+
+					<div class="row">
+						<div class="form-group">
+
+							<div class="control-label col-sm-3">
+								<label for="inputEmail"> From Date <span
+									style="color: red"
+									ng-show="experience.fromDate==undefined ||experience.fromDatee==''">*</span>
+								</label>
+							</div>
+
+							<div class="col-sm-3">
+								
+								<div class="input-group date trigger1">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input id="datepicker" ng-model="experience.fromDate" class="form-control pull-right"
+											type="text" ng-readonly="true">
+									</div>
+							</div>
+
+							<div class="control-label col-sm-3">
+								<label for="inputEmail"> To <span style="color: red"
+									ng-show="experience.toDate==undefined ||experience.toDate==''">*</span>
+								</label>
+							</div>
+
+							<div class="col-sm-3">
+								
+								<div class="input-group date trigger2">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input id="datepicker1" ng-model="experience.toDate" class="form-control pull-right"
+											type="text" ng-readonly="true">
+									</div>
+							</div>
+
+
+
+
+
+						</div>
+					
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail" class="control-label col-sm-3">Comments</label>
+
+
+								<div class="col-sm-9">
+
+									<input type="text" class="form-control"
+										ng-model="experience.comments" capitalize-first>
+								</div>
+
+							</div>
+
+						</div>
+						<div class="box-footer">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button class="btn btn-primary"
+								ng-disabled="!experience.companyName || !experience.jobTitle||!experience.toDate||!experience.fromDate"
+								ng-click="addExperience(experience)">Save</button>
+							<button class="btn btn-danger" ng-click="gotoExperienceDetail()">Cancel</button>
+
+
+						</div>
+					</div>
+						<!-- /.box-body -->
+					</div>
+
+
+
+
+					
+				</form>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+<script>
+$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+	format : "dd-mm-yyyy",
+	endDate: new Date(),
+	todayBtn : "linked",
+	autoclose : true,
+	todayHighlight : true,
+});
+$(".trigger1").click(function() {
+	$("#datepicker").datepicker("show");
+});
+$(".trigger2").click(function() {
+	$("#datepicker1").datepicker("show");
+});
+</script>

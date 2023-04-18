@@ -1,0 +1,166 @@
+<section class="content-header">
+	<h1>Calendar Year</h1>
+	<ol class="breadcrumb">
+		<li><a >Admin</a></li>
+		<li><a >Calendar Year</a></li>
+		<li class="active">Update Calendar Year</li>
+	</ol>
+</section>
+
+
+<section class="content">
+
+	<div class="row">
+		<!-- left column -->
+		<div class="col-md-12">
+			<!-- general form elements -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">Update Calendar Year</h3>
+				</div>
+				<!-- /.box-header -->
+
+				<!-- form start -->
+
+				<form role="form">
+
+					<div class="row">
+						<div class="box-body">
+
+
+							<label for="inputEmail" class="control-label col-xs-2">Calendar Year Code <span style="color: red"
+								ng-show="leavePeriodDetails.code==undefined || leavePeriodDetails.code==''">*</span>
+							</label>
+							<div class="col-xs-3">
+								<input type="text" class="form-control"
+									ng-model="leavePeriodDetails.code" capitalize
+									only-alpha-numeric maxlength="6">
+							</div>
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+
+
+							<label for="inputPassword" class="control-label col-xs-2">Start
+								Date <span style="color: red"
+								ng-show="leavePeriodDetails.startDate==undefined || leavePeriodDetails.startDate==''">*</span>
+							</label>
+							<div class="col-xs-3">
+								<!-- <div class="datePicker">
+									<p class="input-group">
+										<input type="text" class="form-control"
+											uib-datepicker-popup="dd-MM-yyyy" ui-date-format="mm/dd/yyyy"
+											datepicker-options="{startingDay:1}"ng-model="leavePeriodDetails.startDate"
+											is-open="popup1.opened" close-text="Close" /> <span
+											class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												ng-click="open1()">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div> -->
+								<div class="input-group date">
+										<div class="input-group-addon trigger1">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input id="datepicker" ng-model="leavePeriodDetails.startDate" class="form-control pull-right"
+											type="text">
+									</div>
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+
+
+							<label for="inputPassword" class="control-label col-xs-2">End
+								Date <span style="color: red"
+								ng-show="leavePeriodDetails.endDate==undefined || leavePeriodDetails.endDate==''">*</span>
+							</label>
+
+							<div class="col-xs-3">
+								<!-- <div class="datePicker">
+									<p class="input-group">
+										<input type="text" class="form-control"
+											uib-datepicker-popup="dd-MM-yyyy" ui-date-format="mm/dd/yyyy"
+											datepicker-options="{startingDay:1}" ng-model="leavePeriodDetails.endDate" is-open="popup2.opened"
+											close-text="Close" /> <span class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												ng-click="open2()">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div> -->
+									<div class="input-group date">
+										<div class="input-group-addon trigger2">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input id="datepicker1" ng-model="leavePeriodDetails.endDate" class="form-control pull-right"
+											type="text">
+									</div>
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+
+							<label for="inputEmail" class="control-label col-xs-2">Comments
+							</label>
+							<div class="col-xs-10">
+								<textarea ng-model="leavePeriodDetails.commnets" cols="31"
+									rows=5 maxlength="1000"></textarea>
+							</div>
+
+
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="box-footer">
+
+								<div class="col-xs-offset-2 col-xs-10">
+									<button class="btn btn-success"
+										ng-disabled="!leavePeriodDetails.startDate || !leavePeriodDetails.code || !leavePeriodDetails.endDate"
+										ng-click="updateLeavePeriod(leavePeriodDetails)">Update</button>
+									<button class="btn btn-danger" ng-click="gotoLeavePeriodList()">Cancel</button>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+
+
+				</form>
+			</div>
+			<!-- /.box -->
+
+
+		</div>
+	</div>
+
+	<!-- /.row -->
+</section>
+<script>
+$('#datepicker,#datepicker1,#datepicker2,#datepicker3').datepicker({
+	format : "dd-mm-yyyy",
+	todayBtn : "linked",
+	autoclose : true,
+	todayHighlight : true,
+	forceParse: false
+});
+$(".trigger1").click(function(){ $("#datepicker").datepicker("show"); });
+$(".trigger2").click(function(){ $("#datepicker1").datepicker("show"); });
+</script> 

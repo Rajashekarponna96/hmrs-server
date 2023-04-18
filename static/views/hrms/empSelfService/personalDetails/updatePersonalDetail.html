@@ -1,0 +1,387 @@
+
+<div class="mail-box-header">
+	<div class="col-lg-10">
+		<h2>Employee Self Service</h2>
+		<ol class="breadcrumb">
+			<li><a >Employee Self
+					Service</a></li>
+			<li class="active">Personal Details</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+<div class="mail-box" ng-init="getEmployeeById()">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>Personal Details</h5>
+
+					</div>
+					<div class="ibox-content">
+						<form method="get" class="form-horizontal">
+
+							<form role="form">
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-3">
+
+											</label> <label for="inputEmail" class="control-label col-sm-4">
+												First name<span style="color: red"
+												ng-show="person.fisrtName==undefined ||person.fisrtName==''">*</span>
+											</label> <label for="inputEmail" class="control-label col-sm-2">
+												Middle name </label> <label for="inputEmail"
+												class="control-label col-sm-3"> Last name<span
+												style="color: red"
+												ng-show="person.lastName==undefined ||person.lastName==''">*</span>
+											</label>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-2">
+												Full Name </label>
+
+
+											<div class="col-sm-2">
+												<input class="form-control" ng-model="person.title"
+													disabled="true">
+												<!-- <select class="form-control" ng-model="person.title">
+													<option value="Mr">Mr</option>
+													<option value="Mrs">Mrs</option>
+													<option value="Ms">Ms</option>
+
+												</select> -->
+											</div>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" placeholder=""
+													ng-model="person.fisrtName" capitalize-first
+													only-letters-input maxlength="30" disabled="true">
+											</div>
+
+											<div class="col-sm-2">
+												<input type="text" class="form-control" placeholder=""
+													ng-model="person.middleName" capitalize-first
+													only-letters-input maxlength="30" disabled="true">
+											</div>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" placeholder=""
+													ng-model="person.lastName" capitalize-first
+													only-letters-input maxlength="30" disabled="true">
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+											<label for="inputEmail" class="control-label col-sm-2">
+												Father/Husband </label>
+
+
+											<div class="col-sm-2">
+												<input class="form-control"
+													ng-model="person.primaryDependent.title" disabled="true">
+												<!-- <select class="form-control"
+													ng-model="person.primaryDependent.title">
+													<option value="Mr">Mr</option>
+													<option value="Mrs">Mrs</option>
+													<option value="Ms">Ms</option>
+
+												</select> -->
+											</div>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" placeholder=""
+													ng-model="person.primaryDependent.fisrtName"
+													capitalize-first only-letters-input maxlength="30"
+													disabled="true">
+											</div>
+											<div class="col-sm-2">
+												<input type="text" class="form-control" placeholder=""
+													ng-model="person.primaryDependent.middleName"
+													capitalize-first only-letters-input maxlength="30"
+													disabled="true">
+											</div>
+											<div class="col-sm-3">
+												<input type="text" class="form-control" placeholder=""
+													ng-model="person.primaryDependent.lastName"
+													capitalize-first only-letters-input maxlength="30"
+													disabled="true">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="box-body">
+										<div class="form-group">
+
+
+											<label for="inputEmail" class="control-label col-sm-2">Date
+												of Birth <span style="color: red"
+												ng-show="person.dob==undefined ||person.dob==''">*</span>
+											</label>
+
+
+											<div class="col-sm-4">
+
+												<div class="input-group date">
+													<div class="input-group-addon">
+														<i class="fa fa-calendar"></i>
+													</div>
+													<input ng-model="person.dob"
+														class="form-control datepicker" type="text"
+														disabled="true">
+												</div>
+
+
+
+											</div>
+
+											<label for="inputEmail" class="control-label col-sm-2">Gender
+												<span style="color: red"
+												ng-show="person.gender==undefined ||person.gender==''">*</span>
+											</label>
+
+
+											<div class="col-sm-4">
+												<input class="form-control" ng-model="person.gender" disabled="true">
+												<!-- 	<select class="form-control" ng-model="person.gender">
+													<option value="Male">Male</option>
+													<option value="Female">Female</option>
+												</select> -->
+
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+
+										<div class="form-group">
+
+											<label for="inputEmail" class="control-label col-sm-2">Marital
+												Status <span style="color: red"
+												ng-show="person.maritalStutus==undefined ||person.maritalStutus==''">*</span>
+											</label>
+
+
+											<div class="col-sm-4">
+										
+												<select class="form-control" ng-model="person.maritalStutus">
+													<option value="Single">Single</option>
+													<option value="Married">Married</option>
+													<option value="Divorced">Divorced</option>
+												</select> 
+											</div>
+
+											<label for="inputEmail" class="control-label col-sm-2">Blood
+												Group <span style="color: red"
+												ng-show="person.bloodGroup==undefinde || person.bloodGroup==''">*</span>
+											</label>
+											<div class="col-sm-4">
+											<input class="form-control" ng-model="person.bloodGroup" disabled="true">
+												<!-- <select class="form-control" ng-model="person.bloodGroup">
+													<option value="A+">A Positive</option>
+													<option value="A-">A Negative</option>
+													<option value="B+">B Positive</option>
+													<option value="B-">B Negative</option>
+													<option value="O+">O Positive</option>
+													<option value="O-">O Negative</option>
+													<option value="AB+">AB Positive</option>
+													<option value="AB-">AB Negative</option>
+
+												</select>
+ -->
+											</div>
+
+
+										</div>
+
+
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="box-body">
+
+										<div class="form-group">
+
+
+											<label for="inputEmail" class="control-label col-sm-2">Attach
+												Photo </label>
+
+											<div class="col-sm-4">
+												<input type="file" name="file"
+													onchange="angular.element(this).scope().documnetUploads(this.files)" />
+											</div>
+
+											<div ng-show="person!=undefined" class="row">
+												<div align="center">
+													<img ng-src="{{imagePath()}}" width="190" height="130">
+												</div>
+											</div>
+
+
+										</div>
+
+
+									</div>
+								</div>
+								<div class="row">
+									<div class="box-body">
+										<div class="box-footer">
+
+											<div class="col-sm-offset-2 col-sm-10">
+
+												<button ng-show="person.id!=undefined"
+													class="btn btn-primary"
+													ng-disabled="!person.fisrtName || !person.bloodGroup || !person.gender ||!person.lastName ||!person.primaryDependent.fisrtName||!person.primaryDependent.lastName ||!person.dob"
+													ng-click="updatePerson(person)">Update</button>
+
+
+												<button ng-show="person.id==undefined"
+													class="btn btn-primary"
+													ng-disabled="!person.fisrtName || !person.bloodGroup || !person.gender ||!person.lastName ||!person.primaryDependent.fisrtName||!person.primaryDependent.lastName ||!person.dob"
+													ng-click="addPersonalDetail(person)">Save</button>
+
+												
+
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+							</form>
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-init="getDocumnets()">
+			<!-- left column -->
+			<div class="col-md-12">
+				<!-- general form elements -->
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<div class="row">
+							<div class="col col-md-6">
+								<h3 class="box-title">Attachments</h3>
+							</div>
+
+							<div class="col col-md-6" align="right">
+
+								<div class="pull-right">
+									<h4>
+										<button class="btn btn-primary"
+											ui-sref="home.selfService.myinfo.addDocument">Add File</button>
+									</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- /.box-header -->
+
+					<!-- form start -->
+
+					<form role="form">
+						<div class="row">
+
+							<div class="box-body">
+								<div class="table-responsive">
+
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>S.No</th>
+												<th>Title/Description</th>
+												<th>Memory</th>
+												<th>Type</th>
+
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="document in documentsList">
+												<td>{{$index+1}}</td>
+												<td><a target="_blank"
+													href="{{docPath(document.imagepath)}}">{{document.name}}</a></td>
+												<td>{{document.size}}</td>
+												<td>{{document.type}}</td>
+
+												<td>
+													<!-- <button class="btn btn-primary"
+														ng-click="goToViewDocument(document)"
+														data-toggle="tooltip" tooltip-placement="top"
+														tooltip="View" title="View">
+														<span title="view" class="glyphicon glyphicon-eye-open"></span>
+													</button>&nbsp; -->
+													<button class="btn btn-primary"
+														ng-click="goToUpdateDocument(document)"
+														data-toggle="tooltip" tooltip-placement="bottom"
+														tooltip="Update" title="Update">
+														<span class="glyphicon glyphicon-edit"></span>
+													</button>&nbsp; <!-- <button class="btn btn-danger"
+												ng-click="deleteDocuments(document)" data-toggle="tooltip"
+												tooltip-placement="bottom" tooltip="Delete" title="Delete">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button> -->
+												</td>
+											</tr>
+
+
+
+
+										</tbody>
+
+									</table>
+								</div>
+
+							</div>
+
+							<!-- /.box-body -->
+						</div>
+
+					</form>
+				</div>
+				<!-- /.box -->
+
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+<script>
+	$('.datepicker').datepicker({
+		format : "dd-mm-yyyy",
+		endDate : new Date(),
+		autoclose : true,
+		forceParse : false
+	});
+	$(".trigger").click(function() {
+		$(".datepicker").datepicker("show");
+	});
+</script>
+
+
+

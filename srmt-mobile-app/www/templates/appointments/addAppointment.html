@@ -1,0 +1,63 @@
+<ion-view view-title="Add Appointment"
+	ng-init="getAllCountries();getLocationsAndVehicleModelsByEmployeeId(loginId)">
+<ion-nav-bar class="bar-positive"> <ion-nav-back-button
+	class="button-clear" ng-click="gotoAppointmentList()"> <i
+	class="icon ion-chevron-left"></i>Back</ion-nav-back-button> </ion-nav-bar> <ion-content class="has-footer">
+<div class="list">
+	<label class="item item-input"> <span class="input-label">Customer
+			Name</span> <input type="text" ng-model="customer.fisrtName">
+	</label> <label class="item item-input item-select">
+		<div class="input-label">Country</div> <select
+		ng-model="customer.address.country"
+		ng-options="country as country.name for country in countryList"
+		ng-change="getStatesByCountryId(customer.address.country.id)">
+	</select>
+	</label> <label class="item item-input item-select">
+		<div class="input-label">State</div> <select
+		ng-model="customer.address.state"
+		ng-options="state as state.name for state in stateList"
+		ng-change="getDistrictsByStateId(customer.address.state.id)">
+	</select>
+	</label><label class="item item-input item-select">
+		<div class="input-label">District</div> <select
+		ng-model="customer.address.district"
+		ng-options="district as district.name for district in districtList">
+	</select>
+	</label><label class="item item-input"> <span class="input-label">City</span>
+		<input type="text" ng-model="customer.address.city">
+	</label> <label class="item item-input"> <span class="input-label">Address</span>
+		<input type="text">
+	</label> <label class="item item-input"> <span class="input-label">Mobile</span>
+		<input type="text" ng-model="customer.mobile">
+	</label> <label class="item item-input"> <span class="input-label">Land
+			Line</span> <input type="text" ng-model="customer.homePhone"></label>
+	<label
+		class="item item-input item-select">
+		<div class="input-label">Vehicle Model{{vehicleModel}}</div> <select
+		ng-model="vehicleModel"
+		ng-options="vehicle as vehicle.name for vehicle in vehicleModels">
+
+	</select>
+	</label>
+	<!-- <label class="item item-input"> <span class="input-label">Vehicle
+			Cost</span> <input type="text">
+	</label> <label class="item item-input"> <span class="input-label">Vehicle
+			Insurance</span> <input type="text">
+	</label> <label class="item item-input"> <span class="input-label">TR/TAX
+	</span> <input type="text">
+	</label> <label class="item item-input"> <span class="input-label">Total
+			Cost</span> <input type="text">
+	</label> -->
+	<button class="button button-block button-positive"
+		ng-click="addAppointment(customer)">Save</button>
+	<button class="button button-block button-assertive"
+		ui-sref="app.appointments">Cancel</button>
+</div>
+
+
+
+</ion-content>
+<div class="bar bar-footer bar-positive">
+	<div class="title">SRI RAMADAS MOTORS TRANSPORT LIMITED</div>
+</div>
+</ion-view>

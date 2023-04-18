@@ -1,0 +1,128 @@
+<ion-view view-title="Add Customer"> <ion-nav-bar
+	class="bar-positive"> <ion-nav-back-button
+	class="button-clear" ng-click="gotoClientList()">
+<i class="icon ion-chevron-left"></i> Back </ion-nav-back-button> </ion-nav-bar> <ion-content
+	class="has-footer">
+<div class="list"
+	ng-init="getAllCountries();getLocationsAndVehicleModelsById()">
+	<form name="myForm">
+	<label class="item item-input"> <span class="input-label">Customer
+			Name <i style="color: red"
+			ng-show="customer.fisrtName==undefined||customer.fisrtName==''">*</i>
+	</span> <input type="text" ng-model="customer.fisrtName">
+	</label> <label class="item item-input item-select">
+		<div class="input-label">
+			Customer Type <i style="color: red"
+				ng-show="customer.customerType==undefined||customer.customerType==''">*</i>
+		</div> <select ng-model="customer.customerType">
+			<option value="">select</option>
+			<option value="0">First Time User (FTU)</option>
+			<option value="1">Captivate Customer</option>
+			<option value="2">Forum Customer</option>
+			<option value="3">Market Load Operator</option>
+			<option value="4">Retail Existing Customer</option>
+	</select>
+	</label> <label class="item item-input item-select">
+		<div class="input-label">
+			Country <i style="color: red"
+				ng-show="customer.address.country==undefined||customer.address.country==''">*</i>
+		</div> <select ng-model="customer.address.country"
+		ng-options="country as country.name for country in countryList"
+		ng-change="getStatesByCountryId(customer.address.country.id)">
+	</select>
+	</label> <label class="item item-input item-select">
+		<div class="input-label">
+			State <i style="color: red"
+				ng-show="customer.address.state==undefined||customer.address.state==''">*</i>
+		</div> <select ng-model="customer.address.state"
+		ng-options="state as state.name for state in stateList"
+		ng-change="getDistrictsByStateId(customer.address.state.id)">
+	</select>
+	</label> <label class="item item-input item-select">
+		<div class="input-label">
+			District<i style="color: red"
+				ng-show="customer.address.district==undefined||customer.address.district==''">*</i>
+		</div> <select ng-model="customer.address.district"
+		ng-options="district as district.name for district in districtList">
+	</select>
+	</label> <label class="item item-input"> <span class="input-label">City/Town
+			<i style="color: red"
+			ng-show="customer.address.city==undefined||customer.address.city==''">*</i>
+	</span> <input type="text" ng-model="customer.address.city" >
+	</label> <label class="item item-input"> <span class="input-label">Mandal</span>
+		<input type="text" >
+	</label> <label class="item item-input"> <span class="input-label">Mobile
+			<i style="color: red"
+			ng-show="customer.mobile==undefined||customer.mobile==''||customer.mobile.length<10">*</i>
+	</span> <input type="text" ng-model="customer.mobile" allow-only-numbers max-length="10">
+	</label> <label class="item item-input"> <span class="input-label">Landline
+			No</span> <input type="text" ng-model="customer.homePhone" allow-only-numbers max-length="15">
+	</label> <label class="item item-input"> <span class="input-label">Email <i style="color: red"
+			ng-show="!myForm.email.$valid">*</i>
+	</span> <input type="email" ng-model="customer.email" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/ ">
+	</label><label class="item item-input item-select">
+		<div class="input-label">
+			Model No <i style="color: red"
+				ng-show="customer.productLine==undefined||customer.productLine==''">*</i>
+		</div> <select ng-model="customer.productLine"
+		ng-options="productLine as productLine.number for productLine in productLines">
+	</select>
+	</label> <label class="item item-input item-select">
+		<div class="input-label">Source of Contact</div> <select
+		ng-model="customer.sourceOfContact">
+			<option ng-selected="true">Field</option>
+	</select>
+	</label><label class="item item-input"> <span class="input-label">Vehicle
+			Application <i style="color: red"
+			ng-show="customer.vehicleApplication==undefined||customer.vehicleApplication==''">*</i>
+	</span> <input type="text" ng-model="customer.vehicleApplication" capitalize>
+	</label> <label class="item item-input"> <span class="input-label">Financier
+	</span> <input type="text" ng-model="customer.financier" >
+	</label> <label class="item item-input item-select">
+		<div class="input-label">
+			Micro Market <i style="color: red"
+				ng-show="customer.microMarket==undefined||customer.microMarket==''">*</i>
+		</div> <select ng-model="customer.microMarket"
+		ng-options="location.city as location.city for location in locations">
+	</select>
+	</label><label class="item item-input"> <span class="input-label">Quantity
+	</span> <i style="color: red"
+		ng-show="customer.vehicleQuantity==undefined||customer.vehicleQuantity==''">*</i><input
+		type="text" ng-model="customer.vehicleQuantity" ng-change="onChange()" allow-only-numbers>
+	</label> <label class="item item-input"> <span class="input-label">Price
+			per Vehicle <i style="color: red"
+			ng-show="customer.pricePerVehicle.amount==undefined||customer.pricePerVehicle.amountcustomer.customerType==''">*</i>
+	</span> <input type="text" ng-model="customer.pricePerVehicle.amount"
+		ng-change="onChange()" allow-only-numbers>
+	</label><label class="item item-input"> <span class="input-label">Total
+	</span> <input type="text" ng-model="customer.totalCost" disabled>
+	</label><label class="item item-input"> <span class="input-label">Insurance
+			(Approx)
+	</span> <input type="text" ng-model="customer.vehicleInsurance.amount"
+		ng-change="onChange()" allow-only-numbers>
+	</label><label class="item item-input"> <span class="input-label">TR
+			(Approx)
+	</span> <input type="text" ng-model="customer.trAmount.amount"
+		ng-change="onChange()" allow-only-numbers>
+	</label> <label class="item item-input"> <span class="input-label">Tax
+			(Approx)
+	</span> <input type="text" ng-model="customer.taxAmount.amount"
+		ng-change="onChange()" allow-only-numbers>
+	</label><label class="item item-input"> <span class="input-label">Other
+			Charges </span> <input type="text" ng-model="customer.otherCharges.amount"
+		ng-change="onChange()" allow-only-numbers>
+	</label><label class="item item-input"> <span class="input-label">Grand
+			Total Amount </span> <input type="text" ng-model="customer.grandTotal"
+		disabled>
+	</label><label class="item item-input"> <span class="input-label">Remarks
+	</span> <input type="text" ng-model="customer.remarks" >
+	</label></form><label class="item item-input">
+
+		<button class="button button-block button-positive"
+			ng-disabled="!customer.fisrtName||!customer.customerType||!customer.address.country
+			||!customer.address.state||!customer.address.district||!customer.address.city||!myForm.email.$valid
+			||customer.mobile.length<10||!customer.productLine||!customer.vehicleApplication||!customer.vehicleQuantity||!customer.pricePerVehicle.amount||!customer.vehicleInsurance.amount"
+			ng-click="addCustomer(customer)">Save</button>
+		<button class="button button-block button-assertive"
+			ui-sref="app.clientList">Cancel</button>
+</div>

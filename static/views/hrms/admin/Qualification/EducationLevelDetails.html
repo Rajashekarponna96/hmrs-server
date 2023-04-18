@@ -1,0 +1,100 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Education Levels</h2>
+		<ol class="breadcrumb">
+			<li><a href="index.html">Home</a></li>
+			<li><a>Admin</a></li>
+			<li class="active"><strong>Education Levels</strong></li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>Designations</h5>
+				<div class="ibox-tools" uib-dropdown>
+					<button
+						ng-if="hasFeatureWithAction('Education Levels').createAction"
+						class="btn btn-primary" ng-click="gotoAddEducationLevel()">Add
+						Education Level</button>
+
+
+				</div>
+			</div>
+
+			<div class="ibox-content">
+				<div class="table-responsive">
+					<table class="table  table-hover table-striped">
+						<thead>
+							<tr>
+								<th>S.No</th>
+								<th>Code</th>
+								<th>Name</th>
+								<th>Specialization</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="educationLevel in educationLevelList">
+								<td>{{(page*size)+($index+1)}}</td>
+								<td>{{educationLevel.code}}</td>
+								<td>{{educationLevel.name}}</td>
+								<td>{{educationLevel.specialization}}</td>
+								<td><button
+										ng-if="hasFeatureWithAction('Education Levels').viewAction"
+										class="btn btn-primary"
+										ng-click="viewEducationLevelDetials(educationLevel)"
+										data-toggle="tooltip" tooltip-placement="top" tooltip="View"
+										title="View">
+										<span title="view" class="glyphicon glyphicon-eye-open"></span>
+									</button>&nbsp;
+									<button
+										ng-if="hasFeatureWithAction('Education Levels').updateAction"
+										class="btn btn-primary"
+										ng-click="gotoUpdateEducationLevel(educationLevel)"
+										data-toggle="tooltip" tooltip-placement="bottom"
+										tooltip="Update" title="Update">
+										<span class="glyphicon glyphicon-edit"></span>
+									</button>&nbsp; <!-- <button class="btn btn-danger"
+												ng-click="deleteOpen(educationLevel.id)"
+												data-toggle="tooltip" tooltip-placement="bottom"
+												tooltip="Delete" title="Delete">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button> --></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-4 m-b-xs">
+						<p>Number of Records:{{count}}</p>
+					</div>
+					<div class="col-sm-4 m-b-xs">
+						Records per Page <select ng-model="PerPage"
+							ng-change="recordsPerPage()">
+							<option ng-selected="true">10</option>
+							<option>25</option>
+							<option>50</option>
+						</select>
+					</div>
+
+					<div class="col-sm-4">
+						<ul class="pagination">
+							<li><a ng-click="firstPage()">First</a></li>
+							<li><a ng-click="prevPage()">Previous</a></li>
+							<li><a ng-click="nextPage()">Next</a></li>
+							<li><a ng-click="lastPage()">Last</a></li>
+
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,158 @@
+<div class="mail-box-header">
+	<div class="col-lg-10">
+		<h2>Qualification Details</h2>
+		<ol class="breadcrumb">
+			<li><a> OnBoarding</a></li>
+			<li class="active">Qualification Details</li>
+			<li class="active">Add Qualification Detail</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="mail-box" ng-init="getEducationLevels()">
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Qualification</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+					
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<div class="control-label col-sm-3">
+									<label for="inputEmail">Education Level <span
+										style="color: red"
+										ng-show="qualification.educationLevel==undefined ||qualification.educationLevel==''">*</span>
+									</label>
+
+								</div>
+								<div class="col-sm-9">
+									<select class="form-control" ng-model="qualification.educationLevel" ng-options="educationLevel as educationLevel.name for educationLevel in educationLevelList">
+									<option value="">select</option></select>
+								</div>
+
+							</div>
+
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<div class="control-label col-sm-3">
+									<label for="inputEmail">College/Institute Name <span
+										style="color: red"
+										ng-show="qualification.collegeName==undefined ||qualification.collegeName==''">*</span></label>
+								</div>
+
+								<div class="col-sm-9">
+
+									<input type="text" class="form-control"
+										ng-model="qualification.collegeName" only-letters-input capitalize-first>
+
+								</div>
+
+							</div>
+
+						</div>
+						<!-- /.box-body -->
+					</div>
+
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<div class="control-label col-sm-3">
+									<label for="inputEmail"> Specialization </label>
+								</div>
+
+								<div class="col-sm-9">
+
+									<input type="text" class="form-control"
+										ng-model="qualification.specialization" capitalize-first>
+
+								</div>
+
+
+
+							</div>
+
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<div class="control-label col-sm-3">
+
+									<label for="inputEmail">Year Of passing <span
+										style="color: red"
+										ng-show="qualification.yearOfPass==undefined ||qualification.yearOfPass==''">*</span>
+									</label>
+
+								</div>
+								<div class="col-sm-5">
+
+									<input type="text" class="form-control" ng-model="qualification.yearOfPass" allow-only-numbers maxlength="4">
+
+								</div>
+								<div class="control-label col-sm-2">
+
+									<label for="inputEmail">%marks<span style="color: red"
+										ng-show="qualification.marks==undefined ||qualification.marks==''">*</span>
+									</label>
+
+								</div>
+								<div class="col-sm-2">
+
+									<input type="text" class="form-control" ng-model="qualification.marks" allow-only-numbers maxlength="2">
+
+								</div>
+
+							</div>
+
+						</div>
+						<!-- /.box-body -->
+					</div>
+					<div class="row">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="inputEmail" class="control-label col-sm-3">Comments</label>
+
+
+								<div class="col-sm-9">
+
+									<input type="text" class="form-control"
+										ng-model="qualification.commnets" capitalize-first>
+								</div>
+
+							</div>
+
+						</div>
+						<!-- /.box-body -->
+						<div class="box-footer">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button class="btn btn-primary" ng-disabled="!qualification.educationLevel || !qualification.collegeName ||!qualification.yearOfPass || !qualification.marks"
+								ng-click="addEmployeeQualification(qualification)" my-click-once>Save</button>
+							<button class="btn btn-danger"
+								ng-click="gotoQualificationDetail()">Cancel</button>
+
+
+						</div>
+					</div>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+

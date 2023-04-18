@@ -1,0 +1,173 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<!-- <div class="col-lg-10">
+		<h2>Specification Category</h2>
+	</div> -->
+	<div class="col-lg-2"></div>
+</div>
+
+<div class="row wrapper wrapper-content">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>Update Specification Categories{{updateProductLineDetails}}</h5>
+			</div>
+
+			<div class="ibox-content">
+				<div class="table-responsive">
+					<table class="table  table-hover table-striped">
+						<thead>
+							<tr>
+								<th>S.No</th>
+								<th>Name</th>
+								<th>Code</th>
+								<th>Value</th>
+								<th>Specification</th>
+								<th>Action</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="specCategory in productLineDetail.categories">
+
+								<td>{{(page*size)+($index+1)}}</td>
+								<td>{{specCategory.name}}</td>
+								<td>{{specCategory.code}}</td>
+								<td>{{specCategory.displayName}}</td>
+								<td>{{specCategory.displayName}}</td>
+								<td>
+									<button ng-if="hasFeatureWithAction('Roles').updateAction"
+										class="btn btn-primary"
+										ng-click="updateSpecCategoryForUpdate($index,specCategory)"
+										data-toggle="tooltip" tooltip-placement="bottom"
+										tooltip="Update" title="Update">
+										<span class="glyphicon glyphicon-edit"></span>
+									</button>&nbsp;
+								</td>
+
+
+							</tr>
+
+
+						</tbody>
+					</table>
+				</div>
+				<div ng-show="roleList.length ==0">
+					<h3>No Records Found!</h3>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Specification Category</h5>
+
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label"> Code <span
+								style="color: red"
+								ng-show="specificationCategory.code==undefined || specificationCategory.code==''">*</span></label>
+
+							<div class="col-sm-10">
+								<input type="text" class="form-control"
+									ng-model="specificationCategory.code" capitalize
+									only-alpha-numeric maxlength="5">
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label"> Name <span
+								style="color: red"
+								ng-show="specificationCategory.name==undefined || specificationCategory.name==''">*</span></label>
+
+							<div class="col-sm-10">
+								<input type="text" class="form-control"
+									ng-model="specificationCategory.name" capitalize-first
+									only-alpha-numeric maxlength="35">
+
+							</div>
+						</div>
+
+					</form>
+				</div>
+				<div class="ibox-title">
+					<h5>Add Specification</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-1 control-label">Name<span
+								style="color: red"
+								ng-show="specification.name==undefined ||specification.name==''">*</span>
+							</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" placeholder=""
+									ng-model="specification.name" capitalize letters-only
+									maxlength="35">
+
+							</div>
+							<label class="col-sm-1 control-label">Value<span
+								style="color: red"
+								ng-show="specification.value==undefined ||specification.value==''">*</span>
+							</label>
+							<div class="col-sm-4">
+								<input type="text" class="form-control" placeholder=""
+									ng-model="specification.value" capitalize-first letters-only
+									maxlength="1000">
+
+							</div>
+							<div class="col-sm-1">
+								<button class="btn btn-primary"
+									ng-click="addSpecificationForUpdate(specification)">Add</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="ibox-content">
+					<div class="table-responsive">
+						<table datatable="ng" dt-options="dtOptions"
+							class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>S.No</th>
+									<th>Name</th>
+									<th>value</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="spec in specificationCategory.specifications">
+
+									<td>{{$index+1}}</td>
+									<td>{{spec.name}}</td>
+									<td>{{spec.value}}</td>
+									<td>
+										<button class="btn btn-danger"
+											ng-click="deleteSpecificationInUpdate($index)" data-toggle="tooltip"
+											tooltip-placement="bottom" tooltip="Delete" title="Delete">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>&nbsp;
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-6 col-sm-offset-2">
+							<button class="btn btn-primary"
+								ui-sref="home.tdv.updateProductLine.updateProductLineDetails">Previous</button>
+
+							<button class="btn btn-primary"
+								ng-click="updateSpecCategory(specificationCategory)">Update Specification Category</button>
+
+							<button class="btn btn-primary"
+								ui-sref="home.tdv.updateProductLine.updateProductLineConfirm">Next
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

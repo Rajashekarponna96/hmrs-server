@@ -1,0 +1,55 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-xs-12">
+							<dl class="dl-horizontal">
+								<dt>Control :</dt>
+								<dd>{{agentDetail.control.name}}</dd>
+								<dt>Station:</dt>
+								<dd>{{agentDetail.station.name}}</dd>
+								<dt>Agent Code:</dt>
+								<dd>{{agentDetail.agentCode}}</dd>
+								<dt>Agent Name :</dt>
+								<dd>{{agentDetail.agentName.title}}{{agentDetail.agentName.fisrtName}} {{agentDetail.agentName.lastName}}</dd>
+								
+								<dt>Agent Address :</dt>
+								<dd>{{agentDetail.agentAddress}}</dd>
+								<dt>Mobile :</dt>
+								<dd>{{agentDetail.agentMobile}}</dd>
+								<dt>Land Line Number :</dt>
+								<dd>{{agentDetail.agentLand}}</dd>
+								<dt>PAN Number :</dt>
+								<dd>{{agentDetail.agentPan}}</dd>
+								<dt>Appointment Date :</dt>
+								<dd>{{agentDetail.appointmentDate}}</dd>
+								<dt>Agreement Date :</dt>
+								<dd>{{agentDetail.agreementDate}}</dd>
+								<dt>Surity Name:</dt>
+								<dd>{{agentDetail.surityName.title}} {{agentDetail.surityName.fisrtName}}{{agentDetail.surityName.middleName}}{{agentDetail.surityName.lastName}}</dd>
+								<dt>Surity Address :</dt>
+								<dd>{{agentDetail.surityAddress}}</dd>
+								<dt>Surity Property Details :</dt>
+								<dd>{{agentDetail.surityPropertyDetails}}</dd>
+								<dt>Description :</dt>
+								<dd>{{agentDetail.description}}</dd>
+								
+							</dl>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col col-md-offset-3 col-md-3">
+		<button class="btn btn-primary"
+			ui-sref="home.agent.addAgent">Previous</button>
+		<button class="btn btn-primary"
+			ng-click="addAgent(agentDetail)">Confirm</button>
+	</div>
+
+</div>

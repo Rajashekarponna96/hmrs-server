@@ -1,0 +1,130 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<!-- <div class="col-lg-10">
+		<h2>Product Line</h2>
+		<ol class="breadcrumb">
+
+			<li><a>Sales</a></li>
+			<li><a>Product Line</a></li>
+			<li class="active">Add Product Line</li>
+		</ol>
+	</div>
+	<div class="col-lg-2"></div> -->
+	`
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row" ng-init="getAllSegments();getVehicleColors()">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Add Product Line</h5>
+				</div>
+				<div class="ibox-content">
+					<form method="get" class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Segment <span
+								style="color: red" ng-show="segment==undefined ||segment==''">*</span></label>
+							<div class="col-sm-3">
+								<select class="form-control" ng-model="segment"
+									ng-options="segment as segment.name for segment in segmentsList"
+									ng-change="getAllParentProductLinesBySegmentId(segment.id)">
+									<option value="">select</option>
+								</select>
+							</div>
+							<div class="col-sm-2">
+								<button class="btn btn-success"
+									ui-sref="home.tdv.lookup.segment">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Parent Product Line</label>
+							<div class="col-sm-3">
+								<select class="form-control"
+									ng-model="productLine.parentProductLine"
+									ng-options="parentProductLine as parentProductLine.name for parentProductLine in parentProductLines"
+									ng-change="getModelsByParentProductLineId(productLine.parentProductLine.id)">
+									<option value="">select</option>
+								</select>
+							</div>
+							<div class="col-sm-2">
+								<button class="btn btn-success"
+									ui-sref="home.tdv.lookup.parentProductLine">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Model</label>
+							<div class="col-sm-3">
+								<select class="form-control"
+									ng-model="productLine.model"
+									ng-options="model as model.name for model in Models">
+									<option value="">select</option>
+								</select>
+							</div>
+							<div class="col-sm-2">
+								<button class="btn btn-success"
+									ui-sref="home.tdv.lookup.addModel">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Model No<span
+								style="color: red"
+								ng-show="productLine.number==undefined || productLine.number==''">*</span></label>
+							<div class="col-sm-3">
+								<input class="form-control"
+									ng-model="productLine.number">
+							</div>
+							
+						</div>
+						
+ 
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Color</label>
+							<div class="col-sm-3">
+								<select multiple class="form-control"
+									ng-model="productLine.colors"
+									ng-options="color.name as color.name for color in colorList">
+								</select>
+							</div>
+							<div class="col-sm-2">
+								<br/>
+								<button class="btn btn-success"
+									ui-sref="home.tdv.productLine.addVehicleColor">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Description </label>
+							<div class="col-sm-4">
+								<textarea class="form-control"
+									placeholder="productLine Description"
+									ng-model="productLine.description" capitalize-first></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-4 col-sm-offset-2">
+								<button class="btn btn-primary"
+									ng-disabled="!productLine.number||!segment"
+									class="fa-hand-o-right" ng-click="gotoAddSpecs()">
+									<i class=""></i>Next
+								</button>
+								<button class="btn btn-danger"
+									class="fa-hand-o-right" ui-sref="home.tdv.productLineList">
+									<i class=""></i>Cancel
+								</button>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
